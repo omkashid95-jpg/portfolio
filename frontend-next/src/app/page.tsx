@@ -48,8 +48,8 @@ export default async function Home() {
   const projects = await getProjects();
   const experiences = await getExperiences();
   const heroGreeting = content['hero_greeting'] || "Hey, I am";
-  const heroName = content['hero_name'] || "Noah";
-  const heroRole = content['hero_role'] || "Web developer";
+  const heroName = content['hero_name'] || "Om";
+  const heroRole = content['hero_role'] || "AI/ML Engineer / Python Developer";
   const heroDescription = content['hero_description'] || "I build high-end interactive experiences that live on the web, combining technical expertise with aesthetic design.";
   const testimonialQuote = content['testimonial_quote'] || "Om is an exceptionally talented developer. His ability to translate complex designs into functional code is remarkable.";
   const testimonialName = content['testimonial_name'] || "Suraj";
