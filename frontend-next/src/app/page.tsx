@@ -109,7 +109,7 @@ export default async function Home() {
               <h1 className="text-6xl md:text-8xl font-extrabold leading-tight tracking-tighter">
                 {heroRole.split(' ').map((word, i) => (
                   <span key={i}>
-                    {word}
+                    {word}{' '}
                     {i === 0 && <br />}
                   </span>
                 ))}
