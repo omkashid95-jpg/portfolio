@@ -43,6 +43,7 @@ origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:3001",
+    "https://portfolio-frontend-hd9s.onrender.com",
     frontend_url
 ]
 
