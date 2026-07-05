@@ -35,7 +35,7 @@ seed_admin_user()
 
 app = FastAPI(title="Portfolio API")
 
-frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
+frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000").rstrip("/")
 if frontend_url and not frontend_url.startswith("http"):
     frontend_url = f"https://{frontend_url}"
 
