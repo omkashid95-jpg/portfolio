@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { API_BASE_URL } from '@/lib/api';
 
 interface Skill {
   id: number;
@@ -58,7 +59,7 @@ export default function SkillsSection() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/skills/")
+    fetch(`${API_BASE_URL}/skills/`)
       .then((res) => res.json())
       .then((data) => {
         setSkills(data);
