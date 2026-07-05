@@ -1,4 +1,4 @@
-let baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+let baseUrl = process.env.NEXT_PUBLIC_API_URL || 'https://portfoliobackend-ubao.onrender.com';
 if (baseUrl && !baseUrl.startsWith('http')) {
   baseUrl = `https://${baseUrl}`;
 }
