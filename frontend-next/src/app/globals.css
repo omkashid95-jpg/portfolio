@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand-orange: #FF5C00;
+  --color-sunrise-accent: #facc15;
+  --color-bg-dark: #0F0F0F;
+  --color-surface: #13121b;
+  --color-surface-dim: #13121b;
+  --color-surface-bright: #393842;
+  --color-surface-container-low: #1b1b24;
+  --color-accent: #ff5c00;
+
+  /* Admin Dashboard Theme Variables */
+  --color-on-secondary-container: #abb9d5;
+  --color-on-surface: #e4e1ee;
+  --color-on-tertiary-fixed: #351000;
+  --color-secondary: #b9c7e3;
+  --color-inverse-surface: #e4e1ee;
+  --color-tertiary: #ffb695;
+  --color-on-primary-container: #dad7ff;
+  --color-secondary-container: #3c4a61;
+  --color-tertiary-fixed-dim: #ffb695;
+  --color-surface-container-high: #2a2933;
+  --color-primary: #c3c0ff;
+  --color-tertiary-container: #a44100;
+  --color-on-primary-fixed-variant: #3323cc;
+  --color-on-primary-fixed: #0f0069;
+  --color-surface-variant: #35343e;
+  --color-on-secondary-fixed-variant: #39475e;
+  --color-on-surface-variant: #c7c4d8;
+  --color-on-tertiary-container: #ffd2be;
+  --color-primary-container: #4f46e5;
+  --color-on-tertiary: #571f00;
+  --color-inverse-primary: #4d44e3;
+  --color-inverse-on-surface: #302f39;
+  --color-surface-container-highest: #35343e;
+  --color-on-tertiary-fixed-variant: #7b2f00;
+  --color-secondary-fixed: #d5e3ff;
+  --color-on-secondary-fixed: #0d1c31;
+  --color-surface-container: #1f1f28;
+  --color-primary-fixed: #e2dfff;
+  --color-secondary-fixed-dim: #b9c7e3;
+  --color-error-container: #93000a;
+  --color-on-error: #690005;
+  --color-surface-tint: #c3c0ff;
+  --color-tertiary-fixed: #ffdbcc;
+  --color-on-primary: #1d00a5;
+  --color-on-error-container: #ffdad6;
+  --color-on-background: #e4e1ee;
+  --color-primary-fixed-dim: #c3c0ff;
+  --color-surface-container-lowest: #0e0d16;
+  --color-outline-variant: #464555;
+  --color-outline: #918fa1;
+  --color-error: #ffb4ab;
+  --color-on-secondary: #233147;
+  --color-background: #13121b;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  --animate-orbit: orbit 20s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes orbit {
+    0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+body {
+  background-color: #0d0d0d;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 92, 0, 0.15) 0%, rgba(13, 13, 13, 1) 70%);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.orbit-container {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.orbit-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+.icon-1 { transform: rotate(0deg) translate(180px) rotate(0deg); }
+.icon-2 { transform: rotate(60deg) translate(180px) rotate(-60deg); }
+.icon-3 { transform: rotate(120deg) translate(180px) rotate(-120deg); }
+.icon-4 { transform: rotate(180deg) translate(180px) rotate(-180deg); }
+.icon-5 { transform: rotate(240deg) translate(180px) rotate(-240deg); }
+.icon-6 { transform: rotate(300deg) translate(180px) rotate(-300deg); }
+
+/* Glassmorphic card effect for skills */
+.skill-card {
+  background: rgba(27, 27, 36, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  background: rgba(27, 27, 36, 0.9);
+  border-color: #facc15;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* Vertical text styling */
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* Background Geometric Accents */
+.bg-accent-shape {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #facc15 0%, transparent 70%);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.bg-accent-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(315deg, #facc15 0%, transparent 70%);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Certification Details | NOAH.DEV</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;family=Geist:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#571f00",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#0f0069",
+                        "outline": "#918fa1",
+                        "inverse-surface": "#e4e1ee",
+                        "on-surface": "#e4e1ee",
+                        "on-secondary-container": "#abb9d5",
+                        "on-surface-variant": "#c7c4d8",
+                        "tertiary": "#ffb695",
+                        "on-primary-container": "#dad7ff",
+                        "secondary": "#b9c7e3",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-primary": "#1d00a5",
+                        "outline-variant": "#464555",
+                        "on-tertiary-container": "#ffd2be",
+                        "surface-container-low": "#1b1b24",
+                        "primary-fixed": "#e2dfff",
+                        "surface": "#13121b",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#302f39",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "on-secondary": "#233147",
+                        "error-container": "#93000a",
+                        "primary": "#c3c0ff",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#b9c7e3",
+                        "inverse-primary": "#4d44e3",
+                        "surface-container-high": "#2a2933",
+                        "background": "#13121b",
+                        "surface-container": "#1f1f28",
+                        "secondary-fixed": "#d5e3ff",
+                        "on-tertiary-fixed": "#351000",
+                        "primary-container": "#4f46e5",
+                        "surface-dim": "#13121b",
+                        "surface-container-lowest": "#0e0d16",
+                        "on-background": "#e4e1ee",
+                        "secondary-container": "#3c4a61",
+                        "surface-container-highest": "#35343e",
+                        "surface-variant": "#35343e",
+                        "tertiary-container": "#a44100",
+                        "surface-tint": "#c3c0ff",
+                        "on-secondary-fixed-variant": "#39475e",
+                        "surface-bright": "#393842",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "on-secondary-fixed": "#0d1c31",
+                        "accent": "#ff5c00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "xl": "32px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Geist"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg": ["Geist"],
+                        "code-sm": ["JetBrains Mono"],
+                        "display-xl-mobile": ["Geist"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "code-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-xl-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sunrise-glow {
+            background: radial-gradient(circle at 70% 30%, rgba(255, 92, 0, 0.15) 0%, transparent 60%);
+        }
+        .orbital-lines {
+            background-image: radial-gradient(circle at 50% 50%, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.03) 41%, transparent 42%);
+            background-size: 800px 800px;
+            background-position: center;
+        }
+        .glass-card {
+            background: rgba(31, 31, 40, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden selection:bg-accent/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="terminal">terminal</span>
+<span class="text-headline-lg font-headline-lg font-bold tracking-tighter text-on-background">NOAH.DEV</span>
+</div>
+<nav class="hidden md:flex items-center gap-xl">
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">PROJECTS</a>
+<a class="text-label-caps font-label-caps text-primary border-b-2 border-primary pb-1" href="#">CERTIFICATIONS</a>
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">EXPERIENCE</a>
+</nav>
+<button class="px-md py-sm bg-primary-container text-on-primary-container rounded-lg font-label-caps hover:brightness-110 active:scale-95 transition-all duration-100 uppercase">
+                DOWNLOAD CV
+            </button>
+</div>
+</header>
+<main class="relative min-h-screen pt-32 pb-xl">
+<!-- Atmospheric Background Elements -->
+<div class="absolute inset-0 pointer-events-none sunrise-glow"></div>
+<div class="absolute inset-0 pointer-events-none orbital-lines opacity-20"></div>
+<div class="relative px-gutter max-w-container-max mx-auto">
+<!-- Hero / Title Section -->
+<div class="max-w-2xl mb-xl">
+<div class="inline-flex items-center gap-2 mb-md">
+<div class="w-8 h-[2px] bg-accent"></div>
+<span class="text-accent font-label-caps text-label-caps tracking-[0.2em]">CHECK OUT</span>
+</div>
+<h1 class="font-display-xl text-display-xl mb-md">MY CERTIFICATE</h1>
+<p class="text-body-md text-on-surface-variant max-w-lg leading-relaxed">
+                    I have completed various high-performance programming and engineering courses to sharpen my architectural skills. Here is a curated selection of my professional credentials.
+                </p>
+<div class="mt-lg">
+<button class="px-lg py-md border border-accent text-accent font-label-caps text-label-caps hover:bg-accent/10 transition-colors rounded-lg group">
+                        KNOW MORE 
+                        <span class="material-symbols-outlined align-middle ml-2 group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Certification Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Card 1: Java -->
+<div class="glass-card p-md rounded-xl flex flex-col group hover:border-accent/40 transition-all duration-300">
+<div class="relative aspect-[4/3] mb-md overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A professional digital certificate from Duke University for Java Programming. The certificate features a clean white background with official seals and elegant typography, presented in a minimalist dark-themed portfolio interface with subtle orange lighting accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiHya9k000djNlgoNRYqaOa64b3A1q0r39T7gKXppjby6DLZoiHq8G0dsQkwcycXisoV6_3y_RJMnJzl1huCk0e40Vz-E5cmNaKMhLeBIwnK7snYQZ5Y8wa_TH3GRIPU6wI4bB1OXRe-aIgO0jC1sWUtOG_WGn7NN5epBt0gQGd383jOG6H7lWpFFcPd-vldzZYr7qxRPhulg1f2yc_W2kMjojKBFVuZZwwRuULTPGZhND-8bqNZ4oU2CN64-A12BF9ejyQRmGHqM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-lg text-lg mb-xs text-on-surface">Java Programming</h3>
+<p class="text-label-caps font-label-caps text-accent mb-lg">DUKE UNIVERSITY</p>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-code-sm font-code-sm text-on-surface-variant">Credential ID: DUK-992-PX</span>
+<button class="text-on-surface hover:text-accent transition-colors p-sm">
+<span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Python -->
+<div class="glass-card p-md rounded-xl flex flex-col group hover:border-accent/40 transition-all duration-300">
+<div class="relative aspect-[4/3] mb-md overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A verified professional certificate for Programming with Python issued by the University of Michigan. The layout is sophisticated and structured, showing academic excellence within a dark mode tech portfolio setting. The lighting is low-key with a soft sunrise-orange glow reflecting on the surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA2-DjLQFWEqZD4IL_owlEW0LLHjqazHgc8p1LsjawN3eK2msZLtoH3-EUCPfxYrCzUp6e7j2UV-NFp6O8SHILGjYArqxJjJ7ZeU6NWQ8sXwTre_U4GNg-3dYJKIsJc_DfftZlEUYarowxvrk2J-bllFXwHJjN0tWh9Sh3pz_yFJD513BbVyNO-YLJ9nO8SX6LSHd8PdN9g2iYtzj-hD7iZ8g-yCO5xlp-4nW-BJPnQyuD2a82TCEX5UuxA4jd8k7y5iaRDVslNTs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-lg text-lg mb-xs text-on-surface">Programming With Python</h3>
+<p class="text-label-caps font-label-caps text-accent mb-lg">MICHIGAN UNIVERSITY</p>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-code-sm font-code-sm text-on-surface-variant">Credential ID: UOM-441-PY</span>
+<button class="text-on-surface hover:text-accent transition-colors p-sm">
+<span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3: Web Dev -->
+<div class="glass-card p-md rounded-xl flex flex-col group hover:border-accent/40 transition-all duration-300">
+<div class="relative aspect-[4/3] mb-md overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An official course certificate for Programming with HTML, CSS, and JavaScript from Duke University. It is displayed as a premium asset on a dark, high-contrast digital developer site. The design features sharp lines and a technical minimalist aesthetic with deep slate and vibrant indigo-orange tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJl8j52zb2A8uN4CVwlP6YXsO2W6rW_NZA5ZvSl9e5EmNJF9GPEidOEYgpzQ8KM-2jFlYJN3ZggvOki7kGD2ynz1aECjYfpnEFuScLaJqmLzp8G2tZSymbGVScBGx1UdbAa43JnaKs8SgmxLiOQApL--U0MxD4ZW1pgScU-FOOUAcV-OVSlruCbSWRsBIBZn_XCGzCLB0jQwym6jBroUgiAvDu5RRLOcL1ylkyGi7acPLaj-pi1PEgmzQYfS8JnQuitCFU3v0uWA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+</div>
+<div class="flex flex-col flex-grow">
+<h3 class="font-headline-lg text-lg mb-xs text-on-surface">Web Architecture Stack</h3>
+<p class="text-label-caps font-label-caps text-accent mb-lg">DUKE UNIVERSITY</p>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-code-sm font-code-sm text-on-surface-variant">Credential ID: DUK-102-WEB</span>
+<button class="text-on-surface hover:text-accent transition-colors p-sm">
+<span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Additional Detail / Stats Section -->
+<div class="mt-xl grid grid-cols-1 md:grid-cols-4 gap-lg">
+<div class="glass-card p-lg rounded-xl border-l-4 border-accent">
+<div class="text-display-xl font-display-xl text-accent mb-xs">12+</div>
+<div class="text-label-caps font-label-caps text-on-surface-variant">COURSES COMPLETED</div>
+</div>
+<div class="glass-card p-lg rounded-xl">
+<div class="text-display-xl font-display-xl text-on-surface mb-xs">03</div>
+<div class="text-label-caps font-label-caps text-on-surface-variant">TOP UNIVERSITIES</div>
+</div>
+<div class="glass-card p-lg rounded-xl">
+<div class="text-display-xl font-display-xl text-on-surface mb-xs">4.9</div>
+<div class="text-label-caps font-label-caps text-on-surface-variant">AVERAGE GPA</div>
+</div>
+<div class="glass-card p-lg rounded-xl bg-accent text-on-tertiary">
+<div class="text-display-xl font-display-xl mb-xs">850</div>
+<div class="text-label-caps font-label-caps opacity-80">HOURS LOGGED</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-gutter py-xl max-w-container-max mx-auto">
+<div class="mb-lg md:mb-0">
+<span class="text-label-caps font-label-caps text-on-surface uppercase tracking-widest">© 2024 SYSTEM ARCHITECT. ALL RIGHTS RESERVED.</span>
+</div>
+<div class="flex gap-lg">
+<a class="text-code-sm font-code-sm text-on-surface-variant hover:text-primary transition-all duration-300 opacity-80 hover:opacity-100" href="#">GITHUB</a>
+<a class="text-code-sm font-code-sm text-on-surface-variant hover:text-primary transition-all duration-300 opacity-80 hover:opacity-100" href="#">LINKEDIN</a>
+<a class="text-code-sm font-code-sm text-on-surface-variant hover:text-primary transition-all duration-300 opacity-80 hover:opacity-100" href="#">STACKOVERFLOW</a>
+<a class="text-code-sm font-code-sm text-on-surface-variant hover:text-primary transition-all duration-300 opacity-80 hover:opacity-100" href="#">SOURCE</a>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth scroll implementation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Hover effect for cards
+        const cards = document.querySelectorAll('.glass-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

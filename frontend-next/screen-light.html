@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DevEngine v2.0 | Project Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ff5c00",
+                        "on-primary": "#ffffff",
+                        "background": "#fcf8fb",
+                        "surface": "#ffffff",
+                        "on-surface": "#1c1b1d",
+                        "on-surface-variant": "#5b4137",
+                        "outline": "#8f7065",
+                        "outline-variant": "rgba(143, 112, 101, 0.15)",
+                        "secondary-container": "#feb700",
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "margin-md": "32px",
+                        "margin-sm": "16px",
+                        "margin-lg": "48px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Geist", "sans-serif"],
+                        "headline-lg": ["Geist", "sans-serif"],
+                        "display-lg": ["Geist", "sans-serif"],
+                        "label-sm": ["JetBrains Mono", "monospace"],
+                    },
+                    fontSize: {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #fcf8fb;
+            overflow-x: hidden;
+            color: #1c1b1d;
+        }
+
+        /* Sunrise Atmosphere Background - Light Mode Adjust */
+        .sunrise-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 110%, #ff5c00 0%, #fcf8fb 50%);
+            overflow: hidden;
+        }
+
+        .sunrise-glow {
+            position: absolute;
+            bottom: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140%;
+            height: 60%;
+            background: radial-gradient(ellipse at center, rgba(255, 92, 0, 0.15) 0%, transparent 70%);
+            animation: breathe 8s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.3; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.5; transform: translateX(-50%) scale(1.1); }
+        }
+
+        /* Orbital Paths */
+        .orbital-container {
+            position: absolute;
+            inset: 0;
+            opacity: 0.3;
+        }
+
+        .orbital-line {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            border: 1px solid rgba(255, 92, 0, 0.4);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            stroke-dasharray: 4 8;
+            animation: orbit-rotate 120s linear infinite;
+        }
+
+        @keyframes orbit-rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Glassmorphic Project Card - Light Mode */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(143, 112, 101, 0.15);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 92, 0, 0.04), transparent 40%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 92, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(167, 58, 0, 0.08), 0 0 20px rgba(255, 92, 0, 0.05);
+        }
+
+        /* Status Pulse */
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ff5c00;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .pulse-dot::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background-color: #ff5c00;
+            opacity: 0.4;
+            animation: status-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes status-pulse {
+            0% { transform: scale(1); opacity: 0.4; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+</head>
+<body class="text-on-surface font-body-md selection:bg-primary/20">
+<!-- Sunrise Background Elements -->
+<div class="sunrise-bg">
+<div class="sunrise-glow"></div>
+<div class="orbital-container">
+<div class="orbital-line" style="width: 800px; height: 400px;"></div>
+<div class="orbital-line" style="width: 1200px; height: 600px; animation-duration: 180s; animation-direction: reverse;"></div>
+<div class="orbital-line" style="width: 1600px; height: 800px; animation-duration: 240s;"></div>
+</div>
+</div>
+<!-- TopAppBar -->
+<header class="bg-surface/60 backdrop-blur-md border-b border-outline-variant fixed top-0 left-0 right-0 z-50 transition-all" id="main-header">
+<div class="flex justify-between items-center w-full px-lg max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-2xl">terminal</span>
+<span class="text-headline-lg font-bold text-primary tracking-tighter">DevEngine v2.0</span>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-label-sm uppercase text-primary border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200" href="#">Public Projects</a>
+<a class="text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Research</a>
+<a class="text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Stack</a>
+<a class="text-label-sm uppercase text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Contact</a>
+</nav>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant group cursor-pointer hover:scale-105 transition-transform shadow-sm">
+<img alt="Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfXUnRkpx_RZDY5BnyOEYYoNpC_cuu4PqgBVyVIg-0QAcrlOTuHW2iun87d8_z1vwtjr8DC56kGNz6JyzMhwnijQvjpbmevMU8jUhgAhyIaf0_AoVRz842d-j6EvVYZtuWl4ik2Om9_4dQfRApf_JcpBUxuaA2uvAf11MJ-8UUoh7RfAJXfcPdsCe_-KNNJpY8tLcSdVsVyvM6Q13GHPVi7vR94-DbaxfL0l8KBldABuC7DuQt_zPe33ChFWx4ZonYqR7uo7Y0gDk"/>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-xl px-lg max-w-container-max mx-auto w-full relative">
+<!-- Hero -->
+<section class="mb-20 reveal">
+<div class="flex items-center gap-sm mb-4">
+<div class="pulse-dot"></div>
+<span class="text-label-sm text-primary uppercase tracking-[0.2em] font-bold">Node-Alpha Active</span>
+</div>
+<h1 class="text-display-lg font-bold mb-6 text-on-surface max-w-3xl leading-tight">
+                High-Performance <span class="text-primary">Logic Systems</span>
+</h1>
+<p class="text-body-md text-on-surface-variant max-w-2xl">
+                A showcase of distributed architectures, machine learning pipelines, and low-level kernel tooling. Built with the precision of the sunrise.
+            </p>
+</section>
+<!-- Projects Grid -->
+<div class="bento-grid">
+<!-- HydraScale: Featured Large -->
+<div class="project-card col-span-12 lg:col-span-8 reveal glass-card rounded-xl flex flex-col md:flex-row group">
+<div class="md:w-1/2 overflow-hidden relative min-h-[320px]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA_6T1CupprebPbaN-LYJSX5Lw0itCvNCJp4zCG3xK0oLcOrldnkyes8bK5PjmgDW-Py2Mo7lsENG0lkjipANmHof7cg_knMqT0I1XtFiA16E3y_R-Hz1duhsGKulyi1C62K45E85uXDuOZhTpIQX-bRuXEWaHCFnFZM06sTfKBrhNdDme2LhJhq5Eu_HKB4G0hpTCrCNaEf5bA1YlxHfPgdHISTLODguB_1svQIzkJTVNpWmGNDF1Oqy8CZ83E8GwGiCtBGCgq_Vo')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface via-transparent to-transparent opacity-80"></div>
+</div>
+<div class="md:w-1/2 p-lg flex flex-col justify-between relative z-10">
+<div>
+<div class="flex gap-xs mb-sm">
+<span class="px-2 py-0.5 rounded text-[10px] font-label-sm border border-primary/30 text-primary bg-primary/5 uppercase font-bold">Backend</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-label-sm border border-outline/30 text-on-surface-variant uppercase font-bold">Redis</span>
+</div>
+<h3 class="text-headline-lg font-bold mb-sm text-primary">HydraScale Engine</h3>
+<p class="text-body-md text-on-surface-variant mb-md">
+                            High-concurrency task orchestration for real-time video processing. Scales horizontally to 100+ nodes.
+                        </p>
+<div class="space-y-3 mb-8">
+<div class="flex items-center gap-sm text-sm font-label-sm text-on-surface font-bold">
+<span class="material-symbols-outlined text-primary text-[18px]">bolt</span> 1.2M req/sec throughput
+                            </div>
+<div class="flex items-center gap-sm text-sm font-label-sm text-on-surface font-bold">
+<span class="material-symbols-outlined text-primary text-[18px]">memory</span> Sub-ms latency
+                            </div>
+</div>
+</div>
+<button class="flex items-center justify-center gap-sm w-full py-3 rounded bg-primary text-on-primary font-label-sm uppercase font-bold hover:brightness-110 transition-all shadow-md">
+                        Technical Deep Dive
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Sentience Flow -->
+<div class="project-card col-span-12 md:col-span-6 lg:col-span-4 reveal glass-card rounded-xl flex flex-col group">
+<div class="h-48 overflow-hidden relative">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-1000" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD_3m0_Qy7JE8QIa2G6qxn1HZZEY_im-RqXX7AvTv-mR2Vmc7ZXQ4JPxzxUCLqzpU8bZpG-SvDHUo9euWR-NXB8K4r9s2Yen-S3WDxaVmdlJnQS3PvqO1x0QZ1e_Krjy6Vf3VD1brpkMeEf8fO3N2NBVY_amPbfqtp-hhkEPBM8dsX_ro8yBC11tmxDBC-vTS82Jc6nEarrdVEQVslw0tkDGFz9zfizi9IZB9tIhlgmzRLDBabuGx7vOuF0D5FsHvP1Z26r8swYY30')"></div>
+</div>
+<div class="p-lg flex flex-col flex-grow relative z-10">
+<div class="flex gap-xs mb-sm">
+<span class="px-2 py-0.5 rounded text-[10px] font-label-sm border border-primary/30 text-primary bg-primary/5 uppercase font-bold">ML Pipeline</span>
+</div>
+<h3 class="text-headline-lg-mobile font-bold mb-sm text-primary">Sentience Flow</h3>
+<p class="text-body-md text-on-surface-variant flex-grow mb-6">
+                        Transformer-based anomaly detection for enterprise logs, reducing false-positives by 84%.
+                    </p>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="pulse-dot"></div>
+<span class="text-label-sm text-on-surface-variant uppercase font-bold">Active</span>
+</div>
+<button class="text-primary material-symbols-outlined hover:translate-x-1 transition-transform">arrow_forward</button>
+</div>
+</div>
+</div>
+<!-- PyTrace-LVM -->
+<div class="project-card col-span-12 md:col-span-6 lg:col-span-4 reveal glass-card rounded-xl flex flex-col group">
+<div class="p-lg border-b border-outline-variant bg-on-surface/5 flex justify-between items-center">
+<div class="flex gap-xs">
+<span class="px-2 py-0.5 rounded text-[10px] font-label-sm border border-primary/30 text-primary bg-primary/5 uppercase font-bold">Core Tool</span>
+</div>
+<span class="material-symbols-outlined text-primary">terminal</span>
+</div>
+<div class="p-lg flex-grow relative z-10">
+<h3 class="text-headline-lg-mobile font-bold mb-sm text-primary">PyTrace-LVM</h3>
+<p class="text-body-md text-on-surface-variant mb-6">
+                        Low-overhead Python tracing utility for C-extensions with real-time heap visualization.
+                    </p>
+<div class="bg-on-surface/5 rounded border border-outline-variant p-3 font-label-sm text-primary mb-4 overflow-x-auto whitespace-nowrap">
+<span class="text-on-surface-variant">$</span> pytrace --profile ./app
+                    </div>
+</div>
+<div class="p-lg pt-0">
+<button class="text-label-sm font-bold text-primary flex items-center gap-2 hover:underline">
+                        EXPLORE REPO <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- CoreStream -->
+<div class="project-card col-span-12 md:col-span-6 lg:col-span-4 reveal glass-card rounded-xl group relative">
+<div class="p-lg flex flex-col h-full">
+<div class="flex items-center justify-between mb-4">
+<div class="flex gap-xs">
+<span class="px-2 py-0.5 rounded text-[10px] font-label-sm border border-primary/30 text-primary bg-primary/5 uppercase font-bold">Rust/C++</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-30 text-4xl">hub</span>
+</div>
+<h3 class="text-headline-lg-mobile font-bold mb-sm text-primary">CoreStream V2</h3>
+<p class="text-body-md text-on-surface-variant mb-8">
+                        A proprietary message broker bridging Python async-io with Rust for ultra-fast telemetry.
+                    </p>
+<div class="mt-auto pt-md border-t border-outline-variant flex justify-between items-center">
+<span class="text-label-sm text-on-surface-variant font-mono">v2.4.1-stable</span>
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-on-surface-variant text-xl hover:text-primary cursor-pointer">settings</span>
+<span class="material-symbols-outlined text-primary text-xl hover:scale-110 cursor-pointer">rocket_launch</span>
+</div>
+</div>
+</div>
+</div>
+<!-- AutoDoc Engine -->
+<div class="project-card col-span-12 md:col-span-6 lg:col-span-4 reveal glass-card rounded-xl group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-lg opacity-10 transform group-hover:scale-150 transition-transform duration-1000">
+<span class="material-symbols-outlined text-9xl text-primary">description</span>
+</div>
+<div class="p-lg flex flex-col h-full relative z-10">
+<div class="flex gap-xs mb-sm">
+<span class="px-2 py-0.5 rounded text-[10px] font-label-sm border border-primary/30 text-primary bg-primary/5 uppercase font-bold">Automation</span>
+</div>
+<h3 class="text-headline-lg-mobile font-bold mb-sm text-primary">AutoDoc Engine</h3>
+<p class="text-body-md text-on-surface-variant mb-6">
+                        AI-powered documentation generator that analyzes AST to create technical specifications.
+                    </p>
+<div class="flex flex-wrap gap-2 mt-auto">
+<span class="px-2 py-1 bg-on-surface/5 rounded text-[11px] font-label-sm text-primary font-bold">GPT-4o</span>
+<span class="px-2 py-1 bg-on-surface/5 rounded text-[11px] font-label-sm text-primary font-bold">AST Analysis</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface/40 backdrop-blur-sm border-t border-outline-variant mt-20 relative z-10">
+<div class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto gap-md">
+<span class="text-label-sm font-label-sm text-on-surface-variant font-bold">© 2024 Engineered by Terminal. Built with High-Performance Logic.</span>
+<div class="flex gap-lg flex-wrap justify-center">
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors uppercase font-bold" href="#">Documentation</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors uppercase font-bold" href="#">System Status</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors uppercase font-bold" href="#">Source Code</a>
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors uppercase font-bold" href="#">API Docs</a>
+</div>
+</div>
+</footer>
+<script>
+        // Scroll Reveal logic
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Mouse glow effect for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-surface/90', 'shadow-lg');
+            } else {
+                header.classList.remove('bg-surface/90', 'shadow-lg');
+            }
+        });
+    </script>
+</body></html>
