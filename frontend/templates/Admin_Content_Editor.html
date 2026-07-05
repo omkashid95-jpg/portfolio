@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DevEngine v2.0 | Content Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1b1b24;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #464555;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #c3c0ff;
+        }
+        .glass-panel {
+            background: rgba(31, 31, 40, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#dad7ff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "surface-container-lowest": "#0e0d16",
+                        "secondary-container": "#3c4a61",
+                        "on-surface-variant": "#c7c4d8",
+                        "inverse-surface": "#e4e1ee",
+                        "surface-container-low": "#1b1b24",
+                        "inverse-on-surface": "#302f39",
+                        "on-tertiary-fixed": "#351000",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "on-tertiary": "#571f00",
+                        "secondary-fixed-dim": "#b9c7e3",
+                        "surface-tint": "#c3c0ff",
+                        "outline": "#918fa1",
+                        "surface-dim": "#13121b",
+                        "on-secondary-fixed": "#0d1c31",
+                        "tertiary-container": "#a44100",
+                        "on-error": "#690005",
+                        "inverse-primary": "#4d44e3",
+                        "on-error-container": "#ffdad6",
+                        "outline-variant": "#464555",
+                        "on-surface": "#e4e1ee",
+                        "primary": "#c3c0ff",
+                        "surface-container-highest": "#35343e",
+                        "on-secondary-fixed-variant": "#39475e",
+                        "on-primary": "#1d00a5",
+                        "surface-variant": "#35343e",
+                        "tertiary": "#ffb695",
+                        "surface-container-high": "#2a2933",
+                        "surface": "#13121b",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "background": "#13121b",
+                        "primary-fixed": "#e2dfff",
+                        "primary-container": "#4f46e5",
+                        "secondary-fixed": "#d5e3ff",
+                        "on-tertiary-container": "#ffd2be",
+                        "surface-bright": "#393842",
+                        "surface-container": "#1f1f28",
+                        "on-secondary": "#233147",
+                        "secondary": "#b9c7e3",
+                        "on-primary-fixed": "#0f0069",
+                        "tertiary-fixed": "#ffdbcc",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-background": "#e4e1ee",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#abb9d5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Geist"],
+                        "body-md": ["Inter"],
+                        "display-xl": ["Geist"],
+                        "code-sm": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "code-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md custom-scrollbar selection:bg-primary-container selection:text-on-primary-container">
+<!-- Sidebar / NavigationDrawer -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container border-r border-outline-variant flex flex-col p-md z-50">
+<div class="flex items-center gap-sm mb-xl">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="terminal">terminal</span>
+<span class="text-primary font-bold font-headline-lg tracking-tighter">DevEngine</span>
+</div>
+<div class="flex items-center gap-md mb-xl p-sm bg-surface-container-low rounded-lg">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="text-on-surface font-bold text-sm truncate">Lead Architect</span>
+<span class="text-on-surface-variant text-xs truncate">System Administrator</span>
+</div>
+</div>
+<nav class="flex flex-col gap-xs flex-1">
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">System Health</span>
+</a>
+<a class="flex items-center gap-md p-md bg-secondary-container text-on-secondary-container font-bold rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="dataset">dataset</span>
+<span class="font-label-caps text-label-caps">Project CRUD</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="edit_note">edit_note</span>
+<span class="font-label-caps text-label-caps">Content Engine</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="monitoring">monitoring</span>
+<span class="font-label-caps text-label-caps">Analytics</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="memory">memory</span>
+<span class="font-label-caps text-label-caps">ML Models</span>
+</a>
+<div class="mt-auto">
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-variant transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</div>
+</nav>
+<div class="mt-md pt-md border-t border-outline-variant">
+<span class="text-outline text-[10px] font-code-sm">v4.2.0-stable</span>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar Contextual Header -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant h-16 flex items-center px-lg justify-between">
+<div class="flex items-center gap-md">
+<div class="bg-surface-variant p-2 rounded">
+<span class="material-symbols-outlined text-primary" data-icon="edit_square">edit_square</span>
+</div>
+<div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Project Editor</h1>
+<p class="text-xs text-outline font-code-sm">EDITING: core_neural_engine_v2</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-md py-sm border border-outline-variant text-on-surface hover:bg-surface-variant transition-colors rounded font-label-caps text-label-caps">
+                    Discard
+                </button>
+<button class="px-md py-sm bg-primary-container text-on-primary-container hover:opacity-90 transition-opacity rounded font-bold font-label-caps text-label-caps flex items-center gap-xs shadow-lg shadow-primary-container/20">
+<span class="material-symbols-outlined text-sm" data-icon="save">save</span>
+                    Save Changes
+                </button>
+</div>
+</header>
+<div class="p-lg max-w-container-max w-full mx-auto grid grid-cols-12 gap-lg">
+<!-- Left Column: Form & Content -->
+<div class="col-span-12 lg:col-span-8 space-y-lg">
+<!-- Metadata Section -->
+<section class="bg-surface-container rounded-xl p-lg border border-outline-variant">
+<div class="flex items-center gap-sm mb-lg border-b border-outline-variant pb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="inventory_2">inventory_2</span>
+<h2 class="font-headline-lg text-lg text-on-surface">Core Metadata</h2>
+</div>
+<div class="grid grid-cols-2 gap-lg">
+<div class="col-span-2 md:col-span-1 space-y-xs">
+<label class="text-label-caps font-label-caps text-outline">Project Title</label>
+<input class="w-full bg-surface-container-low border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded px-md py-sm text-on-surface outline-none transition-all" type="text" value="Neural Synthesis Engine"/>
+</div>
+<div class="col-span-2 md:col-span-1 space-y-xs">
+<label class="text-label-caps font-label-caps text-outline">Subtitle / Slug</label>
+<input class="w-full bg-surface-container-low border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded px-md py-sm text-on-surface outline-none transition-all" type="text" value="High-performance inference wrapper for LLMs"/>
+</div>
+<div class="col-span-2 md:col-span-1 space-y-xs">
+<label class="text-label-caps font-label-caps text-outline">Repository URL</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm" data-icon="link">link</span>
+<input class="w-full pl-9 bg-surface-container-low border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded px-md py-sm text-on-surface outline-none transition-all font-code-sm" type="text" value="github.com/arch-dev/neural-engine"/>
+</div>
+</div>
+<div class="col-span-2 md:col-span-1 space-y-xs">
+<label class="text-label-caps font-label-caps text-outline">Category Tags</label>
+<div class="flex flex-wrap gap-xs p-2 bg-surface-container-low border border-outline-variant rounded min-h-[42px]">
+<span class="bg-primary/10 text-primary px-sm py-1 rounded text-[10px] font-label-caps flex items-center gap-xs">BACKEND <span class="material-symbols-outlined text-[12px] cursor-pointer" data-icon="close">close</span></span>
+<span class="bg-tertiary/10 text-tertiary px-sm py-1 rounded text-[10px] font-label-caps flex items-center gap-xs">ML <span class="material-symbols-outlined text-[12px] cursor-pointer" data-icon="close">close</span></span>
+<span class="bg-secondary/10 text-secondary px-sm py-1 rounded text-[10px] font-label-caps flex items-center gap-xs">PYTHON <span class="material-symbols-outlined text-[12px] cursor-pointer" data-icon="close">close</span></span>
+<button class="text-outline hover:text-primary transition-colors flex items-center">
+<span class="material-symbols-outlined text-md" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Project Description (Rich Text) -->
+<section class="bg-surface-container rounded-xl border border-outline-variant overflow-hidden">
+<div class="flex items-center justify-between px-lg py-md border-b border-outline-variant bg-surface-container-high">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="article">article</span>
+<h2 class="font-headline-lg text-lg text-on-surface">Case Study Content</h2>
+</div>
+<div class="flex gap-xs">
+<button class="p-1 hover:bg-surface-variant rounded text-outline"><span class="material-symbols-outlined text-lg" data-icon="format_bold">format_bold</span></button>
+<button class="p-1 hover:bg-surface-variant rounded text-outline"><span class="material-symbols-outlined text-lg" data-icon="format_italic">format_italic</span></button>
+<button class="p-1 hover:bg-surface-variant rounded text-outline"><span class="material-symbols-outlined text-lg" data-icon="format_list_bulleted">format_list_bulleted</span></button>
+<button class="p-1 hover:bg-surface-variant rounded text-outline"><span class="material-symbols-outlined text-lg" data-icon="code">code</span></button>
+</div>
+</div>
+<div class="p-lg min-h-[400px] bg-surface-container-low focus-within:ring-1 ring-primary transition-all">
+<textarea class="w-full h-full bg-transparent border-none focus:ring-0 text-on-surface leading-relaxed resize-none font-body-md" placeholder="Start typing the project breakdown...">## Architecture Overview
+The system utilizes a distributed message queue to handle real-time inference requests. By decoupling the ingestion layer from the model execution environment, we achieved a 40% reduction in latency.
+
+### Performance Benchmarks
+- Latency: 120ms (p95)
+- Throughput: 4.2k req/s
+- Memory Footprint: &lt;2GB under load
+
+The implementation details focus on memory safety and efficient tensor handling within the Python runtime.
+                        </textarea>
+</div>
+</section>
+<!-- Code Editor Component -->
+<section class="bg-[#0e0d16] rounded-xl border border-outline-variant overflow-hidden shadow-2xl">
+<div class="flex items-center justify-between px-md py-2 bg-[#1b1b24] border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<span class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary/40"></div>
+<div class="w-3 h-3 rounded-full bg-primary/40"></div>
+</span>
+<span class="text-outline font-code-sm text-xs">implementation.py</span>
+</div>
+<button class="flex items-center gap-xs text-[10px] font-label-caps text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="content_copy">content_copy</span>
+                            COPY SNIPPET
+                        </button>
+</div>
+<div class="p-lg font-code-sm text-sm overflow-x-auto">
+<pre class="grid grid-cols-[3rem_1fr] gap-md"><span class="text-outline-variant select-none text-right">01</span><span class="text-secondary"><span class="text-tertiary">def</span> <span class="text-primary">optimize_inference</span>(tensor_batch):</span>
+<span class="text-outline-variant select-none text-right">02</span><span class="text-on-surface">    <span class="text-outline"># Apply quantization to weights</span></span>
+<span class="text-outline-variant select-none text-right">03</span><span class="text-on-surface">    quantized = model.quantize(tensor_batch, bits=<span class="text-tertiary">8</span>)</span>
+<span class="text-outline-variant select-none text-right">04</span><span class="text-on-surface">    </span>
+<span class="text-outline-variant select-none text-right">05</span><span class="text-on-surface">    <span class="text-tertiary">with</span> torch.inference_mode():</span>
+<span class="text-outline-variant select-none text-right">06</span><span class="text-on-surface">        output = engine.forward(quantized)</span>
+<span class="text-outline-variant select-none text-right">07</span><span class="text-on-surface">    </span>
+<span class="text-outline-variant select-none text-right">08</span><span class="text-on-surface">    <span class="text-tertiary">return</span> process_output(output)</span>
+                        </pre>
+</div>
+</section>
+</div>
+<!-- Right Column: Assets & Status -->
+<div class="col-span-12 lg:col-span-4 space-y-lg">
+<!-- Project Status Panel -->
+<section class="bg-surface-container rounded-xl p-md border border-outline-variant">
+<h3 class="text-label-caps font-label-caps text-outline mb-md">Publishing Status</h3>
+<div class="flex items-center justify-between mb-lg">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+<span class="font-bold text-on-surface">Live Production</span>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-on-surface" data-icon="open_in_new">open_in_new</button>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between text-xs">
+<span class="text-outline">Last Modified</span>
+<span class="text-on-surface-variant font-code-sm">2024-05-12 14:32</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-outline">Words Count</span>
+<span class="text-on-surface-variant font-code-sm">842 words</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-outline">SEO Health</span>
+<span class="text-primary font-bold font-code-sm">Optimum</span>
+</div>
+</div>
+</section>
+<!-- Media Upload Area -->
+<section class="bg-surface-container rounded-xl p-lg border border-outline-variant">
+<div class="flex items-center justify-between mb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary" data-icon="image">image</span>
+<h2 class="font-headline-lg text-lg text-on-surface">Media Assets</h2>
+</div>
+<button class="text-primary text-xs font-label-caps hover:underline">MANAGE ALL</button>
+</div>
+<!-- Drop Zone -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center gap-md hover:border-primary/50 transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-outline group-hover:text-primary group-hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-2xl" data-icon="upload_file">upload_file</span>
+</div>
+<div class="text-center">
+<p class="text-on-surface font-bold text-sm">Upload System Diagram</p>
+<p class="text-outline text-[10px] font-code-sm">PNG, SVG or WEBP (Max 10MB)</p>
+</div>
+</div>
+<!-- Thumbnails -->
+<div class="mt-lg grid grid-cols-2 gap-sm">
+<div class="relative aspect-video rounded-lg overflow-hidden border border-outline-variant group">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-white" data-icon="zoom_in">zoom_in</span>
+</div>
+<img class="w-full h-full object-cover" data-alt="A clean, technical architecture diagram of a neural network engine with sleek indigo lines and glowing nodes against a dark charcoal background. The diagram uses high-contrast vector styling to represent data flow and processing units in a modern, developer-centric aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvlYCf9rEjxtF8UU8-dmD3mBkPFWGqvLyinzXDDDbruALzmkIkUtCic6f_Pajk7oQXDiG42ipcMJHywWvS_z5mAGJ6qvJlxT_EsokfiXTfRsJO1IQDENrjKRQm8q3Vrlt_HH-UG_QdK0Bjx4qDmb6Nqir0nYlCaLsM69kTRpXrElGQgpYxtyOUiYVv1vLC0e48Q2NmOUlNsGDFpWaYBEnn6zu_drmYzdEDpcb3c9ntcYb3u1ADGr6e5gaehwDhIWeVFgxNga6kOMo"/>
+</div>
+<div class="relative aspect-video rounded-lg overflow-hidden border border-outline-variant group">
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-white" data-icon="zoom_in">zoom_in</span>
+</div>
+<img class="w-full h-full object-cover" data-alt="A high-resolution screenshot of a code terminal showing real-time performance metrics in a vibrant cyan and indigo color scheme. The interface features monospaced Geist and JetBrains fonts, displaying memory usage, CPU load, and inference p95 latencies with professional clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1QNTNdNaNykPjH06rVjkJ90OsDGNGBFNqalfqa1YpcQX5TIHKoE8qFsceIuqIX8QltrblxwHz5gTHPhZWMNfxaaTkWzDB7pmmUuRAGNKr-tOh7Gi42lSdAwyeyKE9oOv26v20QlB1hOnLfdQ-kLOpZuTtYfzCbohgpu0B6J0xqOrOB2lR061lfrUFxY0PefxmqqYjVYa1w9QdMd02zl9dwBwxDNIjn8L-ly0_ARtfCZLXiATKNJtmZLDsVNJKCe6bxE-lRRZDH-E"/>
+</div>
+</div>
+</section>
+<!-- Technical Specs Sparkline -->
+<section class="bg-surface-container rounded-xl p-lg border border-outline-variant">
+<h3 class="text-label-caps font-label-caps text-outline mb-md">Engine Health (Internal)</h3>
+<div class="space-y-lg">
+<div class="flex items-end justify-between gap-sm">
+<div class="space-y-xs">
+<span class="text-headline-lg text-2xl font-headline-lg text-on-surface">98.4<span class="text-sm text-outline">%</span></span>
+<p class="text-[10px] font-label-caps text-outline">AVAILABILITY</p>
+</div>
+<div class="flex-1 h-12 flex items-end gap-1 pb-1">
+<div class="w-full bg-primary/20 h-4 rounded-t-sm"></div>
+<div class="w-full bg-primary/40 h-6 rounded-t-sm"></div>
+<div class="w-full bg-primary/30 h-5 rounded-t-sm"></div>
+<div class="w-full bg-primary/60 h-8 rounded-t-sm"></div>
+<div class="w-full bg-primary/80 h-10 rounded-t-sm"></div>
+<div class="w-full bg-primary h-12 rounded-t-sm"></div>
+</div>
+</div>
+<div class="p-sm bg-surface-container-low rounded border border-outline-variant flex items-center gap-md">
+<span class="material-symbols-outlined text-tertiary" data-icon="bolt">bolt</span>
+<div>
+<p class="text-xs font-bold">Optimization Active</p>
+<p class="text-[10px] text-outline font-code-sm">Quantization enabled on build</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-xl px-lg mt-auto flex flex-col md:flex-row justify-between items-center border-t border-outline-variant bg-surface-container-lowest">
+<p class="text-outline font-code-sm text-code-sm">© 2024 Engineered by Terminal. Built with High-Performance Logic.</p>
+<div class="flex gap-lg mt-md md:mt-0">
+<a class="text-outline text-label-caps font-label-caps hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="text-outline text-label-caps font-label-caps hover:text-primary transition-colors" href="#">System Status</a>
+<a class="text-outline text-label-caps font-label-caps hover:text-primary transition-colors" href="#">API Docs</a>
+</div>
+</footer>
+</main>
+<!-- Floating Action for Quick Add -->
+<button class="fixed bottom-lg right-lg w-14 h-14 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-xl hover:scale-105 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+<script>
+        // Simple micro-interaction for tag removal
+        document.querySelectorAll('.material-symbols-outlined[data-icon="close"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.parentElement.remove();
+            });
+        });
+
+        // Sticky header background shift on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-surface/95', 'shadow-lg');
+            } else {
+                header.classList.remove('bg-surface/95', 'shadow-lg');
+            }
+        });
+    </script>
+</body></html>

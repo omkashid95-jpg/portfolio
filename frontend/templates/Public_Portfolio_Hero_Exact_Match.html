@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Noah - Web Developer Portfolio</title>
+<!-- BEGIN: Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- END: Tailwind CSS CDN -->
+<!-- BEGIN: Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-orange': '#FF5C00',
+            'bg-dark': '#0F0F0F',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'orbit': 'orbit 20s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            orbit: {
+              '0%': { transform: 'rotate(0deg) translateX(150px) rotate(0deg)' },
+              '100%': { transform: 'rotate(360deg) translateX(150px) rotate(-360deg)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- END: Tailwind Configuration -->
+<!-- BEGIN: Custom Layout Styles -->
+<style data-purpose="layout-styles">
+    body {
+      background-color: #0d0d0d;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    .hero-gradient {
+      background: radial-gradient(circle at 50% 50%, rgba(255, 92, 0, 0.15) 0%, rgba(13, 13, 13, 1) 70%);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Simple orbit effect for tech icons */
+    .orbit-container {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .orbit-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      margin-top: -20px;
+      margin-left: -20px;
+    }
+
+    /* Manual placements for icons to mimic screenshot circular pattern */
+    .icon-1 { transform: rotate(0deg) translate(180px) rotate(0deg); }
+    .icon-2 { transform: rotate(60deg) translate(180px) rotate(-60deg); }
+    .icon-3 { transform: rotate(120deg) translate(180px) rotate(-120deg); }
+    .icon-4 { transform: rotate(180deg) translate(180px) rotate(-180deg); }
+    .icon-5 { transform: rotate(240deg) translate(180px) rotate(-240deg); }
+    .icon-6 { transform: rotate(300deg) translate(180px) rotate(-300deg); }
+  </style>
+<!-- END: Custom Layout Styles -->
+</head>
+<body class="min-h-screen flex flex-col font-sans">
+<!-- BEGIN: MainHeader -->
+<header class="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center bg-transparent">
+<!-- Brand Logo -->
+<div class="text-2xl font-bold tracking-tight" data-purpose="logo">
+      noah<span class="text-brand-orange">.</span>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center space-x-10 text-sm font-medium text-gray-300">
+<a class="text-brand-orange" href="#">Home</a>
+<a class="hover:text-white transition-colors" href="#">Skills</a>
+<a class="hover:text-white transition-colors" href="#">Experience</a>
+<a class="hover:text-white transition-colors" href="#">Connect</a>
+</nav>
+<!-- Download Resume Button (Icon placeholder) -->
+<div class="flex items-center space-x-2 cursor-pointer group">
+<span class="text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">Download Resume</span>
+<div class="p-2 border border-white/20 rounded-lg group-hover:border-white/50 transition-colors">
+<svg class="h-4 w-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<main class="relative flex-grow flex items-center justify-center pt-20 overflow-hidden hero-gradient">
+<!-- Background Decor: Large Orange Bolt -->
+<div class="absolute right-0 top-1/4 opacity-40 blur-sm pointer-events-none select-none md:block hidden">
+<svg fill="none" height="400" viewbox="0 0 100 150" width="300" xmlns="http://www.w3.org/2000/svg">
+<path d="M70 0L20 80H50L30 150L80 70H50L70 0Z" fill="url(#paint0_linear)"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear" x1="50" x2="50" y1="0" y2="150">
+<stop stop-color="#FF5C00"></stop>
+<stop offset="1" stop-color="#FF5C00" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+<!-- Tech Icons Orbit (Decorative) -->
+<div class="orbit-container" data-purpose="tech-orbit">
+<!-- These represent the JS, React, Python logos seen in the reference -->
+<div class="orbit-icon icon-1 glass-card rounded-full p-2 flex items-center justify-center">
+<span class="text-xs font-bold text-yellow-400">JS</span>
+</div>
+<div class="orbit-icon icon-2 glass-card rounded-full p-2 flex items-center justify-center">
+<span class="text-xs font-bold text-blue-400">⚛</span>
+</div>
+<div class="orbit-icon icon-3 glass-card rounded-full p-2 flex items-center justify-center">
+<span class="text-xs font-bold text-green-500">Py</span>
+</div>
+<div class="orbit-icon icon-4 glass-card rounded-full p-2 flex items-center justify-center">
+<span class="text-xs font-bold text-orange-400">H</span>
+</div>
+<div class="orbit-icon icon-5 glass-card rounded-full p-2 flex items-center justify-center">
+<span class="text-xs font-bold text-blue-500">TS</span>
+</div>
+<div class="orbit-icon icon-6 glass-card rounded-full p-2 flex items-center justify-center">
+<span class="text-xs font-bold text-indigo-400">V</span>
+</div>
+</div>
+<div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 items-center relative z-10">
+<!-- Text Content Side -->
+<div class="flex flex-col space-y-6 md:pr-12 text-center md:text-left">
+<div>
+<h2 class="text-lg md:text-xl font-medium text-gray-300">
+            Hey, I am <span class="text-brand-orange font-bold">Noah</span>
+</h2>
+<h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mt-2 text-white">
+            Web developer
+          </h1>
+</div>
+<p class="text-gray-400 max-w-md mx-auto md:mx-0 leading-relaxed">
+          I build high-end interactive experiences that live on the web, combining technical expertise with aesthetic design.
+        </p>
+<div class="flex items-center justify-center md:justify-start space-x-4 pt-4">
+<!-- Primary CTA -->
+<button class="bg-brand-orange hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-xl shadow-lg shadow-brand-orange/20 transition-all active:scale-95">
+            Hire me
+          </button>
+<!-- Secondary Social/Action -->
+<button class="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.206" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<!-- Floating Testimonial Card (Glassmorphism) -->
+<div class="hidden lg:block mt-12 animate-float">
+<div class="glass-card p-6 rounded-3xl w-[320px] relative">
+<!-- Quote Icon -->
+<div class="text-brand-orange mb-3">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24">
+<path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM2.017 21L2.017 18C2.017 16.8954 2.91242 16 4.017 16H7.017C7.56928 16 8.017 15.5523 8.017 15V9C8.017 8.44772 7.56928 8 7.017 8H3.017C2.46472 8 2.017 8.44772 2.017 9V11C2.017 11.5523 1.56928 12 1.017 12H0.017V5H10.017V15C10.017 18.3137 7.33072 21 4.017 21H2.017Z"></path>
+</svg>
+</div>
+<p class="text-sm text-gray-300 italic mb-4 leading-relaxed">
+              "Noah is an exceptionally talented developer. His ability to translate complex designs into functional code is remarkable."
+            </p>
+<div class="flex items-center">
+<div class="w-10 h-10 rounded-full bg-gray-600 mr-3 overflow-hidden">
+<img alt="Client Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Q1pxgzuLjTShLby_0S0X1fsFPrPWD41dxkYuEjCkaC56gE_fYqOZOhOc7B1O-ey6S3JEKhzBrtQQ3IoNF7UpamIOsYux9lYFFVqzYl2qcUF24aoz7tZSFQEGplqIEjHjTSmY32RSlYENniWOKhIeeZmddZJd4f9Gkjm02ytwbGLqu-fZMVP0SrBheHDM9LiEjb9Lzwx3KTv2gMK-7Q5bbIlDhnr1wXlYfI2gETGS9TwAaFvcWNHdCyp10BG-F1gjDluh9khzmIA"/>
+</div>
+<div>
+<p class="text-xs font-bold">Caroline Abbott</p>
+<p class="text-[10px] text-gray-500 uppercase tracking-wider">Business Owner</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Character Side -->
+<div class="relative flex justify-center items-end h-[500px] md:h-[650px]" data-purpose="character-container">
+<!-- Main Character Image -->
+<img alt="3D Developer Character" class="relative z-20 h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" src="https://lh3.googleusercontent.com/aida/AP1WRLt3qf94Df2RhsNHRskMqdaawAz5W7h9pXj6BWqvgpjoM3G80Zwxcu5cx4WFfVLMSp_YpmJrK_Lm8JOK0iJ7ehmc0ETCDFACNLGVDVQAeo88AP38pjIgqNHZmwLnLDHofBFKYwbZDGb2GXJ25DhaG1QEdC9CMEpWeMB7q_otj_2p7CiQkSO0m1RRtzvK0L5Mra49Rk38E11yhhylO0AYUPtGdNat9kjKI8HcpS-ZUhXrgNdv2V4vkETXI4c"/>
+<!-- Glowing Light Behind Character -->
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[60%] bg-brand-orange/20 blur-[100px] rounded-full z-10"></div>
+<!-- Bottom Floating Decorative Elements -->
+<div class="absolute bottom-10 -right-4 z-30 hidden md:block">
+<svg class="opacity-50" fill="none" height="100" viewbox="0 0 120 100" width="120" xmlns="http://www.w3.org/2000/svg">
+<rect fill="url(#paint1_linear)" height="40" rx="20" width="120" x="0" y="0"></rect>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint1_linear" x1="0" x2="120" y1="20" y2="20">
+<stop stop-color="#FF5C00"></stop>
+<stop offset="1" stop-color="#FF5C00" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+</div>
+</main>
+<!-- END: HeroSection -->
+<!-- BEGIN: BottomNav (Mobile Only UI Element) -->
+<footer class="md:hidden p-6 text-center text-gray-500 text-xs border-t border-white/5">
+    © 2024 Noah Portfolio. All rights reserved.
+  </footer>
+<!-- END: BottomNav -->
+</body></html>

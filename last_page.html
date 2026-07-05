@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Noah Portfolio Hero</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style data-purpose="custom-animations">
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+    }
+    .animate-orbit {
+      animation: orbit 20s linear infinite;
+    }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .text-shadow-glow {
+      text-shadow: 0 0 15px rgba(255, 99, 71, 0.5);
+    }
+  </style>
+</head>
+<body class="bg-[#050505] text-white font-sans overflow-hidden">
+<!-- BEGIN: MainContainer -->
+<main class="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+<!-- BEGIN: AtmosphericBackground -->
+<div class="absolute inset-0 z-0" data-purpose="background-glow">
+<!-- Large Orange Sunrise Glow Arc on Right -->
+<div class="absolute -right-20 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-600/30 rounded-full blur-[120px]"></div>
+<!-- Orbital Paths -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/5 rounded-full"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-white/5 rounded-full"></div>
+<!-- Subtle Floating Light Streaks -->
+<div class="absolute top-20 left-1/4 w-1 h-32 bg-gradient-to-b from-transparent via-orange-500/20 to-transparent rotate-45"></div>
+</div>
+<!-- END: AtmosphericBackground -->
+<!-- BEGIN: HeaderNavigation -->
+<header class="absolute top-0 left-0 w-full p-8 flex justify-between items-center z-50 max-w-7xl mx-auto left-1/2 -translate-x-1/2">
+<!-- Logo -->
+<div class="text-2xl font-bold tracking-tight">noah<span class="text-orange-500">.</span></div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
+<a class="hover:text-white transition-colors text-white border-b-2 border-orange-500 pb-1" href="#">Home</a>
+<a class="hover:text-white transition-colors" href="#">Skills</a>
+<a class="hover:text-white transition-colors" href="#">Experience</a>
+<a class="hover:text-white transition-colors" href="#">Connect</a>
+</nav>
+<!-- Download Resume Button -->
+<button class="glass-effect px-5 py-2 rounded-full flex items-center gap-2 text-sm font-medium hover:bg-white/10 transition-all border border-white/20">
+<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+        Download Resume
+      </button>
+</header>
+<!-- END: HeaderNavigation -->
+<!-- BEGIN: HeroContent -->
+<section class="relative z-10 w-full max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+<!-- Left Column: Copy -->
+<div class="space-y-6" data-purpose="hero-text">
+<div class="space-y-2">
+<h2 class="text-xl md:text-2xl font-medium text-gray-300">
+            Hey, I am <span class="text-orange-500 font-bold">Noah</span>
+</h2>
+<h1 class="text-6xl md:text-8xl font-extrabold leading-tight tracking-tighter">
+            Web <br> developer
+          </h1>
+<p class="text-gray-400 max-w-md text-sm md:text-base leading-relaxed">
+            I build high-quality web applications with a focus on performance and user experience. Specialist in modern frontend architectures.
+          </p>
+</div>
+<!-- Buttons Group -->
+<div class="flex items-center gap-4">
+<button class="bg-[#ff4d00] text-white px-8 py-3 rounded-full font-bold shadow-[0_0_20px_rgba(255,77,0,0.4)] hover:scale-105 transition-transform">
+            Hire me
+          </button>
+<button class="glass-effect p-3 rounded-full hover:bg-white/10 transition-all">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<!-- Testimonial Card -->
+<div class="mt-12 glass-effect p-6 rounded-2xl max-w-sm relative" data-purpose="testimonial-card">
+<div class="absolute -top-4 -left-4 bg-[#ff4d00] p-2 rounded-lg shadow-lg">
+<svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C14.9124 8 14.017 7.10457 14.017 6V5C14.017 3.34315 15.3601 2 17.017 2H19.017C20.6738 2 22.017 3.34315 22.017 5V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM2.017 21L2.017 18C2.017 16.8954 2.91243 16 4.017 16H7.017C7.56928 16 8.017 15.5523 8.017 15V9C8.017 8.44772 7.56928 8 7.017 8H4.017C2.91243 8 2.017 7.10457 2.017 6V5C2.017 3.34315 3.36014 2 5.017 2H7.017C8.67386 2 10.017 3.34315 10.017 5V15C10.017 18.3137 7.33071 21 4.017 21H2.017Z"></path></svg>
+</div>
+<p class="text-sm text-gray-300 italic mb-4 leading-relaxed">
+            "Noah is an exceptional developer who transformed our vision into a stunning digital reality. His technical skills are unmatched."
+          </p>
+<div class="flex items-center gap-3">
+<img alt="Caroline Abbott" class="w-10 h-10 rounded-full border border-white/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8_zQF7OSmyXQFOVHbNWeAaQdr5i9ZCEr5w2_W6peYkf-PTrEZHU7Ba4XaxLH5RMphTjkX_n3ScijkkmvC3ej6ZCKWwuUK-eE3wsRYPMFBJZUhjpUU8_WYZkhpAM_HRB4j18ssxvUi_qz6X96-QSRqrvLesM4vEyC5EN0HITQsQPq6HLlw-IOAx3YLUJmbqNOANW3CGEUWo-wV79pclZchLeOB3eOgZ1cSdMApjjK5ZH3Kw2qMHYDnQk3DGbCtgjQ5cWi4Tr7xnkE">
+<div>
+<p class="text-xs font-bold text-white">Caroline Abbott</p>
+<p class="text-[10px] text-gray-500 uppercase tracking-widest">Business Owner</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Character & Skills -->
+<div class="relative flex justify-center items-center h-full min-h-[500px]">
+<!-- 3D Character Container -->
+<div class="relative z-20">
+<img alt="3D Developer Character" class="w-full max-w-[450px] drop-shadow-[0_20px_50px_rgba(255,77,0,0.3)]" src="https://lh3.googleusercontent.com/aida/AP1WRLu4uCPOS2ofVYTEMGNO1WGO-OSCtDyJXNjQszHgyoWecZzChvQ-19y7rLdU6sXu_POVVt3ETTfbHFF0v5uKkb-0qzA-OG3V59_YHgxaGhDZ8X_kT71TxjXdPJk-Z2f7Y1EzqT23nF_EyggEsY-8oNLuwMfstkhL63QEHxs0zfS-kE6tCAdRY7Qenf0EmG0KrVoSLRZtugkM_btxCasz5DC7ieL8slo6VqxVt99q8x4ZqVe2Xd_siB6i6YI">
+</div>
+<!-- Orbiting Icons -->
+<div class="absolute inset-0 pointer-events-none">
+<!-- JS Icon -->
+<div class="absolute top-1/4 left-1/4 animate-orbit" style="animation-delay: -2s;">
+<div class="glass-effect p-2 rounded-lg rotate-12">
+<img alt="JS" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsAZ-32CwjhgZb9z-OWNGTiyLSURLQPh3O50Yor9IE0W7YOxlvYumWkUn19NuM8TscY-3S2mej14rkNETfqmGBuc5Uq3ut3fZprxedbFKsZr6paZd0hPbv0FvQ082TmuxgZrsgwnDP9CH_DsrZ6Pv7Wsu09JSt6mNWjxVYixIY1k8QPe05mIVgC57KJ-Lj2i5SWD0aLLHAYvCO_RIkXJH7rOYk5j8dGf_fiXkP40M93Lrdtaom_eiQnC84oVhUpktH7tIJPFlnG5g">
+</div>
+</div>
+<!-- React/Next Icon -->
+<div class="absolute bottom-1/4 right-1/4 animate-orbit" style="animation-delay: -10s;">
+<div class="glass-effect p-2 rounded-lg -rotate-6">
+<img alt="React" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzxVheTO6MGDWJwogP4KZAsE3zfTiZsrZ_7Ih3zwyJTckX0mIpfWsdRS1_bDrt2eRKRdwf661KsJVtDkRiHblue7lPKDnNVif_PwFO9te5_0Eof5DIbcsiZgrqxQwkf-EkFpy28q5z3AkqR5QQow-mwUaDe_JbLjSiWKuxDfVDuCrjuY_ATkNzUsK8cFr-KWZvYhd1lejIk1HJqOGkmGR_B2sRVU26j1Calxbe_-81iSwrH3-DZ-IBuH4odh5irua8mTARHGcjfkM">
+</div>
+</div>
+<!-- Node Icon -->
+<div class="absolute top-1/2 right-0 animate-orbit" style="animation-delay: -5s;">
+<div class="glass-effect p-2 rounded-lg rotate-45">
+<img alt="Node" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhwrYyC-N1zNZK6TFrba-womHUnPqXemoUg5lW_m8BliLEiOTGFaAgh-IzVBp31Mz8xbP4Xn_OtebmJkn2xV4FNvx55l-g1GaoB6zOyrwE7VelKCblwQrQKW6uwWnPU27xNAZTtPFCmX2COKpz4eP9GrRMD-TC9UQIRyKRuuxnhCHqRcJVG4QRzTny5_Zwo0vXGKrguznSJ5OZB9qtdOcZ3ACOSgUlblpUak9z7D5OydMDcOvaQv1xgMyDbfQ9BqBiJJWOaFyNYmk">
+</div>
+</div>
+<!-- TypeScript Icon -->
+<div class="absolute top-2/3 left-0 animate-orbit" style="animation-delay: -15s;">
+<div class="glass-effect p-2 rounded-lg">
+<img alt="TS" class="w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2pbDo1o1kWo7V-QTnkKb5oPUIxhmIK1gaekr6tp72u_w282HQD4SqQ6JwQwMk_0-vNuGmpaA_uc0aZG-tnaYaWxLXaxblvLBYFrrJ9SECfYuTgGlf0YGjsJqkz_9FILny6Ez_0UKnXMMEo-cO07RiYVhKVnabm63Bqwj-PGaPCjkwAh9x4tb4wY0LydK2KCMGsBJb8UBW2Ohm7EK8wQTIuwbbHvmmox_Vqx6EBa3ayHcfVHPgNhYd4YB2AfW9CfckshKoHBAhM70">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroContent -->
+<!-- Decorative Elements -->
+<div class="absolute bottom-10 right-10 flex gap-4 text-xs font-mono text-gray-600 uppercase tracking-widest z-50">
+<span class="">Scroll to explore</span>
+<div class="w-1 h-8 bg-gradient-to-b from-orange-500 to-transparent"></div>
+</div>
+</main>
+<!-- END: MainContainer -->
+
+
+</body></html>

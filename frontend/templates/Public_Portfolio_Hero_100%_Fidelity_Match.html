@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Noah - Portfolio</title>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Geist Font Simulation -->
+<link href="https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-sans/style.css" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'surface': '#13121b',
+            'surface-bright': '#393842',
+            'sunrise-orange': '#ff5c35',
+            'glass': 'rgba(255, 255, 255, 0.05)',
+          },
+          fontFamily: {
+            sans: ['Geist Sans', 'Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-effects">
+    body {
+      background-color: #13121b;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Sunrise Glow Arc */
+    .sunrise-arc {
+      position: absolute;
+      top: 5%;
+      right: -10%;
+      width: 60%;
+      height: 90%;
+      background: radial-gradient(circle at 70% 30%, #ff5c35 0%, transparent 60%);
+      filter: blur(100px);
+      opacity: 0.25;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Orbital lines decoration */
+    .orbital-lines {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%;
+      height: 120%;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Glassmorphism Testimonial Card */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    /* Button Glow */
+    .btn-glow {
+      box-shadow: 0 0 20px rgba(255, 92, 53, 0.4);
+    }
+
+    /* Animation for floating icons */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .floating {
+      animation: float 4s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col items-center">
+<!-- BEGIN: Navigation -->
+<nav class="w-full max-w-screen-xl px-6 py-8 flex justify-between items-center z-50">
+<div class="text-2xl font-bold tracking-tighter" data-purpose="logo">
+      noah<span class="text-sunrise-orange">.</span>
+</div>
+<div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
+<a class="text-white" href="#">Home</a>
+<a class="hover:text-white transition-colors" href="#">Skills</a>
+<a class="hover:text-white transition-colors" href="#">Experience</a>
+<a class="hover:text-white transition-colors" href="#">Contact</a>
+</div>
+<button class="flex items-center gap-2 bg-white/10 hover:bg-white/20 transition-all px-4 py-2 rounded-lg text-sm border border-white/10">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+      Download Resume
+    </button>
+</nav>
+<!-- END: Navigation -->
+<!-- BEGIN: HeroSection -->
+<main class="relative w-full max-w-screen-xl flex flex-col px-6 pt-12 md:pt-20 pb-20 items-start overflow-hidden">
+<!-- Background Effects -->
+<div class="sunrise-arc"></div>
+<div class="orbital-lines" style="width: 800px; height: 800px; opacity: 0.4;"></div>
+<!-- Hero Text Content -->
+<div class="relative z-10 max-w-2xl mb-12">
+<p class="text-xl md:text-2xl font-medium mb-2">
+        Hey, I am <span class="text-sunrise-orange">Noah</span>
+</p>
+<h1 class="text-5xl md:text-8xl font-black tracking-tight leading-tight mb-6">
+        Web developer
+      </h1>
+<p class="text-gray-400 text-sm md:text-base leading-relaxed max-w-md mb-10">
+        I create engaging and user-friendly web experiences with modern technologies, focusing on clean code and pixel-perfect design.
+      </p>
+<div class="flex items-center gap-4">
+<button class="bg-sunrise-orange text-white font-bold px-8 py-3 rounded-xl btn-glow hover:scale-105 transition-transform active:scale-95">
+          Hire me
+        </button>
+<button class="p-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-colors">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+</button>
+</div>
+</div>
+<!-- Right Side / Character Area -->
+<div class="relative w-full h-[400px] md:h-0 md:absolute md:top-0 md:right-0 md:w-1/2 md:flex md:justify-center md:items-center">
+<!-- Character Image -->
+<div class="relative z-20 w-full max-w-[450px] mx-auto md:mr-0 lg:scale-110">
+<img alt="Noah Character" class="w-full h-auto object-contain drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida/AP1WRLt3qf94Df2RhsNHRskMqdaawAz5W7h9pXj6BWqvgpjoM3G80Zwxcu5cx4WFfVLMSp_YpmJrK_Lm8JOK0iJ7ehmc0ETCDFACNLGVDVQAeo88AP38pjIgqNHZmwLnLDHofBFKYwbZDGb2GXJ25DhaG1QEdC9CMEpWeMB7q_otj_2p7CiQkSO0m1RRtzvK0L5Mra49Rk38E11yhhylO0AYUPtGdNat9kjKI8HcpS-ZUhXrgNdv2V4vkETXI4c"/>
+<!-- Floating Tech Icons -->
+<div class="absolute top-1/4 left-0 floating" style="animation-delay: 0s;">
+<div class="bg-surface-bright/80 p-3 rounded-lg border border-white/10">
+<img alt="JS" class="w-8 h-8 rounded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeMTnYyhOCOgYDVPobLHJqzeX4S4P3UQGppCCnCR53wkhFH6nBHHkEuEkW2iV2OrnbFtQxh3LiPR8bxqsLtvCSWTjS-qHyc1NlvDJiInK9GS-44y3IxHqWuFH_ljtjtbIVUaHMYPr2FlxY2p4v4x5defBgqJoMhd6_tdQUTl7PMUFiKSKKEIgHj7ED66BJtSqdlTPK8Kzl9pUL0YzQL1yXInKOp4xB5HBCnU3zg_uLEj9bVOPWWDw9Zq50CUTGUpo8a7lG6lvmY40"/>
+</div>
+</div>
+<div class="absolute top-1/2 right-4 floating" style="animation-delay: 1s;">
+<div class="bg-surface-bright/80 p-3 rounded-lg border border-white/10">
+<img alt="TS" class="w-8 h-8 rounded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJRhcICKZVBMy2JXjAKU61jlVEbTkpTMG0-opBXJ9C57ULG4r81BaVM_a28oFQ4ziiIBuZYyv0jQgdzl_KXHIqMWwynHFbHxnNfn4lvG4__KKSe_kVD3pMoPV0Y-4x4c4HssXZ90_P_t4mx_m6DpjLHsnKDLvf-fmoHXeQPHsQ6Q3TQyODN2DEjTkhPKOQv2uQLFgo3sDwK3KuvVVu-BU22QRKxFp4PDw3ZsmV0B9r-eQregqcd0_BvSws4R7xwFCKa9QGfIdxpak"/>
+</div>
+</div>
+<div class="absolute bottom-1/4 left-10 floating" style="animation-delay: 2s;">
+<div class="bg-surface-bright/80 p-3 rounded-lg border border-white/10">
+<img alt="Node.js" class="w-8 h-8 rounded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMxSBv9Lf1veGg8m8EwYtoluRgHl-Wqg4UOc4iOOUHioLRKIwmnjEgiEDvbfLLWqzyhufyHanD2cUIN3MNoO4RWJ9Kflt-FLqxCpHGb-vdjkvzOCMG6lw4H_5fh2QBRQ9GOWsTSShtnXuPU8R87F9MUtYl2U8gv95Wmx-4Vynh0iN6-v9vG5v8876jFdOO9MS_2g4QOwd8Z2P1pz7Xlifw-czd9qyUo5PwFDdZ_wHvvYdNetHfU6qqnFOJs0Ipcw90o8xAfJcKrrQ"/>
+</div>
+</div>
+</div>
+<!-- Testimonial Glass Card -->
+<div class="glass-card absolute bottom-[-40px] md:bottom-20 left-4 md:left-0 z-30 p-5 rounded-2xl max-w-[300px]">
+<div class="flex items-center gap-1 mb-3">
+<svg class="text-orange-400" fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C14.9124 8 14.017 7.10457 14.017 6V3L17.017 3C18.6739 3 20.017 4.34315 20.017 6V15C20.017 18.3137 17.3307 21 14.017 21ZM4.017 21L4.017 18C4.017 16.8954 4.91243 16 6.017 16H9.017C9.56928 16 10.017 15.5523 10.017 15V9C10.017 8.44772 9.56928 8 9.017 8H6.017C4.91243 8 4.017 7.10457 4.017 6V3L7.017 3C8.67386 3 10.017 4.34315 10.017 6V15C10.017 18.3137 7.33072 21 4.017 21Z"></path></svg>
+</div>
+<p class="text-xs text-gray-300 italic mb-4 leading-relaxed">
+          "Noah is an exceptional developer who combines technical skill with a keen eye for modern design."
+        </p>
+<div class="flex items-center gap-3 border-t border-white/10 pt-3">
+<img alt="Caroline Abbott" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi0el3ZvbGdayobBY7KP3B0ryhaVYfVgn-u_0pDWAcauyJgPZYCXI1wKRdhJAM3-XzwoxIeKaoS1iyDIs8wggseVlNufxlPlG-yYpl_EIqMs4_CpKibQqk4QZyl9_XegKX7FaaAOwqvDwNLEmIBUpyK6O5iKAZm-T6VRxstmVr9B2GkyAHBpTKdPkTZUNovHD0oMo6JRJYOnd21Gvfg4Itp8C-3Toa5sTASxbHbJqgmBhbHBlMuKLXDup7CHxXMKwtDSSQRKibD2g"/>
+<div>
+<p class="text-[10px] font-bold text-white uppercase tracking-wider">Caroline Abbott</p>
+<p class="text-[8px] text-gray-500">Business Owner</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- END: HeroSection -->
+</body></html>

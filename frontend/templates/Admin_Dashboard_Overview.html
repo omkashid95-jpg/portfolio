@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DevEngine v2.0 | Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --scrollbar-bg: #13121b;
+            --scrollbar-thumb: #35343e;
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: var(--scrollbar-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 10px; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .metric-card-glow {
+            position: relative;
+            overflow: hidden;
+        }
+        .metric-card-glow::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(195, 192, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#13121b",
+                        "on-secondary-container": "#abb9d5",
+                        "on-surface": "#e4e1ee",
+                        "on-tertiary-fixed": "#351000",
+                        "secondary": "#b9c7e3",
+                        "inverse-surface": "#e4e1ee",
+                        "tertiary": "#ffb695",
+                        "on-primary-container": "#dad7ff",
+                        "surface-container-low": "#1b1b24",
+                        "secondary-container": "#3c4a61",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "surface-container-high": "#2a2933",
+                        "primary": "#c3c0ff",
+                        "tertiary-container": "#a44100",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-primary-fixed": "#0f0069",
+                        "surface-variant": "#35343e",
+                        "on-secondary-fixed-variant": "#39475e",
+                        "on-surface-variant": "#c7c4d8",
+                        "surface": "#13121b",
+                        "on-tertiary-container": "#ffd2be",
+                        "primary-container": "#4f46e5",
+                        "on-tertiary": "#571f00",
+                        "inverse-primary": "#4d44e3",
+                        "inverse-on-surface": "#302f39",
+                        "surface-container-highest": "#35343e",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "surface-bright": "#393842",
+                        "secondary-fixed": "#d5e3ff",
+                        "on-secondary-fixed": "#0d1c31",
+                        "surface-container": "#1f1f28",
+                        "primary-fixed": "#e2dfff",
+                        "secondary-fixed-dim": "#b9c7e3",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "surface-tint": "#c3c0ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-primary": "#1d00a5",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e4e1ee",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-container-lowest": "#0e0d16",
+                        "outline-variant": "#464555",
+                        "outline": "#918fa1",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#233147",
+                        "background": "#13121b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Geist"],
+                        "display-xl": ["Geist"],
+                        "label-caps": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "code-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary/30 selection:text-primary min-h-screen flex flex-col">
+<!-- Navigation Drawer (SideNav) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container dark:bg-surface-container border-r border-outline-variant flex flex-col p-md z-50">
+<div class="mb-xl px-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="terminal">terminal</span>
+<h1 class="text-primary font-bold text-headline-lg tracking-tighter">DevEngine</h1>
+</div>
+<div class="mt-xs text-outline font-label-caps text-[10px]">v4.2.0-stable</div>
+</div>
+<nav class="flex-grow space-y-1">
+<!-- Active: System Health (Mapped from UI Context) -->
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container font-bold rounded-lg transition-all duration-100 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps">System Health</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant transition-all duration-100 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="dataset">dataset</span>
+<span class="font-label-caps">Project CRUD</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant transition-all duration-100 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="font-label-caps">Content Engine</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant transition-all duration-100 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label-caps">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant transition-all duration-100 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+<span class="font-label-caps">ML Models</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant transition-all duration-100 active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-md border-t border-outline-variant">
+<div class="flex items-center gap-md px-sm">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a technical architect in a dark studio setting with dramatic Indigo rim lighting. The style is sharp, cinematic, and high-contrast, fitting a high-performance SaaS aesthetic. The individual has a focused, intelligent expression, wearing a dark minimal tech-wear shirt against a deep slate background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgIPFVF9xbekGzfNbGUeRcZL9n_Di4QuEoYKXFwfiDWbxmehl1gtvBCTWFqPkIY57QZVdr3EsqtBrx65ucdQ7uabiRTiALaeNWGyY-parMBjYDZa9rYSMKl6HGX3lC7W3H1HxjIjbtKAGfecW7ro1X3LN8ijn0sptiwRU_v4DFMsjrYC019mUl4xhzuKdGoNTolF0CzoifRhO_QDrovp3TgoJc8RPSUXRvWepExz9MP6wio5xn-sa7F-L9MLvuoGBfn8kwe5CZ5FA"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-on-surface text-sm">Lead Architect</span>
+<span class="text-on-surface-variant text-[11px]">Admin User</span>
+</div>
+<button class="ml-auto p-xs hover:bg-surface-variant rounded-lg transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined text-outline" data-icon="dark_mode">dark_mode</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-grow flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant sticky top-0 z-40 h-16">
+<div class="flex justify-between items-center w-full px-lg max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-md">
+<span class="font-headline-lg text-primary font-bold tracking-tighter">System Overview</span>
+<div class="hidden md:flex items-center gap-lg ml-xl">
+<a class="text-primary border-b-2 border-primary pb-1 font-label-caps text-sm" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-caps text-sm" href="#">Logs</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-caps text-sm" href="#">Infrastructure</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative group">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<div class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full border border-surface"></div>
+</div>
+<button class="bg-primary-container text-on-primary-container px-md py-sm rounded-lg font-label-caps text-xs flex items-center gap-xs hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                        New Deployment
+                    </button>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-lg max-w-container-max mx-auto w-full space-y-lg">
+<!-- Quick Stats / Metric Cards (Bento Grid Style) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Card 1 -->
+<div class="bg-surface-container p-lg rounded-xl border border-outline-variant metric-card-glow group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="stack">stack</span>
+</div>
+<span class="text-emerald-500 font-code-sm text-xs flex items-center gap-xs">+12% <span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span></span>
+</div>
+<div class="font-display-xl text-on-surface mb-xs">154</div>
+<div class="font-label-caps text-on-surface-variant text-xs">Total Active Projects</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container p-lg rounded-xl border border-outline-variant metric-card-glow group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-tertiary/10 rounded-lg text-tertiary">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</div>
+<span class="text-emerald-500 font-code-sm text-xs flex items-center gap-xs">Stable</span>
+</div>
+<div class="font-display-xl text-on-surface mb-xs">99.98<span class="text-headline-lg">%</span></div>
+<div class="font-label-caps text-on-surface-variant text-xs">System Uptime (24h)</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container p-lg rounded-xl border border-outline-variant metric-card-glow group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-secondary/10 rounded-lg text-secondary">
+<span class="material-symbols-outlined" data-icon="api">api</span>
+</div>
+<span class="text-on-surface-variant font-code-sm text-xs">8.2M total</span>
+</div>
+<div class="font-display-xl text-on-surface mb-xs">42.5<span class="text-headline-lg">k</span></div>
+<div class="font-label-caps text-on-surface-variant text-xs">API Hits / Hour</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container p-lg rounded-xl border border-outline-variant metric-card-glow group hover:border-primary transition-colors">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-error/10 rounded-lg text-error">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+</div>
+<span class="text-error font-code-sm text-xs">High Load</span>
+</div>
+<div class="font-display-xl text-on-surface mb-xs">76<span class="text-headline-lg">%</span></div>
+<div class="font-label-caps text-on-surface-variant text-xs">ML Compute Usage</div>
+</div>
+</section>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Recent Activity (Asymmetric Layout) -->
+<section class="lg:col-span-2 space-y-md">
+<div class="flex items-center justify-between px-xs">
+<h2 class="text-headline-lg font-bold text-on-surface">Recent Activity</h2>
+<button class="text-primary font-label-caps text-xs hover:underline transition-all">View All History</button>
+</div>
+<div class="bg-surface-container rounded-xl border border-outline-variant overflow-hidden">
+<div class="divide-y divide-outline-variant">
+<!-- Item 1 -->
+<div class="p-md flex items-center gap-md hover:bg-surface-variant/50 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-primary border border-outline-variant group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center justify-between">
+<h4 class="font-body-md font-semibold text-on-surface">Updated 'FastAPI Project X'</h4>
+<span class="text-on-surface-variant font-code-sm text-[10px]">2m ago</span>
+</div>
+<p class="text-on-surface-variant text-sm font-body-md">Deployed v2.4.1 to production-edge-01</p>
+</div>
+<div class="px-sm py-xs bg-emerald-500/10 text-emerald-500 rounded font-code-sm text-[10px]">SUCCESS</div>
+</div>
+<!-- Item 2 -->
+<div class="p-md flex items-center gap-md hover:bg-surface-variant/50 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-tertiary border border-outline-variant group-hover:border-tertiary transition-colors">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center justify-between">
+<h4 class="font-body-md font-semibold text-on-surface">Vector DB Indexing</h4>
+<span class="text-on-surface-variant font-code-sm text-[10px]">14m ago</span>
+</div>
+<p class="text-on-surface-variant text-sm font-body-md">Rebuilding similarity index for 'AI-Chat-Model'</p>
+</div>
+<div class="px-sm py-xs bg-primary/10 text-primary rounded font-code-sm text-[10px]">RUNNING</div>
+</div>
+<!-- Item 3 -->
+<div class="p-md flex items-center gap-md hover:bg-surface-variant/50 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-secondary border border-outline-variant group-hover:border-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center justify-between">
+<h4 class="font-body-md font-semibold text-on-surface">API Key Rotated</h4>
+<span class="text-on-surface-variant font-code-sm text-[10px]">1h ago</span>
+</div>
+<p class="text-on-surface-variant text-sm font-body-md">System-wide rotation for 'Legacy-Integrator'</p>
+</div>
+<div class="px-sm py-xs bg-outline-variant/30 text-outline rounded font-code-sm text-[10px]">ARCHIVED</div>
+</div>
+<!-- Item 4 -->
+<div class="p-md flex items-center gap-md hover:bg-surface-variant/50 transition-colors group">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-error border border-outline-variant group-hover:border-error transition-colors">
+<span class="material-symbols-outlined" data-icon="report">report</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center justify-between">
+<h4 class="font-body-md font-semibold text-on-surface">Critical Log Spike</h4>
+<span class="text-on-surface-variant font-code-sm text-[10px]">3h ago</span>
+</div>
+<p class="text-on-surface-variant text-sm font-body-md">Rate limiting triggered for IP 192.168.1.45</p>
+</div>
+<div class="px-sm py-xs bg-error/10 text-error rounded font-code-sm text-[10px]">RESOLVED</div>
+</div>
+</div>
+<div class="p-md bg-surface-container-high/50 border-t border-outline-variant text-center">
+<button class="font-label-caps text-xs text-outline hover:text-on-surface transition-colors flex items-center justify-center w-full gap-sm">
+<span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+                                Show 10 More
+                            </button>
+</div>
+</div>
+</section>
+<!-- System Health Side Panel (Bento Sidebar) -->
+<section class="space-y-lg">
+<div class="bg-surface-container-high rounded-xl border border-outline-variant p-lg space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-label-caps text-on-surface">Nodes Status</h3>
+<span class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+</div>
+<div class="space-y-md pt-sm">
+<div class="space-y-xs">
+<div class="flex justify-between font-code-sm text-xs text-on-surface-variant">
+<span>Primary Cluster (US-East)</span>
+<span>24/24</span>
+</div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full transition-all duration-1000"></div>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between font-code-sm text-xs text-on-surface-variant">
+<span>Edge Cache (EU-West)</span>
+<span>18/18</span>
+</div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full transition-all duration-1000"></div>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between font-code-sm text-xs text-on-surface-variant">
+<span>Replica Set (AP-South)</span>
+<span>11/12</span>
+</div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[91%] transition-all duration-1000"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Compute Pulse (Animation Placeholder Integration) -->
+<div class="relative h-48 rounded-xl border border-outline-variant overflow-hidden bg-surface-container-lowest">
+<div class="absolute inset-0 opacity-40 mix-blend-screen pointer-events-none">
+
+</div>
+<div class="absolute inset-0 p-lg flex flex-col justify-end bg-gradient-to-t from-surface-container-lowest via-transparent">
+<div class="font-label-caps text-primary text-xs mb-xs">Compute Real-time</div>
+<div class="flex items-end gap-xs">
+<div class="font-display-xl leading-none">1.2</div>
+<div class="font-headline-lg pb-1 text-on-surface-variant">PFLOPS</div>
+</div>
+</div>
+</div>
+<!-- Documentation Mini-Card -->
+<div class="bg-primary/5 rounded-xl border border-primary/20 p-lg group hover:bg-primary/10 transition-colors cursor-pointer">
+<div class="flex items-center gap-md mb-sm">
+<span class="material-symbols-outlined text-primary" data-icon="menu_book">menu_book</span>
+<h4 class="font-label-caps text-on-surface">API Documentation</h4>
+</div>
+<p class="text-on-surface-variant text-xs mb-md">Quickly integrate DevEngine into your existing stack using our TypeScript and Python SDKs.</p>
+<div class="flex items-center gap-sm text-primary font-label-caps text-[10px]">
+<span>EXPLORE SDK</span>
+<span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant mt-auto">
+<div class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto">
+<div class="text-outline font-code-sm text-xs mb-md md:mb-0">
+                    © 2024 Engineered by Terminal. Built with High-Performance Logic.
+                </div>
+<div class="flex gap-lg">
+<a class="text-outline hover:text-on-surface font-label-caps text-xs transition-colors" href="#">Documentation</a>
+<a class="text-outline hover:text-on-surface font-label-caps text-xs transition-colors" href="#">System Status</a>
+<a class="text-outline hover:text-on-surface font-label-caps text-xs transition-colors" href="#">Source Code</a>
+<a class="text-outline hover:text-on-surface font-label-caps text-xs transition-colors" href="#">API Docs</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Simple scale interaction for cards
+        document.querySelectorAll('.metric-card-glow').forEach(card => {
+            card.addEventListener('mousedown', () => card.style.transform = 'scale(0.98)');
+            card.addEventListener('mouseup', () => card.style.transform = 'scale(1)');
+            card.addEventListener('mouseleave', () => card.style.transform = 'scale(1)');
+        });
+
+        // Simulating metric updates
+        setInterval(() => {
+            const apiHits = document.querySelector('.font-display-xl.text-on-surface:nth-child(2)'); // Third card's main number
+            // Note: This selector is fragile, but good for demo
+            // Real dashboard would use IDs
+        }, 5000);
+    </script>
+</body></html>

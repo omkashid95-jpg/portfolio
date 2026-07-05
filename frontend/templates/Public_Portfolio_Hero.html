@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DevEngine v2.0 | High-Performance Logic</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-dim": "#13121b",
+                "on-secondary-container": "#abb9d5",
+                "on-surface": "#e4e1ee",
+                "on-tertiary-fixed": "#351000",
+                "secondary": "#b9c7e3",
+                "inverse-surface": "#e4e1ee",
+                "tertiary": "#ffb695",
+                "on-primary-container": "#dad7ff",
+                "surface-container-low": "#1b1b24",
+                "secondary-container": "#3c4a61",
+                "tertiary-fixed-dim": "#ffb695",
+                "surface-container-high": "#2a2933",
+                "primary": "#c3c0ff",
+                "tertiary-container": "#a44100",
+                "on-primary-fixed-variant": "#3323cc",
+                "on-primary-fixed": "#0f0069",
+                "surface-variant": "#35343e",
+                "on-secondary-fixed-variant": "#39475e",
+                "on-secondary-fixed": "#0d1c31",
+                "surface-container": "#1f1f28",
+                "primary-fixed": "#e2dfff",
+                "secondary-fixed-dim": "#b9c7e3",
+                "error-container": "#93000a",
+                "on-error": "#690005",
+                "surface-tint": "#c3c0ff",
+                "tertiary-fixed": "#ffdbcc",
+                "on-primary": "#1d00a5",
+                "on-error-container": "#ffdad6",
+                "on-background": "#e4e1ee",
+                "primary-fixed-dim": "#c3c0ff",
+                "surface-container-lowest": "#0e0d16",
+                "outline-variant": "#464555",
+                "outline": "#918fa1",
+                "error": "#ffb4ab",
+                "on-secondary": "#233147",
+                "background": "#13121b"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "gutter": "24px",
+                "container-max": "1280px",
+                "xs": "4px",
+                "md": "16px",
+                "base": "4px",
+                "xl": "32px",
+                "sm": "8px",
+                "lg": "24px"
+            },
+            "fontFamily": {
+                "body-md": ["Inter"],
+                "display-xl-mobile": ["Geist"],
+                "headline-lg": ["Geist"],
+                "display-xl": ["Geist"],
+                "label-caps": ["JetBrains Mono"],
+                "code-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "display-xl-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                "display-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "code-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #13121b;
+            color: #e4e1ee;
+            overflow-x: hidden;
+        }
+
+        .terminal-grid {
+            background-image: 
+                linear-gradient(to right, rgba(70, 69, 85, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(70, 69, 85, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .glow-indigo {
+            box-shadow: 0 0 40px -10px rgba(195, 192, 255, 0.2);
+        }
+
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(195, 192, 255, 0.1), transparent);
+            position: absolute;
+            top: 0;
+            z-index: 10;
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            from { top: 0; }
+            to { top: 100%; }
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary/30 selection:text-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-lg max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="terminal">terminal</span>
+<span class="text-headline-lg font-headline-lg font-bold text-primary tracking-tighter">DevEngine v2.0</span>
+</div>
+<nav class="hidden md:flex items-center gap-xl">
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#projects">PROJECTS</a>
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#depth">ARCHITECTURE</a>
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200" href="#status">SYSTEM STATUS</a>
+<a class="text-label-caps font-label-caps text-primary border-b-2 border-primary pb-1" href="#contact">CONTACT</a>
+</nav>
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full border border-outline-variant bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a technical architect in a high-contrast black and white style, featuring soft studio lighting and a clean, minimalist background. The individual has a focused, intelligent expression, reflecting the core brand values of precision and robustness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANIK8hqzk4ICu_nCbPQgB6xYrE3D9Lr4Cis2cBqlbVJ3FVEqDMQwVGJPUTlVYE236XAWd4SA9utDznNXCrPta24YRAPbisvRbZdnvFYGrS5grY6HzFekoKEtJJkQVaXdvGGLnef86ASoAf15dlEJkAOgz603-LPXq8OMkW2UWbSqK-whlUJ_v9cYxnEZmKSTZ1ZVnz0WYjrCspV69NC3UjnyIkCeJyX8iETDW75Eb0micFBwFvvsx-mAxiqbQU-i6UUIv6ZFL9VPg"/>
+</div>
+</div>
+</div>
+</header>
+<main class="relative pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-[751px] flex flex-col justify-center items-center overflow-hidden terminal-grid">
+
+<div class="scanline"></div>
+<div class="relative z-10 max-w-container-max px-lg w-full flex flex-col lg:flex-row items-center justify-between gap-xl">
+<div class="flex-1 text-center lg:text-left">
+<div class="inline-flex items-center gap-xs px-sm py-1 rounded-full bg-primary/10 border border-primary/20 text-primary mb-md">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-label-caps font-label-caps">CORE SYSTEMS READY</span>
+</div>
+<h1 class="font-display-xl text-display-xl text-on-surface mb-md max-w-2xl leading-none">
+                        Engineering <span class="text-primary italic">High-Performance</span> Backend Architectures.
+                    </h1>
+<p class="text-on-surface-variant text-body-md max-w-lg mb-xl leading-relaxed">
+                        Specializing in robust API design, distributed systems, and ML-integrated workflows. Building the invisible logic that scales the world's most demanding applications.
+                    </p>
+<div class="flex flex-col sm:flex-row items-center gap-md justify-center lg:justify-start">
+<button class="px-xl py-md bg-primary text-on-primary font-bold rounded-lg hover:opacity-90 transition-all flex items-center gap-sm group">
+                            INITIATE PROJECT
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="px-xl py-md border border-outline-variant text-on-surface font-bold rounded-lg hover:bg-surface-container transition-all">
+                            VIEW SCHEMA
+                        </button>
+</div>
+</div>
+<div class="flex-1 w-full max-w-md">
+<div class="bg-surface-container-high border border-outline-variant rounded-xl p-lg glow-indigo relative overflow-hidden">
+<div class="flex items-center gap-sm mb-lg border-b border-outline-variant pb-md">
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-error/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary/40"></div>
+</div>
+<span class="text-code-sm font-code-sm text-outline">engine.py</span>
+</div>
+<pre class="font-code-sm text-code-sm leading-relaxed overflow-x-auto text-on-surface-variant"><span class="text-primary">import</span> fastapi
+<span class="text-primary">from</span> ml_core <span class="text-primary">import</span> Transformer
+
+<span class="text-tertiary">@app.post("/process/stream")</span>
+<span class="text-primary">async def</span> <span class="text-secondary">handle_logic</span>(payload: Data):
+    <span class="text-outline"># Optimizing for &lt;50ms latency</span>
+    engine = Transformer(weights=<span class="text-secondary">"v4.2"</span>)
+    result = <span class="text-primary">await</span> engine.compute(payload)
+    <span class="text-primary">return</span> {"status": <span class="text-secondary">"optimized"</span>, "id": result.id}
+                        </pre>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Metrics Ticker -->
+<section class="w-full bg-surface-container-lowest border-y border-outline-variant py-md overflow-hidden whitespace-nowrap" id="status">
+<div class="flex items-center gap-xl animate-[marquee_20s_linear_infinite]">
+<div class="flex items-center gap-md">
+<span class="text-label-caps font-label-caps text-outline">UPTIME:</span>
+<span class="text-label-caps font-label-caps text-primary">99.998%</span>
+</div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="flex items-center gap-md">
+<span class="text-label-caps font-label-caps text-outline">AVG_LATENCY:</span>
+<span class="text-label-caps font-label-caps text-secondary">24ms</span>
+</div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="flex items-center gap-md">
+<span class="text-label-caps font-label-caps text-outline">THROUGHPUT:</span>
+<span class="text-label-caps font-label-caps text-tertiary">4.2k req/s</span>
+</div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="flex items-center gap-md">
+<span class="text-label-caps font-label-caps text-outline">STACK:</span>
+<span class="text-label-caps font-label-caps text-on-surface">PYTHON / FASTAPI / REDIS / POSTGRES / PYTORCH</span>
+</div>
+<!-- Duplicate for seamless loop -->
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="flex items-center gap-md">
+<span class="text-label-caps font-label-caps text-outline">UPTIME:</span>
+<span class="text-label-caps font-label-caps text-primary">99.998%</span>
+</div>
+<div class="w-px h-4 bg-outline-variant"></div>
+<div class="flex items-center gap-md">
+<span class="text-label-caps font-label-caps text-outline">AVG_LATENCY:</span>
+<span class="text-label-caps font-label-caps text-secondary">24ms</span>
+</div>
+</div>
+</section>
+<!-- Bento Showcase -->
+<section class="py-xl px-lg max-w-container-max mx-auto" id="projects">
+<div class="mb-xl flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Engineered Solutions</h2>
+<p class="text-on-surface-variant max-w-md">Real-world systems built for maximum efficiency and predictable scale.</p>
+</div>
+<a class="text-primary font-bold flex items-center gap-xs hover:gap-md transition-all" href="#">
+                    EXPLORE ALL NODES
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg h-auto lg:h-[600px]">
+<!-- Main Case Study -->
+<div class="md:col-span-8 bg-surface-container border border-outline-variant rounded-xl p-lg relative group overflow-hidden">
+<div class="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105 opacity-20" data-alt="A sophisticated data visualization map showing global network traffic as glowing Indigo lines across a dark, technical landscape. The lighting is low-key, with bright cyan and violet accents representing data nodes. The aesthetic is futuristic, clean, and highly detailed, suggesting massive scale and high-speed processing." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBMpABvZrOBJ9M7R1L7f-H875K5wBFIZyxZUP1ABkJ9cBZgQ_Ua47scZRLQcew5YmCNwikNyUgNfYynKQJGsH-GOjA7dP-3kIgO68IeyvF70FbcTR1YgPt0n23x99sYOfIdVjSpWB790miWIYuJJM218fVBWPswVvnEK6QdFKH4TvjacrM8lYMbvM3gzWhTxGN8J-hvRJC1o2QVRcQfJB5QSIIw_iIIH7yP5jCGIyEFmjzL1wkbNztipKVxg-BgfEEzl4VYyLH839E')"></div>
+<div class="relative z-10 h-full flex flex-col justify-between">
+<div>
+<div class="flex gap-sm mb-md">
+<span class="px-sm py-1 bg-primary/10 border border-primary/20 text-primary rounded-lg text-label-caps font-label-caps">DISTRIBUTED CLUSTER</span>
+<span class="px-sm py-1 bg-secondary/10 border border-secondary/20 text-secondary rounded-lg text-label-caps font-label-caps">PYTHON</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Project: NeuralStream v4</h3>
+<p class="text-on-surface-variant max-w-lg">A real-time data ingestion pipeline processing 500TB/day with automated schema evolution and anomaly detection.</p>
+</div>
+<div class="flex items-center gap-xl mt-lg">
+<div>
+<span class="block text-display-xl font-display-xl text-primary leading-none">0.02ms</span>
+<span class="text-label-caps font-label-caps text-outline">MIN_JITTER</span>
+</div>
+<div>
+<span class="block text-display-xl font-display-xl text-secondary leading-none">42</span>
+<span class="text-label-caps font-label-caps text-outline">NODES_ONLINE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Small Grid 1 -->
+<div class="md:col-span-4 bg-surface-container-high border border-outline-variant rounded-xl p-lg flex flex-col justify-between group">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-md" data-icon="memory">memory</span>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-sm">ML Ops</h3>
+<p class="text-on-surface-variant text-body-md">Self-healing model deployment strategies using Kubernetes and custom monitoring hooks.</p>
+</div>
+<div class="mt-lg pt-md border-t border-outline-variant flex justify-between items-center">
+<span class="text-label-caps font-label-caps text-outline">98% REDUCTION IN DRIFT</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="open_in_new">open_in_new</span>
+</div>
+</div>
+<!-- Small Grid 2 -->
+<div class="md:col-span-4 bg-surface-container-high border border-outline-variant rounded-xl p-lg flex flex-col justify-between group">
+<span class="material-symbols-outlined text-primary text-4xl mb-md" data-icon="database">database</span>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Query Logic</h3>
+<p class="text-on-surface-variant text-body-md">Advanced PostgreSQL indexing and sharding techniques for sub-second retrieval on multi-billion row tables.</p>
+</div>
+<div class="mt-lg pt-md border-t border-outline-variant flex justify-between items-center">
+<span class="text-label-caps font-label-caps text-outline">STABLE AT 10PB</span>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="open_in_new">open_in_new</span>
+</div>
+</div>
+<!-- Large Grid 2 (asymmetric) -->
+<div class="md:col-span-8 bg-surface-dim border border-outline-variant rounded-xl p-lg relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="grid grid-cols-2 h-full gap-lg items-center">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Secure Core</h3>
+<p class="text-on-surface-variant text-body-md">Zero-trust authentication middleware built for enterprise-grade financial systems.</p>
+<div class="flex gap-md mt-md">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="lock">lock</span>
+</div>
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="shield">shield</span>
+</div>
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="verified_user">verified_user</span>
+</div>
+</div>
+</div>
+<div class="relative h-40">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-24 h-24 rounded-full border-4 border-dashed border-primary/20 animate-spin-slow"></div>
+<div class="absolute w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="api">api</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Depth / Interaction -->
+<section class="py-xl bg-surface-container-lowest" id="depth">
+<div class="max-w-container-max mx-auto px-lg">
+<div class="grid lg:grid-cols-2 gap-xl items-center">
+<div>
+<h2 class="font-display-xl text-display-xl text-on-surface mb-md">Logic-First Philosophy</h2>
+<div class="space-y-lg">
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary" data-icon="settings_input_component">settings_input_component</span>
+</div>
+<div>
+<h4 class="font-headline-lg text-headline-lg text-on-surface text-lg mb-1">Predictable Scaling</h4>
+<p class="text-on-surface-variant text-body-md">Systems that don't just work—they behave exactly as expected under 100x load.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-headline-lg text-headline-lg text-on-surface text-lg mb-1">AI-Ready Pipelines</h4>
+<p class="text-on-surface-variant text-body-md">Architectures designed from the ground up to support LLM integration and vector databases.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-tertiary" data-icon="bolt">bolt</span>
+</div>
+<div>
+<h4 class="font-headline-lg text-headline-lg text-on-surface text-lg mb-1">Instant Recovery</h4>
+<p class="text-on-surface-variant text-body-md">Self-healing mechanisms that detect and mitigate failures before they impact the end user.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden border border-outline-variant aspect-square lg:aspect-video bg-surface shadow-2xl">
+
+<div class="absolute inset-0 flex flex-col justify-center items-center p-xl">
+<div class="bg-surface-dim/80 backdrop-blur-md p-lg border border-outline-variant rounded-xl max-w-sm text-center">
+<span class="text-label-caps font-label-caps text-primary mb-sm block">LIVE SYSTEM VISUALIZATION</span>
+<p class="text-code-sm font-code-sm text-on-surface-variant">Tracing packet distribution across global CDN nodes. Current health: NOMINAL.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA / Footer -->
+<section class="py-xl relative overflow-hidden border-t border-outline-variant" id="contact">
+
+<div class="max-w-container-max mx-auto px-lg relative z-10 text-center flex flex-col items-center">
+<h2 class="font-display-xl text-display-xl text-on-surface mb-md">Ready to Scale?</h2>
+<p class="text-on-surface-variant text-body-md max-w-xl mb-xl">Let's discuss how we can engineer your next high-performance system. Accepting limited technical consultancy roles.</p>
+<div class="flex flex-wrap justify-center gap-md mb-xl">
+<a class="px-xl py-md bg-primary text-on-primary font-bold rounded-lg hover:shadow-lg hover:shadow-primary/20 transition-all" href="mailto:architect@terminal.dev">
+                        architect@terminal.dev
+                    </a>
+<div class="flex gap-sm">
+<a class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center border border-outline-variant hover:border-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-on-surface" data-icon="code">code</span>
+</a>
+<a class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center border border-outline-variant hover:border-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-on-surface" data-icon="terminal">terminal</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="w-full py-xl px-lg mt-auto flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto">
+<div class="mb-md md:mb-0">
+<p class="text-code-sm font-code-sm text-outline">© 2024 Engineered by Terminal. Built with High-Performance Logic.</p>
+</div>
+<div class="flex gap-xl">
+<a class="text-label-caps font-label-caps text-outline hover:text-primary transition-colors" href="#">DOCUMENTATION</a>
+<a class="text-label-caps font-label-caps text-outline hover:text-primary transition-colors" href="#">SYSTEM STATUS</a>
+<a class="text-label-caps font-label-caps text-outline hover:text-primary transition-colors" href="#">SOURCE CODE</a>
+<a class="text-label-caps font-label-caps text-outline hover:text-primary transition-colors" href="#">API DOCS</a>
+</div>
+</div>
+</footer>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .animate-spin-slow {
+            animation: spin 12s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+<script>
+        // Micro-interaction for ticker: Pause on hover
+        const ticker = document.querySelector('.animate-[marquee_20s_linear_infinite]');
+        ticker.addEventListener('mouseenter', () => ticker.style.animationPlayState = 'paused');
+        ticker.addEventListener('mouseleave', () => ticker.style.animationPlayState = 'running');
+
+        // Simple smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>

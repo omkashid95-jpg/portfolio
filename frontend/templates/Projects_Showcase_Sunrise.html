@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DevEngine v2.0 | Project Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(143, 112, 101, 0.1);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        .tech-tag {
+            background: rgba(167, 58, 0, 0.05);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#86211e",
+                        "on-surface-variant": "#5b4137",
+                        "outline": "#8f7065",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f6f2f5",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dcd9dc",
+                        "on-secondary-fixed": "#271900",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "primary-fixed-dim": "#ffb59a",
+                        "primary-fixed": "#ffdbce",
+                        "on-surface": "#1c1b1d",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-tertiary-container": "#5f0107",
+                        "on-primary-container": "#521800",
+                        "inverse-primary": "#ffb59a",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#ff5c00",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#a73a00",
+                        "tertiary-fixed": "#ffdad6",
+                        "surface": "#fcf8fb",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#f0edf0",
+                        "background": "#fcf8fb",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#a73833",
+                        "on-primary-fixed-variant": "#802a00",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#feb700",
+                        "on-primary-fixed": "#370e00",
+                        "on-secondary-container": "#6b4b00",
+                        "surface-container-high": "#eae7ea",
+                        "surface-variant": "#e5e1e4",
+                        "surface-bright": "#fcf8fb",
+                        "surface-container-highest": "#e5e1e4",
+                        "tertiary-container": "#eb6b62",
+                        "inverse-surface": "#313032",
+                        "primary": "#a73a00",
+                        "on-background": "#1c1b1d",
+                        "secondary-fixed": "#ffdea8",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#e4beb1",
+                        "tertiary-fixed-dim": "#ffb3ac",
+                        "secondary": "#7c5800",
+                        "on-tertiary-fixed": "#410003"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "unit": "4px",
+                        "margin-md": "32px",
+                        "margin-sm": "16px",
+                        "margin-lg": "48px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Geist", "sans-serif"],
+                        "headline-lg": ["Geist", "sans-serif"],
+                        "display-lg": ["Geist", "sans-serif"],
+                        "label-sm": ["JetBrains Mono", "monospace"],
+                        "code-sm": ["JetBrains Mono", "monospace"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "code-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/20 min-h-screen flex flex-col">
+<!-- TopAppBar Component -->
+<header class="bg-surface/80 backdrop-blur-md border-b border-outline-variant fixed top-0 left-0 right-0 z-50 transition-all" id="main-header">
+<div class="flex justify-between items-center w-full px-lg max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="terminal">terminal</span>
+<span class="text-headline-lg-mobile md:text-headline-lg font-bold text-primary tracking-tighter">DevEngine v2.0</span>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-label-sm uppercase font-label-sm text-primary border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200" href="#">Public Projects</a>
+<a class="text-label-sm uppercase font-label-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Research</a>
+<a class="text-label-sm uppercase font-label-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Stack</a>
+<a class="text-label-sm uppercase font-label-sm text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Contact</a>
+</nav>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAfXUnRkpx_RZDY5BnyOEYYoNpC_cuu4PqgBVyVIg-0QAcrlOTuHW2iun87d8_z1vwtjr8DC56kGNz6JyzMhwnijQvjpbmevMU8jUhgAhyIaf0_AoVRz842d-j6EvVYZtuWl4ik2Om9_4dQfRApf_JcpBUxuaA2uvAf11MJ-8UUoh7RfAJXfcPdsCe_-KNNJpY8tLcSdVsVyvM6Q13GHPVi7vR94-DbaxfL0l8KBldABuC7DuQt_zPe33ChFWx4ZonYqR7uo7Y0gDk')"></div>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-32 pb-xl px-lg max-w-container-max mx-auto w-full">
+<!-- Hero Section -->
+<section class="mb-xl text-center md:text-left">
+<h1 class="text-display-lg font-display-lg mb-md text-primary">High-Performance Build Log</h1>
+<p class="text-body-md text-on-surface-variant max-w-2xl mb-lg">
+                A technical showcase of distributed systems, machine learning pipelines, and low-level Python tooling. Built with precision, optimized for scale.
+            </p>
+<!-- Category Filter -->
+<div class="flex flex-wrap gap-sm justify-center md:justify-start" id="category-filters">
+<button class="px-md py-xs rounded-full text-label-sm font-label-sm transition-all bg-primary text-on-primary border border-primary" onclick="filterProjects('all')">All Systems</button>
+<button class="px-md py-xs rounded-full text-label-sm font-label-sm transition-all bg-surface-container-high text-on-surface-variant border border-outline-variant hover:border-primary hover:text-primary" onclick="filterProjects('Backend')">Backend (FastAPI)</button>
+<button class="px-md py-xs rounded-full text-label-sm font-label-sm transition-all bg-surface-container-high text-on-surface-variant border border-outline-variant hover:border-primary hover:text-primary" onclick="filterProjects('Data Science')">Data Science (ML)</button>
+<button class="px-md py-xs rounded-full text-label-sm font-label-sm transition-all bg-surface-container-high text-on-surface-variant border border-outline-variant hover:border-primary hover:text-primary" onclick="filterProjects('Python Tools')">Python Tools</button>
+</div>
+</section>
+<!-- Bento Grid Portfolio -->
+<div class="bento-grid" id="project-container">
+<!-- Project 1: Large Feature -->
+<div class="project-card col-span-12 lg:col-span-8 group relative overflow-hidden rounded-xl glass-card transition-all duration-300 hover:shadow-xl border border-outline-variant flex flex-col md:flex-row" data-category="Backend">
+<div class="md:w-1/2 overflow-hidden h-64 md:h-full relative">
+<div class="project-image w-full h-full bg-cover bg-center transition-transform duration-700" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA_6T1CupprebPbaN-LYJSX5Lw0itCvNCJp4zCG3xK0oLcOrldnkyes8bK5PjmgDW-Py2Mo7lsENG0lkjipANmHof7cg_knMqT0I1XtFiA16E3y_R-Hz1duhsGKulyi1C62K45E85uXDuOZhTpIQX-bRuXEWaHCFnFZM06sTfKBrhNdDme2LhJhq5Eu_HKB4G0hpTCrCNaEf5bA1YlxHfPgdHISTLODguB_1svQIzkJTVNpWmGNDF1Oqy8CZ83E8GwGiCtBGCgq_Vo')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim/40 to-transparent opacity-40"></div>
+</div>
+<div class="md:w-1/2 p-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-xs mb-sm">
+<span class="px-2 py-0.5 rounded tech-tag text-[10px] font-label-sm text-primary border border-primary/20 bg-primary/5 uppercase">BACKEND</span>
+<span class="px-2 py-0.5 rounded tech-tag text-[10px] font-label-sm text-secondary border border-secondary/20 bg-secondary/5 uppercase">REDIS</span>
+</div>
+<h3 class="text-headline-lg font-headline-lg mb-sm text-primary">HydraScale Engine</h3>
+<p class="text-body-md text-on-surface-variant mb-md leading-relaxed">
+                            A high-concurrency task orchestration framework built on FastAPI and Redis, designed for real-time video processing pipelines.
+                        </p>
+<div class="space-y-2 mb-lg">
+<div class="flex items-center gap-sm text-code-sm font-code-sm text-on-surface">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="bolt">bolt</span> 1.2M req/sec throughput
+                            </div>
+<div class="flex items-center gap-sm text-code-sm font-code-sm text-on-surface">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="memory">memory</span> Optimized memory allocation
+                            </div>
+</div>
+</div>
+<button class="flex items-center justify-center gap-sm w-full py-md rounded-lg bg-primary text-on-primary font-label-sm uppercase hover:bg-primary-container transition-all group/btn">
+                        TECHNICAL DEEP DIVE
+                        <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Project 2: Small Bento -->
+<div class="project-card col-span-12 md:col-span-6 lg:col-span-4 group relative overflow-hidden rounded-xl glass-card transition-all duration-300 hover:shadow-xl border border-outline-variant flex flex-col" data-category="Data Science">
+<div class="h-48 overflow-hidden relative">
+<div class="project-image w-full h-full bg-cover bg-center transition-transform duration-700" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD_3m0_Qy7JE8QIa2G6qxn1HZZEY_im-RqXX7AvTv-mR2Vmc7ZXQ4JPxzxUCLqzpU8bZpG-SvDHUo9euWR-NXB8K4r9s2Yen-S3WDxaVmdlJnQS3PvqO1x0QZ1e_Krjy6Vf3VD1brpkMeEf8fO3N2NBVY_amPbfqtp-hhkEPBM8dsX_ro8yBC11tmxDBC-vTS82Jc6nEarrdVEQVslw0tkDGFz9zfizi9IZB9tIhlgmzRLDBabuGx7vOuF0D5FsHvP1Z26r8swYY30')"></div>
+</div>
+<div class="p-lg flex flex-col flex-grow">
+<div class="flex items-center gap-xs mb-sm">
+<span class="px-2 py-0.5 rounded tech-tag text-[10px] font-label-sm text-tertiary border border-tertiary/20 bg-tertiary/5 uppercase">ML</span>
+<span class="px-2 py-0.5 rounded tech-tag text-[10px] font-label-sm text-primary border border-primary/20 bg-primary/5 uppercase">PYTORCH</span>
+</div>
+<h3 class="text-headline-lg font-headline-lg mb-sm text-primary">Sentience Flow</h3>
+<p class="text-body-md text-on-surface-variant mb-md flex-grow">
+                        Transformer-based anomaly detection for enterprise logs, reducing false-positives by 84%.
+                    </p>
+<button class="flex items-center justify-between text-label-sm font-label-sm text-primary hover:underline group/link uppercase">
+                        DEEP DIVE <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Project 3: Medium Bento -->
+<div class="project-card col-span-12 md:col-span-6 lg:col-span-4 group relative overflow-hidden rounded-xl glass-card transition-all duration-300 hover:shadow-xl border border-outline-variant flex flex-col" data-category="Python Tools">
+<div class="p-lg bg-surface-container-high border-b border-outline-variant">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span class="px-2 py-0.5 rounded tech-tag text-[10px] font-label-sm text-secondary border border-secondary/20 bg-secondary/5 uppercase">CLI</span>
+<span class="px-2 py-0.5 rounded tech-tag text-[10px] font-label-sm text-primary border border-primary/20 bg-primary/5 uppercase">PYTHON</span>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+</div>
+</div>
+<div class="p-lg flex-grow">
+<h3 class="text-headline-lg font-headline-lg mb-sm text-primary">PyTrace-LVM</h3>
+<p class="text-body-md text-on-surface-variant mb-md">
+                        Low-overhead Python tracing utility for C-extensions with real-time heap visualization.
+                    </p>
+<div class="bg-surface-container-low rounded-lg p-sm border border-outline-variant mb-md">
+<code class="text-code-sm font-code-sm text-primary">$ pytrace --profile ./app</code>
+</div>
+</div>
+<div class="p-lg pt-0">
+<button class="flex items-center justify-between w-full text-label-sm font-label-sm text-primary hover:underline group/link uppercase">
+                        DEEP DIVE <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Project 4: High Detail Vertical -->
+<div class="project-card col-span-12 lg:col-span-4 group relative overflow-hidden rounded-xl glass-card transition-all duration-300 hover:shadow-xl border border-outline-variant flex flex-col" data-category="Backend">
+<div class="h-48 overflow-hidden relative bg-surface-container">
+<div class="absolute inset-0 flex items-center justify-center opacity-10">
+<span class="material-symbols-outlined text-[120px] text-primary" data-icon="settings_ethernet">settings_ethernet</span>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-grow">
+<div class="flex items-center gap-xs mb-sm">
+<span class="px-2 py-0.5 rounded tech-tag text-[10px] font-label-sm text-primary border border-primary/20 bg-primary/5 uppercase">RUST</span>
+<span class="px-2 py-0.5 rounded tech-tag text-[10px] font-label-sm text-secondary border border-secondary/20 bg-secondary/5 uppercase">ASYNC</span>
+</div>
+<h3 class="text-headline-lg font-headline-lg mb-sm text-primary">CoreStream V2</h3>
+<p class="text-body-md text-on-surface-variant mb-md">
+                        A proprietary message broker bridging Python async-io with Rust for ultra-fast telemetry.
+                    </p>
+<div class="mt-auto pt-md border-t border-outline-variant/30 flex justify-between items-center">
+<span class="text-code-sm font-code-sm text-on-surface-variant">v2.4.1-stable</span>
+<button class="text-primary material-symbols-outlined hover:scale-110 transition-transform" data-icon="launch">launch</button>
+</div>
+</div>
+</div>
+<!-- Project 5: Horizontal Tooling Showcase -->
+<div class="project-card col-span-12 lg:col-span-4 group relative overflow-hidden rounded-xl glass-card transition-all duration-300 hover:shadow-xl border border-outline-variant flex flex-col" data-category="Python Tools">
+<div class="p-lg flex-grow flex flex-col">
+<div class="flex items-center gap-xs mb-sm">
+<span class="px-2 py-0.5 rounded tech-tag text-[10px] font-label-sm text-primary border border-primary/20 bg-primary/5 uppercase">DEVOPS</span>
+</div>
+<h3 class="text-headline-lg font-headline-lg mb-sm text-primary">AutoDoc Engine</h3>
+<p class="text-body-md text-on-surface-variant mb-md">
+                        AI-powered documentation generator that analyzes AST to create technical specifications.
+                    </p>
+<div class="flex flex-wrap gap-xs mt-auto">
+<span class="text-code-sm font-code-sm px-2 py-1 bg-surface-container-high rounded text-primary">AST Analysis</span>
+<span class="text-code-sm font-code-sm px-2 py-1 bg-surface-container-high rounded text-primary">GPT-4o</span>
+</div>
+</div>
+<div class="p-lg pt-0">
+<button class="w-full py-sm rounded border border-primary/30 text-primary font-label-sm hover:bg-primary/5 transition-all uppercase">VIEW DOCS</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant mt-auto">
+<div class="w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto gap-md">
+<span class="text-code-sm font-code-sm text-outline">© 2024 Engineered by Terminal. Built with High-Performance Logic.</span>
+<div class="flex gap-lg flex-wrap justify-center">
+<a class="text-label-sm font-label-sm text-outline hover:text-primary transition-colors uppercase" href="#">Documentation</a>
+<a class="text-label-sm font-label-sm text-outline hover:text-primary transition-colors uppercase" href="#">System Status</a>
+<a class="text-label-sm font-label-sm text-outline hover:text-primary transition-colors uppercase" href="#">Source Code</a>
+<a class="text-label-sm font-label-sm text-outline hover:text-primary transition-colors uppercase" href="#">API Docs</a>
+</div>
+</div>
+</footer>
+<script>
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('#category-filters button');
+            
+            buttons.forEach(btn => {
+                const btnText = btn.innerText.toLowerCase();
+                const categoryLower = category.toLowerCase();
+                
+                if (btnText.includes(categoryLower) || (categoryLower === 'all' && btnText.includes('all'))) {
+                    btn.classList.add('bg-primary', 'text-on-primary', 'border-primary');
+                    btn.classList.remove('bg-surface-container-high', 'text-on-surface-variant', 'border-outline-variant');
+                } else {
+                    btn.classList.remove('bg-primary', 'text-on-primary', 'border-primary');
+                    btn.classList.add('bg-surface-container-high', 'text-on-surface-variant', 'border-outline-variant');
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                    card.classList.add('animate-in', 'fade-in', 'zoom-in', 'duration-300');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md', 'bg-surface/95');
+            } else {
+                header.classList.remove('shadow-md', 'bg-surface/95');
+            }
+        });
+    </script>
+</body></html>

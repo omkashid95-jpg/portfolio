@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NOAH.DEV | Systems Architect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=JetBrains+Mono:wght@400;600&amp;family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "secondary-fixed-dim": "#bec6e0",
+                "surface-container": "#e5eeff",
+                "error-container": "#ffdad6",
+                "error": "#ba1a1a",
+                "primary-fixed-dim": "#c3c0ff",
+                "primary-fixed": "#e2dfff",
+                "surface-variant": "#d3e4fe",
+                "surface-tint": "#4d44e3",
+                "secondary": "#565e74",
+                "on-primary": "#ffffff",
+                "primary": "#3525cd",
+                "on-secondary-fixed-variant": "#3f465c",
+                "surface-container-highest": "#d3e4fe",
+                "outline-variant": "#c7c4d8",
+                "surface-dim": "#cbdbf5",
+                "on-secondary-container": "#5c647a",
+                "on-tertiary-fixed-variant": "#7b2f00",
+                "inverse-surface": "#213145",
+                "surface-container-high": "#dce9ff",
+                "inverse-primary": "#c3c0ff",
+                "tertiary-fixed": "#ffdbcc",
+                "on-tertiary-container": "#ffd2be",
+                "on-background": "#0b1c30",
+                "on-primary-fixed": "#0f0069",
+                "on-error-container": "#93000a",
+                "secondary-fixed": "#dae2fd",
+                "on-primary-container": "#dad7ff",
+                "primary-container": "#4f46e5",
+                "on-secondary-fixed": "#131b2e",
+                "secondary-container": "#dae2fd",
+                "on-surface": "#0b1c30",
+                "surface": "#f8f9ff",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-fixed-dim": "#ffb695",
+                "tertiary": "#7e3000",
+                "outline": "#777587",
+                "surface-container-low": "#eff4ff",
+                "on-error": "#ffffff",
+                "on-secondary": "#ffffff",
+                "surface-bright": "#f8f9ff",
+                "on-primary-fixed-variant": "#3323cc",
+                "on-tertiary-fixed": "#351000",
+                "background": "#f8f9ff",
+                "inverse-on-surface": "#eaf1ff",
+                "tertiary-container": "#a44100",
+                "on-tertiary": "#ffffff",
+                "on-surface-variant": "#464555"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "md": "16px",
+                "sm": "8px",
+                "margin-desktop": "40px",
+                "xs": "4px",
+                "xl": "32px",
+                "margin-mobile": "16px",
+                "base": "4px",
+                "gutter": "24px",
+                "lg": "24px",
+                "2xl": "48px",
+                "container-max": "1280px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": ["Geist"],
+                "code-md": ["Geist Mono"],
+                "body-lg": ["Geist"],
+                "headline-lg": ["Geist"],
+                "label-md": ["Geist"],
+                "display-lg": ["Geist"],
+                "body-md": ["Geist"],
+                "headline-md": ["Geist"],
+                "label-caps": ["JetBrains Mono"]
+        },
+        "fontSize": {
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "code-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+        }
+      },
+    },
+  }
+</script>
+<style>
+        body { background-color: #f8f9ff; color: #0b1c30; -webkit-font-smoothing: antialiased; }
+        .technical-glow { box-shadow: 0 0 40px -10px rgba(79, 70, 229, 0.15); }
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .pulse-online { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    </style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant docked full-width top-0 z-50 sticky">
+<div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-20">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">terminal</span>
+<span class="text-headline-md font-bold text-on-surface tracking-tighter">NOAH.DEV</span>
+</div>
+<nav class="hidden md:flex gap-lg">
+<a class="text-label-caps text-primary border-b-2 border-primary hover:text-primary transition-colors duration-200 py-1" href="#">STACK</a>
+<a class="text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200 py-1" href="#">PROJECTS</a>
+<a class="text-label-caps text-on-surface-variant hover:text-primary transition-colors duration-200 py-1" href="#">SYSTEMS</a>
+</nav>
+<button class="bg-primary-container text-on-primary-container px-lg py-sm font-label-caps text-label-md hover:brightness-110 active:scale-95 duration-100 ease-in-out transition-all rounded-lg">
+                DOWNLOAD CV
+            </button>
+</div>
+</header>
+<main class="min-h-screen pt-xl px-gutter max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="relative bento-grid mt-xl">
+<!-- Left Info Block -->
+<div class="col-span-12 lg:col-span-6 flex flex-col justify-center space-y-xl z-10">
+<div class="inline-flex items-center gap-xs px-sm py-1 bg-surface-container-high rounded-full border border-outline-variant w-fit">
+<span class="w-2 h-2 rounded-full bg-emerald-600 pulse-online"></span>
+<span class="text-label-md text-on-surface-variant">System Status: Online</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight max-w-xl">
+                    Systems Architect &amp; <span class="text-primary">Backend Lead</span>
+</h1>
+<p class="text-body-lg text-on-surface-variant max-w-lg leading-relaxed">
+                    Engineering high-performance distributed systems with <span class="text-on-surface font-semibold">FastAPI</span>, 
+                    optimizing LLM inference pipelines, and architecting robust <span class="text-on-surface font-semibold">MLOps</span> infrastructure 
+                    for enterprise-scale applications.
+                </p>
+<div class="flex flex-wrap gap-md pt-sm">
+<button class="bg-primary-container text-on-primary-container px-xl py-md font-label-caps text-label-md hover:brightness-110 transition-all technical-glow rounded-lg">
+                        VIEW PROJECTS
+                    </button>
+<button class="border border-outline text-on-surface px-xl py-md font-label-caps text-label-md hover:bg-surface-container-high transition-all rounded-lg">
+                        SYSTEM ARCHITECTURE
+                    </button>
+</div>
+<div class="grid grid-cols-2 gap-lg pt-xl border-t border-outline-variant">
+<div>
+<div class="text-headline-lg text-primary">99.9%</div>
+<div class="text-label-md text-on-surface-variant uppercase tracking-wider">Uptime Reliability</div>
+</div>
+<div>
+<div class="text-headline-lg text-primary">&lt;40ms</div>
+<div class="text-label-md text-on-surface-variant uppercase tracking-wider">Avg. Latency</div>
+</div>
+</div>
+</div>
+<!-- Central Visual Asset -->
+<div class="col-span-12 lg:col-span-6 relative flex items-center justify-center min-h-[500px]">
+<!-- Abstract Technical Graphic Background -->
+<div class="absolute inset-0 bg-surface-container-low rounded-xl overflow-hidden border border-outline-variant">
+</div>
+<!-- Floating Terminal Component -->
+<div class="relative z-10 w-4/5 bg-surface-container-lowest border border-outline-variant rounded-lg technical-glow overflow-hidden transform hover:-translate-y-2 transition-transform duration-500">
+<div class="h-8 bg-surface-container-high border-b border-outline-variant flex items-center px-md gap-xs">
+<div class="w-2.5 h-2.5 rounded-full bg-error"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
+<div class="ml-auto text-label-md text-on-surface-variant/70">noah_arch_deploy.py</div>
+</div>
+<div class="p-lg font-mono text-body-md space-y-sm">
+<div class="flex gap-md">
+<span class="text-primary font-semibold">class</span>
+<span class="text-on-surface">SystemsEngineer:</span>
+</div>
+<div class="pl-md flex gap-md">
+<span class="text-primary font-semibold">def</span>
+<span class="text-tertiary-container font-semibold">__init__</span>
+<span class="text-on-surface">(self):</span>
+</div>
+<div class="pl-xl">
+<span class="text-on-surface-variant">self.stack = ["Go", "Python", "Rust"]</span>
+</div>
+<div class="pl-xl">
+<span class="text-on-surface-variant">self.infra = "Kubernetes"</span>
+</div>
+<div class="pl-xl">
+<span class="text-on-surface-variant">self.focus = "Concurrency"</span>
+</div>
+<div class="pt-sm">
+<span class="text-emerald-600 font-semibold">&gt;&gt;&gt; Deploying to cluster... [OK]</span>
+</div>
+</div>
+</div>
+<!-- Decorative technical points -->
+<div class="absolute top-10 right-10 flex flex-col gap-sm">
+<div class="bg-surface-container-highest p-md border border-outline-variant flex items-center gap-md rounded-lg">
+<span class="material-symbols-outlined text-primary">hub</span>
+<div>
+<div class="text-label-caps text-on-surface">REDIS</div>
+<div class="text-xs text-on-surface-variant">Distributed Cache</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skill Cards / Bento Grid -->
+<section class="py-xl mt-xl">
+<div class="bento-grid">
+<div class="col-span-12 md:col-span-4 bg-surface-container-low p-xl border border-outline-variant hover:border-primary/50 transition-colors rounded-xl">
+<span class="material-symbols-outlined text-primary mb-md" style="font-variation-settings: 'FILL' 1;">dataset</span>
+<h3 class="font-headline-md text-on-surface mb-sm">Architecture</h3>
+<p class="text-on-surface-variant text-body-md">Microservices orchestration, event-driven designs, and high-availability scaling.</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-low p-xl border border-outline-variant hover:border-primary/50 transition-colors rounded-xl">
+<span class="material-symbols-outlined text-primary mb-md" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h3 class="font-headline-md text-on-surface mb-sm">AI Infrastructure</h3>
+<p class="text-on-surface-variant text-body-md">Vector databases (Pinecone, Weaviate), fine-tuning pipelines, and inference optimization.</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-low p-xl border border-outline-variant hover:border-primary/50 transition-colors rounded-xl">
+<span class="material-symbols-outlined text-primary mb-md" style="font-variation-settings: 'FILL' 1;">memory</span>
+<h3 class="font-headline-md text-on-surface mb-sm">Performance</h3>
+<p class="text-on-surface-variant text-body-md">Low-latency data processing, profiling hotspots, and system-level resource management.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant mt-xl">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-gutter py-xl max-w-container-max mx-auto gap-xl md:gap-0">
+<div class="flex flex-col items-center md:items-start">
+<span class="text-label-caps text-on-surface font-bold mb-sm">NOAH.DEV</span>
+<span class="text-label-md text-on-surface-variant">© 2024 SYSTEM ARCHITECT. ALL RIGHTS RESERVED.</span>
+</div>
+<div class="flex flex-wrap justify-center gap-lg">
+<a class="text-label-md text-on-surface-variant hover:text-primary transition-colors font-semibold" href="#">GITHUB</a>
+<a class="text-label-md text-on-surface-variant hover:text-primary transition-colors font-semibold" href="#">LINKEDIN</a>
+<a class="text-label-md text-on-surface-variant hover:text-primary transition-colors font-semibold" href="#">STACKOVERFLOW</a>
+<a class="text-label-md text-on-surface-variant hover:text-primary transition-colors font-semibold" href="#">SOURCE</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for terminal-like text effect
+        const codes = document.querySelectorAll('.font-mono, .text-on-surface-variant');
+        codes.forEach(code => {
+            code.addEventListener('mouseenter', () => {
+                code.style.transition = 'transform 0.2s ease-out';
+                code.style.transform = 'scale(1.01)';
+            });
+            code.addEventListener('mouseleave', () => {
+                code.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

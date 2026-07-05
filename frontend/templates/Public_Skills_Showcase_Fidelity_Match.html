@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skills Section - Technical Precision</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts for Geist equivalent feel -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: '#13121b',
+            'surface-dim': '#13121b',
+            'surface-bright': '#393842',
+            'surface-container-low': '#1b1b24',
+            'sunrise-accent': '#facc15', // Signature Yellow/Orange
+          },
+          fontFamily: {
+            sans: ['Geist', 'ui-sans-serif', 'system-ui'],
+          },
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-styling">
+    body {
+      background-color: #13121b;
+      font-family: 'Geist', sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* Glassmorphic card effect */
+    .skill-card {
+      background: rgba(27, 27, 36, 0.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-5px);
+      background: rgba(27, 27, 36, 0.9);
+      border-color: #facc15;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Vertical text styling */
+    .vertical-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    /* Background Geometric Accents */
+    .bg-accent-shape {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #facc15 0%, transparent 70%);
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    .bg-accent-bottom {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 250px;
+      height: 250px;
+      background: linear-gradient(315deg, #facc15 0%, transparent 70%);
+      clip-path: polygon(100% 0, 100% 100%, 0 100%);
+      opacity: 0.8;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="text-white antialiased">
+<!-- BEGIN: MainSkillsSection -->
+<main class="relative min-h-screen flex items-center justify-center p-4 md:p-8 overflow-hidden">
+<!-- Background Accents -->
+<div class="bg-accent-shape top-0 left-0" data-purpose="geometric-accent-top"></div>
+<div class="bg-accent-bottom bottom-0 right-0" data-purpose="geometric-accent-bottom"></div>
+<section class="relative z-10 w-full max-w-6xl flex flex-col md:flex-row gap-8 items-stretch">
+<!-- BEGIN: SidebarLabel -->
+<aside class="hidden md:flex items-center justify-center" data-purpose="vertical-sidebar">
+<div class="flex items-center gap-4">
+<span class="vertical-text text-3xl font-bold uppercase tracking-widest text-white">Skills</span>
+<div class="w-1.5 h-24 bg-sunrise-accent rounded-full"></div>
+</div>
+</aside>
+<!-- END: SidebarLabel -->
+<!-- BEGIN: ContentArea -->
+<div class="flex-1 flex flex-col">
+<!-- BEGIN: HeaderSection -->
+<header class="text-center mb-12">
+<h1 class="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">What I do</h1>
+<p class="max-w-2xl mx-auto text-gray-400 text-sm md:text-base leading-relaxed">
+            I am from Pakistan and currently living in Karachi. I am doing Bachelor's in Software engineering and I will graduate in the year 2021. I am Ui Ux designer and currently working as a freelancer.
+          </p>
+</header>
+<!-- END: HeaderSection -->
+<!-- BEGIN: SkillsGrid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6" data-purpose="skills-grid">
+<!-- Skill: HTML -->
+<div class="skill-card flex flex-col items-center justify-center p-6 rounded-lg aspect-square" data-purpose="skill-card">
+<img alt="HTML" class="w-16 h-16 mb-4 drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT74Pl77sIguZHf4faySjFjG5tvNoq--sao6FN9UYa0QgWR1lASG93vfY1gvHbyMpX72hcVg82IgHXWJjzrATrlxI63qgfNWye8zSKBtroX4WoMq3iBGRy1hJ_hNxwm1b8GdgNMf_VaonWapU7QmRNHRyxdzm-m9mt-m9TAPiNYdWv_kSksTiiR-2jbyj7ZITH2ZcnQB9QakJSneCbjMkjT6v1nZOWq6Qn0bVGsYPGd8IRE_A-6ESTbwVjzlDTBYLI7GRzU-ozv5w"/>
+<span class="text-xs font-bold uppercase tracking-widest text-gray-300">HTML</span>
+</div>
+<!-- Skill: CSS -->
+<div class="skill-card flex flex-col items-center justify-center p-6 rounded-lg aspect-square" data-purpose="skill-card">
+<img alt="CSS" class="w-16 h-16 mb-4 drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD4LyPahkHm_KosUrfBtSFfgqUZmHJqoTapUUOQakyvXgowy8oI113S4pIQwoK8iIf_7JEzr9MF_TfgWvy6hA2trXwfypTK-hzEJEupnVd20XANMCJiFBc3ymtaC5eKGuj_ZCWBPHIffQxz-emPqRPrz3dUDkbaGMQNCtuC_og2UrjoTBaqmRvir0ujv-_Fe57eg9CbtdqZO-qYBdBOozHyL8YUxi3gyI7MEoBT2nzEswwuVyuZHq2PymdyNIT3rLgwirbyhBJrZc"/>
+<span class="text-xs font-bold uppercase tracking-widest text-gray-300">CSS</span>
+</div>
+<!-- Skill: SASS -->
+<div class="skill-card flex flex-col items-center justify-center p-6 rounded-lg aspect-square" data-purpose="skill-card">
+<img alt="SASS" class="w-16 h-16 mb-4 drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNw2szxlYdXQwzeKitM9Kt1nhnqpE3vAS8f98heE_dbEGbyg_FVeAh9sEkH-d4IC-DECVCmjmJCDbh15mk8tWGAlWNzxpqI5oMqOi-IwU5_4GDqOEBUM9rk24VaHLCRMad8xzT1hc0ANRbH3Cj1t7dNj7sa1ijQM3mbsNa7-wIbBwnA9LQmy8H5nNslTdCtGaH1qH2knpdlsFh8O5qmJZB_uLnmqG6GYwKEpfnjSL4S-Yq16poydvzvx-3qw7ydWawMyKoVM-JjfA"/>
+<span class="text-xs font-bold uppercase tracking-widest text-gray-300">SASS</span>
+</div>
+<!-- Skill: JavaScript -->
+<div class="skill-card flex flex-col items-center justify-center p-6 rounded-lg aspect-square" data-purpose="skill-card">
+<img alt="JavaScript" class="w-16 h-16 mb-4 drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw-4WyL5b4vxPrIB2uft7COdypOcIcmpNL6QaZc371a4KmS0NLxySVaFS81v76I00FXYV_s-vhb2bQg_CS_WeLGK-M0s92A3Pmcx6qE_5ih-Hko5eIvDNtmFMYTwE1M58X4ke7cdeZsGJWURVmcRcDq1QUsmWpKZwATRlk0eDh4Rrn4zIPTBotGGKE9meXSyVZrpOnTWlNXz_XwFwwTpREz-sg48-XlEF1DRRbTvFrOHSlq_yEoF7wBvcF3HQ-RDRZJzCvjm8Wy6w"/>
+<span class="text-xs font-bold uppercase tracking-widest text-gray-300 text-center">JavaScript</span>
+</div>
+<!-- Skill: React JS -->
+<div class="skill-card flex flex-col items-center justify-center p-6 rounded-lg aspect-square" data-purpose="skill-card">
+<img alt="React JS" class="w-16 h-16 mb-4 drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzhhrXO_AHrg84yr0OezVDJt_T-lDaaw1FeaQ65CyZRyFGkNUYWcmHu8qRDjnlUoJOo3xEKylwJCQ-4XrTApeAinXfVyiWJfpm0hgf_SvElZQwQyHkJ4zALLB8ZfRJgtjpQIgB2M-zP4xev1I_V4cjGcW_wUOsHSWf54ZMKExBXYHYYQoA1hZ6IE0DlPMPFZT41Kk0ZL1nwCrh1a4ZbBu7PmV5kCGjMwzZIYfHSNUjb1zMIqW6uPa60qDqmEO_mOKqrAYu_s8K4OM"/>
+<span class="text-xs font-bold uppercase tracking-widest text-gray-300 text-center">React JS</span>
+</div>
+<!-- Skill: GitHub -->
+<div class="skill-card flex flex-col items-center justify-center p-6 rounded-lg aspect-square" data-purpose="skill-card">
+<img alt="GitHub" class="w-16 h-16 mb-4 invert drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9KtO9c26GRTqS1lHf2gqOmzup8j_9i_PKjyXZdtNxCCHsL36UaSsgprVUUbBUOCKtSZNafa9uhE2wk444c2WuBiQjLN3i1HHtLRQ_UIfOBhCrZLTUN4GSBTUeF7Fvvt00WxooChrtNjJDyBOEN7YLZHcriFx27LYOBTi5TeMwAEypUbQFeM4fVzufxxwZJ75ywaDQ_vW7Tz55VGHJ8-qQB82VrZcAJAOyntU_MyqbqCfMk41GSjowvstnPwo6n5-rmXKcK-dZn2g"/>
+<span class="text-xs font-bold uppercase tracking-widest text-gray-300">GitHub</span>
+</div>
+<!-- Skill: Node JS -->
+<div class="skill-card flex flex-col items-center justify-center p-6 rounded-lg aspect-square" data-purpose="skill-card">
+<img alt="Node JS" class="w-16 h-16 mb-4 drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHV4g7U9utwwMURR_K4QsaaaZyEudPawOS16ad8CpF8Un-HgGIPUQSopMG8g3hqIeyzOqJaJyC3TiG1EEzRQXPHhlfGCUfBIOmV95_P6__BA8YhlFRB8vHMQeZQb5vex_aqRseVsZqrQ2S5enD3CShRYy39F-xy6sBQy_8eVMR0qTWgQHlEZyOBYykpxs6RqNdqNhCekN65gH9ubJsCHHJ_BBa9ba2MwEIGq5ACQpwDE3CvHnB0xhMtpv0-HiZtP-ccN9peggaZe0"/>
+<span class="text-xs font-bold uppercase tracking-widest text-gray-300 text-center">Node JS</span>
+</div>
+<!-- Skill: Firebase -->
+<div class="skill-card flex flex-col items-center justify-center p-6 rounded-lg aspect-square" data-purpose="skill-card">
+<img alt="Firebase" class="w-16 h-16 mb-4 drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVmdUQKHET1TmerXFLAyMRi4IatJxZT4wYXSlSzk874ISY49-7fsebS1K38q1rtVm-tOJzdqZSChT_WurZMmLtNqbK5KugA5_kvydPr_d05X-tcIYdZ9LU6UpdxbgmVQrWedVDpsOcjG-frwzRIK3lsN_Jnu_s_x5C3R78myIKjQoRkI9uPkx9A_1baRDq-zpC80Gcaxij6wJd_q0thkYzG8fquveJ6UFDvGTKqnX7rgZu4GMRpmDqq4Nkfo0_vsQkqoM0psBDtkk"/>
+<span class="text-xs font-bold uppercase tracking-widest text-gray-300">Firebase</span>
+</div>
+<!-- Skill: MongoDB -->
+<div class="skill-card flex flex-col items-center justify-center p-6 rounded-lg aspect-square" data-purpose="skill-card">
+<img alt="MongoDB" class="w-16 h-16 mb-4 drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZIG2OaLxWqMKbjvZBQdVAlVC14hLNbP58tkYqgZAXDdnsjg1wF142Kx8ubcPL8TyMIqk2DW1ivBsKuBz8715ZScGLGoxyatS12bmyJRzD2nQnzAoDHRFdULUu0FEjyUEmno7fn9nsswo4LCd843Kv0BBdZKFfYZH8ur1IUczDxdkxts4W3WJoegGx5veW2OhA5X_IR0aPyTWzTVK9FPQ69FNE6Y_1cN_PLTMaFanmKHhlMDp67Ap3D2fbjf71h0pKoIAm0ZEh2YU"/>
+<span class="text-xs font-bold uppercase tracking-widest text-gray-300 text-center">MongoDB</span>
+</div>
+<!-- Skill: Docker -->
+<div class="skill-card flex flex-col items-center justify-center p-6 rounded-lg aspect-square" data-purpose="skill-card">
+<img alt="Docker" class="w-16 h-16 mb-4 drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1SXlNxI_uACkGEdEi43qFaOLKF4Xef1SCMOcpX8c-Yoitzj0YyQZnuZeI3CuvRAq0yVHGMyjQWffryUSoKRpqzyWq0oVMdofL4YonY055-lmFTLUMX6TbO30kn07PRMTkjSzYwODB174VLY1EWrlKFL6wnfA0inTakn62NSFlcKq44LdG-iB1tzEIBIaGfPYdI0U4D7NmtP4IeXZd4WTkdtfFaZfJvmNN31Ez1cQ8bi7C2xp-z0BtV3Bdtx5HLVMeBoWAYifFxbo"/>
+<span class="text-xs font-bold uppercase tracking-widest text-gray-300">Docker</span>
+</div>
+</div>
+<!-- END: SkillsGrid -->
+</div>
+<!-- END: ContentArea -->
+</section>
+</main>
+<!-- END: MainSkillsSection -->
+</body></html>

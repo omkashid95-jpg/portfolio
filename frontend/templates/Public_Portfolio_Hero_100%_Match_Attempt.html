@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Noah - Web Developer Portfolio</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts for typography (Inter or similar sans-serif) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="custom-styles">
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0d0d0d;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* BEGIN: Background Elements */
+    .bg-gradient-mesh {
+      background: radial-gradient(circle at 60% 50%, rgba(255, 92, 0, 0.15) 0%, rgba(13, 13, 13, 1) 70%);
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .sunrise-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 92, 0, 0.2) 0%, rgba(255, 92, 0, 0) 70%);
+      border-radius: 50%;
+      top: 50%;
+      left: 65%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      filter: blur(80px);
+    }
+
+    .orbit-ring {
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      top: 50%;
+      left: 65%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    /* Glassmorphism Testimonial */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      position: relative;
+    }
+
+    .glass-card::before {
+      content: '"';
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 40px;
+      color: #ff5c00;
+      font-family: serif;
+      opacity: 0.6;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, #ff7a00 0%, #ff5c00 100%);
+      box-shadow: 0 10px 20px rgba(255, 92, 0, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px rgba(255, 92, 0, 0.4);
+    }
+
+    /* Orbiting Icons Positioning */
+    .icon-js { top: 20%; right: 25%; }
+    .icon-react { top: 45%; right: 10%; }
+    .icon-ts { bottom: 25%; right: 15%; }
+    .icon-node { bottom: 15%; right: 35%; }
+
+    /* Custom Scrollbar for hidden horizontal overflow */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-6 md:p-12 relative">
+<!-- BEGIN: Background Decoration -->
+<div class="bg-gradient-mesh"></div>
+<div class="sunrise-glow"></div>
+<div class="orbit-ring w-[500px] h-[500px]"></div>
+<div class="orbit-ring w-[700px] h-[700px]"></div>
+<!-- END: Background Decoration -->
+<!-- BEGIN: MainHeader -->
+<header class="flex justify-between items-center w-full max-w-7xl mx-auto z-10" data-purpose="header">
+<div class="text-2xl font-bold tracking-tighter" data-purpose="logo">
+      noah<span class="text-[#ff5c00]">.</span>
+</div>
+<nav class="hidden md:flex items-center space-x-10 text-sm font-medium text-gray-400" data-purpose="navigation">
+<a class="text-white" href="#">Home</a>
+<a class="hover:text-white transition" href="#">Skills</a>
+<a class="hover:text-white transition" href="#">Experience</a>
+<a class="hover:text-white transition" href="#">Connect</a>
+</nav>
+<button class="flex items-center space-x-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-xs font-semibold hover:bg-white/10 transition" data-purpose="resume-button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Download Resume</span>
+</button>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<main class="flex-grow flex items-center justify-center max-w-7xl mx-auto w-full relative pt-12 md:pt-0" data-purpose="hero-section">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full">
+<!-- Text Content Area -->
+<div class="z-10 text-center md:text-left" data-purpose="hero-text">
+<h2 class="text-lg md:text-xl font-light text-gray-400 mb-2">
+          Hey, I am <span class="text-[#ff5c00] font-semibold">Noah</span>
+</h2>
+<h1 class="text-5xl md:text-8xl font-extrabold leading-tight tracking-tight mb-6">
+          Web <br/> developer
+        </h1>
+<p class="text-gray-400 max-w-md text-sm md:text-base leading-relaxed mb-8 mx-auto md:mx-0">
+          I am a passionate web developer with experience in building high-quality websites and web applications using modern technologies.
+        </p>
+<div class="flex flex-col sm:flex-row items-center justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+<button class="btn-primary px-10 py-4 rounded-full font-bold text-sm tracking-wide">
+            Hire me
+          </button>
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/5 transition">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<!-- Glassmorphic Testimonial Floating -->
+<div class="glass-card mt-16 p-6 max-w-xs text-left hidden lg:block" data-purpose="testimonial-card">
+<p class="text-xs text-gray-300 italic mb-4 leading-relaxed pl-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+<div class="flex items-center space-x-3">
+<img alt="Client" class="w-10 h-10 rounded-full border-2 border-[#ff5c00]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuIiWRMexVqWjQIjOOXk3EX3XikD3dVRrYMGKEz0VRFLLRONemVrgLM-l-ht4ArxzqRDrDQsu3vHL-JbK_GFhMOPalHvM37wJbwx1ZQEd5KFepAgxEMWUzcSITdF4UDKvKHGJW91R7qTNCK5ezJ0yZA9g3Tw_qw-j2reJ46wEQGH6sEWP2cah2aznRXL48mgSdDLKnjIelVzfyCG8IhFAQOe-OdkOHigz85wSNIcXtmZ5gph0z1Zq0QrbXLUkU4WcgY1zTqJ2qUfw"/>
+<div>
+<p class="text-[10px] font-bold">Caroline Abbott</p>
+<p class="text-[9px] text-gray-500 uppercase tracking-widest">Business Owner</p>
+</div>
+</div>
+<!-- Tiny accent light -->
+<div class="absolute -bottom-1 -right-1 w-16 h-16 bg-[#ff5c00]/20 blur-xl rounded-full"></div>
+</div>
+</div>
+<!-- Character Image Area -->
+<div class="relative flex justify-center items-center" data-purpose="hero-character">
+<!-- Main Character -->
+<img alt="Noah Character" class="w-full max-w-[600px] z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" src="https://lh3.googleusercontent.com/aida/AP1WRLt3qf94Df2RhsNHRskMqdaawAz5W7h9pXj6BWqvgpjoM3G80Zwxcu5cx4WFfVLMSp_YpmJrK_Lm8JOK0iJ7ehmc0ETCDFACNLGVDVQAeo88AP38pjIgqNHZmwLnLDHofBFKYwbZDGb2GXJ25DhaG1QEdC9CMEpWeMB7q_otj_2p7CiQkSO0m1RRtzvK0L5Mra49Rk38E11yhhylO0AYUPtGdNat9kjKI8HcpS-ZUhXrgNdv2V4vkETXI4c"/>
+<!-- Orbiting Tech Icons -->
+<div class="absolute inset-0 z-20 pointer-events-none">
+<!-- JS Icon -->
+<div class="icon-js absolute bg-[#f7df1e] text-black font-bold p-3 rounded-xl shadow-lg transform rotate-12 scale-90">
+<span class="text-xs">JS</span>
+</div>
+<!-- React Icon -->
+<div class="icon-react absolute bg-[#23272f] p-3 rounded-xl shadow-xl transform -rotate-12">
+<svg class="w-6 h-6 text-[#61dafb]" fill="currentColor" viewbox="0 0 24 24"><path d="M12 14a2 2 0 100-4 2 2 0 000 4z"></path><path d="M10.5 5c0 .5.7 1.4 1.5 1.4s1.5-.9 1.5-1.4S12.8 3.6 12 3.6s-1.5.9-1.5 1.4zm0 14c0-.5.7-1.4 1.5-1.4s1.5.9 1.5 1.4-.7 1.4-1.5 1.4-1.5-.9-1.5-1.4zm9.3-5.5c-.4.3-1.4.5-1.9 1s.2 1.6-.2 1.9-1.4-.5-1.9-1.1-.9.2-1.4.2-1.4-.7-1.4-1.5c.1-.8.9-1.4 1.6-1.3.8.1 1.3 1 1.2 1.8h2z"></path></svg>
+</div>
+<!-- TS Icon -->
+<div class="icon-ts absolute bg-[#3178c6] text-white font-bold p-3 rounded-xl shadow-lg transform -rotate-3 scale-110">
+<span class="text-xs">TS</span>
+</div>
+<!-- Node Icon -->
+<div class="icon-node absolute bg-[#339933] text-white p-3 rounded-xl shadow-lg transform rotate-6">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2L4.5 6.3v8.4L12 19l7.5-4.3V6.3L12 2zm0 2.2l5.3 3v6.1L12 16.5l-5.3-3.2V7.2l5.3-3z"></path></svg>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- END: HeroSection -->
+<!-- BEGIN: FooterNavigation -->
+<footer class="w-full flex justify-center py-6" data-purpose="footer">
+<div class="flex space-x-2" data-purpose="pagination-dots">
+<div class="w-2 h-2 rounded-full bg-[#ff5c00]"></div>
+<div class="w-2 h-2 rounded-full bg-gray-700"></div>
+<div class="w-2 h-2 rounded-full bg-gray-700"></div>
+<div class="w-2 h-2 rounded-full bg-gray-700"></div>
+</div>
+</footer>
+<!-- END: FooterNavigation -->
+</body></html>

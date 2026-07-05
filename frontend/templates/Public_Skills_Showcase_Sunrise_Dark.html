@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DevEngine v2.0 | Technical Expertise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Geist+Mono:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Geist', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #13121b;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 77, 0, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Animation Styles */
+        .skill-progress-fill {
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .bento-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        .bento-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pulse-icon {
+            animation: iconPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes iconPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        #philosophy-card {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ff4d00 0%, #a44100 100%);
+        }
+        
+        #philosophy-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        #philosophy-card:hover #philosophy-glow {
+            opacity: 1;
+        }
+
+        .interactive-element {
+            transition: all 0.2s ease;
+        }
+        .interactive-element:active {
+            transform: scale(0.98);
+        }
+
+        /* Atmospheric Background Elements from SCREEN_4 */
+        .sunrise-glow {
+            position: fixed;
+            top: 50%;
+            right: -10%;
+            transform: translateY(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 77, 0, 0.15) 0%, rgba(255, 77, 0, 0) 70%);
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .orbital-path {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#ff4d00", // Sunrise Orange
+                        "surface": "#13121b",
+                        "on-surface": "#ffffff",
+                        "on-surface-variant": "#a1a1aa",
+                        "outline-variant": "rgba(255, 255, 255, 0.1)",
+                        "surface-container": "#1e1d29",
+                        "secondary-container": "rgba(255, 77, 0, 0.2)",
+                        "on-secondary-container": "#ffbd99"
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen relative overflow-x-hidden">
+<!-- Atmospheric Background Layer -->
+<div class="sunrise-glow"></div>
+<div class="orbital-path w-[600px] h-[600px]"></div>
+<div class="orbital-path w-[900px] h-[900px]"></div>
+<div class="orbital-path w-[1200px] h-[1200px]"></div>
+<!-- NavigationDrawer Shell (Left) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface/80 backdrop-blur-xl border-r border-outline-variant flex flex-col p-md z-50 hidden md:flex">
+<div class="flex items-center gap-3 mb-xl px-2">
+<span class="material-symbols-outlined text-primary text-2xl pulse-icon">terminal</span>
+<span class="text-on-surface font-bold">DevEngine v2.0</span>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all rounded-lg group interactive-element" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">System Health</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container font-bold rounded-lg group interactive-element" href="#">
+<span class="material-symbols-outlined">memory</span>
+<span class="text-sm font-medium">ML Models</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all rounded-lg group interactive-element" href="#">
+<span class="material-symbols-outlined">dataset</span>
+<span class="text-sm font-medium">Project CRUD</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all rounded-lg group interactive-element" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="text-sm font-medium">Content Engine</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all rounded-lg group interactive-element" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-sm font-medium">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto pt-md border-t border-outline-variant">
+<div class="flex items-center gap-3 px-2 mb-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-outline-variant">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm3Gu7KjAbLIH-rfj09CKZOVyMYDfhnnpJGs2lulsEDIQXKmz49TAFEqmBxo9yFIgrRwOK43dQC4RhaopooyGW3PeetY9Y30I4p9pcUQAwp-JpnJg69c6b-Qt0zmTNXlSXtMCrEYEE87CfkkkhWsl0fliVEyjDg3VQ_AcRVNZbOxZn85TTtuTgUP3HXEvvRplV5v6bgVqCDXMDrQDbIUa5cSVfUtyAsgfvBiq5gBX0XwWfDYMuOy6miPiYtsfbYr6sDUOruA2IKmM"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Lead Architect</p>
+<p class="text-xs text-on-surface-variant">System Admin</p>
+</div>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface rounded-lg interactive-element" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<div class="px-3 py-2 text-[10px] font-mono text-on-surface-variant/50">v4.2.0-stable</div>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen relative z-10">
+<!-- TopAppBar -->
+<header class="bg-surface/50 backdrop-blur-md border-b border-outline-variant sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-lg max-w-7xl mx-auto h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary md:hidden interactive-element">menu</span>
+<h1 class="text-2xl font-bold text-on-surface tracking-tighter">Technical Expertise</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 mr-4">
+<a class="text-primary border-b-2 border-primary pb-1 text-xs uppercase font-bold tracking-wider interactive-element" href="#">Overview</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-xs uppercase font-bold tracking-wider interactive-element" href="#">Stacks</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-xs uppercase font-bold tracking-wider interactive-element" href="#">Deployments</a>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-white/5 rounded-full transition-colors interactive-element">search</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-white/10">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzZZ6QIFIis7BdKyc786caAdG8XUeqy5Sn-GcT2mEN5kaAPQsrE9ZZLOLrd0usd1VX2JN7o0GyqNkdifmGI58tkPoKLux-OXiAiEdYhiQPArc_0vDAGg7S5wesi0IDCk7Rpk8jIlgmP8JRHdorWGU-oT_jApglx5kn1okVmTQQS7TUhVn11XfIDWhas2d9kiJ_8tBRGcZuAA00pyRV-f_DgMw4W59CCPG8JlbXE7eoRF1nbQkVyYxxrYyBEaJ3_1X5p1DJDzzW8Ks"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas Area -->
+<section class="p-lg max-w-[1280px] mx-auto w-full flex-1">
+<!-- Header Section -->
+<div class="mb-xl">
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                Mapping the intersection of design and data logic. A comprehensive breakdown of core engineering capabilities and technical proficiency levels across the modern stack.
+            </p>
+</div>
+<!-- Bento Grid of Skills -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Frontend Card -->
+<div class="md:col-span-8 bento-card glass-card p-xl rounded-2xl cursor-pointer group relative overflow-hidden interactive-element">
+<div class="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[120px] pulse-icon text-white">web</span>
+</div>
+<div class="flex items-center gap-3 mb-xl">
+<span class="material-symbols-outlined text-primary pulse-icon" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h3 class="text-2xl font-bold text-on-surface">Frontend Architecture</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-xs font-bold uppercase text-on-surface tracking-wider">React / Next.js</span>
+<span class="text-xs font-mono text-primary">94%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" data-target="94%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-xs font-bold uppercase text-on-surface tracking-wider">TypeScript</span>
+<span class="text-xs font-mono text-primary">90%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" data-target="90%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-xs font-bold uppercase text-on-surface tracking-wider">Tailwind CSS</span>
+<span class="text-xs font-mono text-primary">98%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" data-target="98%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-xs font-bold uppercase text-on-surface tracking-wider">State Engines</span>
+<span class="text-xs font-mono text-primary">85%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" data-target="85%"></div>
+</div>
+</div>
+</div>
+<div class="mt-xl flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-white/5 text-on-surface-variant rounded text-[10px] font-mono border border-white/10 hover:border-primary/50 transition-colors">Zustand</span>
+<span class="px-3 py-1 bg-white/5 text-on-surface-variant rounded text-[10px] font-mono border border-white/10 hover:border-primary/50 transition-colors">Redux</span>
+<span class="px-3 py-1 bg-white/5 text-on-surface-variant rounded text-[10px] font-mono border border-white/10 hover:border-primary/50 transition-colors">Framer Motion</span>
+</div>
+</div>
+<!-- Backend Card -->
+<div class="md:col-span-4 bento-card glass-card p-xl rounded-2xl cursor-pointer flex flex-col interactive-element">
+<div class="flex items-center gap-3 mb-xl">
+<span class="material-symbols-outlined text-primary pulse-icon">database</span>
+<h3 class="text-2xl font-bold text-on-surface">Backend</h3>
+</div>
+<div class="space-y-8 flex-1">
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-xs font-bold uppercase text-on-surface tracking-wider">Node.js</span>
+<span class="text-xs font-mono text-primary">88%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" data-target="88%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-xs font-bold uppercase text-on-surface tracking-wider">Python</span>
+<span class="text-xs font-mono text-primary">82%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" data-target="82%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-xs font-bold uppercase text-on-surface tracking-wider">GraphQL</span>
+<span class="text-xs font-mono text-primary">75%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" data-target="75%"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 p-3 bg-white/5 rounded-lg border border-white/5">
+<p class="text-[11px] font-mono text-on-surface-variant leading-relaxed">
+                        Focusing on high-concurrency microservices and distributed data systems.
+                    </p>
+</div>
+</div>
+<!-- Tools & Infrastructure -->
+<div class="md:col-span-5 bento-card glass-card p-xl rounded-2xl cursor-pointer interactive-element">
+<div class="flex items-center gap-3 mb-xl">
+<span class="material-symbols-outlined text-primary pulse-icon">cloud</span>
+<h3 class="text-2xl font-bold text-on-surface">DevOps &amp; Tools</h3>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4 group/skill">
+<div class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 group-hover/skill:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover/skill:text-primary transition-colors">terminal</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-xs font-bold text-on-surface tracking-wider">AWS Infrastructure</span>
+<span class="text-xs font-mono text-primary">78%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full">
+<div class="skill-progress-fill h-full bg-primary" data-target="78%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 group/skill">
+<div class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 group-hover/skill:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover/skill:text-primary transition-colors">rebase_edit</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-xs font-bold text-on-surface tracking-wider">Docker / K8s</span>
+<span class="text-xs font-mono text-primary">64%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full">
+<div class="skill-progress-fill h-full bg-primary" data-target="64%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 group/skill">
+<div class="w-10 h-10 flex items-center justify-center bg-white/5 rounded-lg border border-white/10 group-hover/skill:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover/skill:text-primary transition-colors">monitoring</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-xs font-bold text-on-surface tracking-wider">CI/CD Pipelines</span>
+<span class="text-xs font-mono text-primary">92%</span>
+</div>
+<div class="h-1 w-full bg-white/5 rounded-full">
+<div class="skill-progress-fill h-full bg-primary" data-target="92%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Decorative Card (Technical Philosophy) -->
+<div class="md:col-span-7 bento-card p-xl rounded-2xl relative overflow-hidden flex items-end interactive-element shadow-2xl shadow-primary/20" id="philosophy-card">
+<div id="philosophy-glow"></div>
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="grid grid-cols-12 h-full gap-2 p-2">
+<div class="col-span-1 bg-white h-full"></div>
+<div class="col-span-1 bg-white h-1/2"></div>
+<div class="col-span-1 bg-white h-3/4"></div>
+<div class="col-span-1 bg-white h-full"></div>
+<div class="col-span-1 bg-white h-2/3"></div>
+</div>
+</div>
+<div class="relative z-10 max-w-md">
+<h4 class="text-2xl font-bold text-white mb-2">Technical Philosophy</h4>
+<p class="text-sm text-white/90 leading-relaxed font-medium">
+                        "Complexity is the enemy of execution. We build systems that are as robust as they are elegant, ensuring long-term maintainability through strict typing and modularity."
+                    </p>
+</div>
+<div class="ml-auto relative z-10 hidden sm:block">
+<div class="w-20 h-20 rounded-full border-2 border-white/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-3xl pulse-icon" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Detailed Grid -->
+<div class="mt-2xl">
+<h3 class="text-2xl font-bold mb-lg border-b border-white/10 pb-2 inline-block text-on-surface">Methodology &amp; Logic</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-md glass-card rounded-xl transition-all interactive-element bento-card">
+<div class="flex items-center gap-3 mb-3">
+<span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+<span class="text-xs font-bold uppercase tracking-tight text-on-surface">Unit Testing</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                        Strict TDD approach using Vitest and Playwright for 90%+ coverage.
+                    </p>
+</div>
+<div class="p-md glass-card rounded-xl transition-all interactive-element bento-card">
+<div class="flex items-center gap-3 mb-3">
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#ff4d00]"></span>
+<span class="text-xs font-bold uppercase tracking-tight text-on-surface">Clean Code</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                        Adhering to SOLID principles and functional programming patterns.
+                    </p>
+</div>
+<div class="p-md glass-card rounded-xl transition-all interactive-element bento-card">
+<div class="flex items-center gap-3 mb-3">
+<span class="w-2 h-2 rounded-full bg-orange-300 shadow-[0_0_8px_#fbd38d]"></span>
+<span class="text-xs font-bold uppercase tracking-tight text-on-surface">Scalability</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                        Horizontal scaling through containerization and serverless clusters.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Shell -->
+<footer class="w-full py-xl px-lg mt-auto flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto border-t border-white/5 bg-surface/30 backdrop-blur-md">
+<div class="text-[11px] font-mono text-on-surface-variant/50 mb-4 md:mb-0">
+            © 2024 Engineered by Terminal. Built with High-Performance Logic.
+        </div>
+<div class="flex gap-6">
+<a class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant hover:text-primary transition-colors interactive-element" href="#">Documentation</a>
+<a class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant hover:text-primary transition-colors interactive-element" href="#">System Status</a>
+<a class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant hover:text-primary transition-colors interactive-element" href="#">Source Code</a>
+<a class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant hover:text-primary transition-colors interactive-element" href="#">API Docs</a>
+</div>
+</footer>
+</main>
+<script>
+    // Interactive Glow Effect for Philosophy Section
+    const philosophyCard = document.getElementById('philosophy-card');
+    const philosophyGlow = document.getElementById('philosophy-glow');
+
+    philosophyCard.addEventListener('mousemove', (e) => {
+        const rect = philosophyCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        philosophyGlow.style.left = `${x}px`;
+        philosophyGlow.style.top = `${y}px`;
+    });
+
+    // Intersection Observer for Slide-up and Progress Bar Animation
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const revealOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Reveal the card
+                entry.target.classList.add('visible');
+                
+                // Trigger progress bars inside the card
+                const progressBars = entry.target.querySelectorAll('.skill-progress-fill');
+                progressBars.forEach(bar => {
+                    const target = bar.getAttribute('data-target');
+                    // Small delay for better visual sequence
+                    setTimeout(() => {
+                        bar.style.width = target;
+                    }, 200);
+                });
+                
+                // Stop observing once revealed
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Apply observer to all bento cards
+    document.querySelectorAll('.bento-card').forEach(card => {
+        revealOnScroll.observe(card);
+    });
+
+    // Interactive Feedback for generic elements
+    document.querySelectorAll('.interactive-element').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            if (el.tagName === 'A' || el.tagName === 'BUTTON') {
+                el.style.opacity = '0.8';
+            }
+        });
+        el.addEventListener('mouseleave', () => {
+            if (el.tagName === 'A' || el.tagName === 'BUTTON') {
+                el.style.opacity = '1';
+            }
+        });
+    });
+</script>
+</body></html>

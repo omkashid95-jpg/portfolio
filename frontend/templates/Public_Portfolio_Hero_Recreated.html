@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Noah | Web Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#ff5c00',
+              surface: '#13121b',
+              'surface-bright': '#393842',
+              'surface-low': '#1b1b24',
+            }
+          },
+          fontFamily: {
+            sans: ['Geist', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-animations">
+    /* Subtle orbit animation for icons */
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+    }
+    .orbiting-icon {
+      position: absolute;
+      animation: orbit 20s linear infinite;
+    }
+    .delay-1 { animation-delay: -5s; }
+    .delay-2 { animation-delay: -10s; }
+    .delay-3 { animation-delay: -15s; }
+
+    /* Background Glow Effects */
+    .glow-orange {
+      background: radial-gradient(circle, rgba(255, 92, 0, 0.15) 0%, rgba(255, 92, 0, 0) 70%);
+    }
+    
+    /* Custom glassmorphism */
+    .glass {
+      background: rgba(57, 56, 66, 0.2);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-brand-surface text-white font-sans antialiased overflow-x-hidden min-h-screen">
+<!-- BEGIN: MainHeader -->
+<header class="fixed top-0 left-0 right-0 z-50 px-6 py-6" data-purpose="navigation-bar">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<!-- Logo -->
+<div class="text-2xl font-bold tracking-tight" data-purpose="brand-logo">
+        noah<span class="text-brand-orange">.</span>
+</div>
+<!-- Navigation Links - Hidden on small mobile, visible on medium+ -->
+<nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400" data-purpose="main-nav">
+<a class="text-white" href="#">Home</a>
+<a class="hover:text-white transition-colors" href="#">Skills</a>
+<a class="hover:text-white transition-colors" href="#">Experience</a>
+<a class="hover:text-white transition-colors" href="#">Contact</a>
+</nav>
+<!-- Action Button -->
+<button class="flex items-center gap-2 bg-brand-surface-low border border-white/10 px-4 py-2 rounded-full text-sm font-medium hover:bg-brand-surface-bright transition-all" data-purpose="cta-resume">
+<svg class="h-4 w-4" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+        Download Resume
+      </button>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<main class="relative pt-32 pb-20 px-6 min-h-screen flex items-center justify-center overflow-hidden" data-purpose="hero-content">
+<!-- Background Accents -->
+<div class="absolute top-1/4 -right-20 w-96 h-96 glow-orange rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-1/4 -left-20 w-96 h-96 glow-orange rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+<!-- Text Content Column -->
+<div class="space-y-8" data-purpose="hero-text-container">
+<div class="space-y-2">
+<p class="text-xl text-gray-300 font-light">Hey, I am <span class="text-brand-orange font-semibold">Noah</span></p>
+<h1 class="text-6xl md:text-8xl font-bold tracking-tight">
+            Web <br/> developer
+          </h1>
+</div>
+<p class="text-gray-400 max-w-md leading-relaxed">
+          I build high-performance, beautiful web experiences using modern technologies. Passionate about clean code and pixel-perfect design.
+        </p>
+<!-- CTA Buttons -->
+<div class="flex items-center gap-4">
+<button class="bg-brand-orange text-white px-8 py-3 rounded-full font-bold text-lg hover:brightness-110 transition-all shadow-lg shadow-brand-orange/20" data-purpose="hire-me-btn">
+            Hire me
+          </button>
+<button class="p-3 bg-brand-surface-low border border-white/10 rounded-full hover:bg-brand-surface-bright transition-all" data-purpose="shop-btn">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+<!-- Testimonial Card Floating -->
+<div class="hidden md:block pt-12">
+<div class="glass p-6 rounded-3xl max-w-xs shadow-2xl relative" data-purpose="floating-testimonial">
+<!-- Quote Icon -->
+<div class="absolute -top-4 -left-4 text-brand-orange">
+<svg class="h-8 w-8 fill-current" viewbox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.899 14.899 16.017 16 16.017L19 16.017C19.5523 16.017 20 15.5693 20 15.017L20 9.017C20 8.46471 19.5523 8.017 19 8.017L15 8.017C14.4477 8.017 14 7.56928 14 7.017L14 5.017C14 4.46471 14.4477 4.017 15 4.017L19 4.017C21.2091 4.017 23 5.80786 23 8.017L23 15.017C23 17.2261 21.2091 19.017 19 19.017L17.017 19.017C16.4647 19.017 16.017 19.4647 16.017 20.017L16.017 21L14.017 21ZM1 21L1 18C1 16.899 1.881 16.017 2.983 16.017L5.983 16.017C6.53528 16.017 6.983 15.5693 6.983 15.017L6.983 9.017C6.983 8.46471 6.53528 8.017 5.983 8.017L2 8.017C1.44772 8.017 1 7.56928 1 7.017L1 5.017C1 4.46471 1.44772 4.017 2 4.017L6 4.017C8.20914 4.017 10 5.80786 10 8.017L10 15.017C10 17.2261 8.20914 19.017 6 19.017L4.017 19.017C3.46472 19.017 3.017 19.4647 3.017 20.017L3.017 21L1 21Z"></path></svg>
+</div>
+<p class="text-sm text-gray-300 italic mb-4">
+              "Noah transformed our vision into a stunning reality. His attention to detail is unmatched in the industry."
+            </p>
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-brand-surface-bright overflow-hidden">
+<img alt="Client" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8OmwT4p3yHCYsl6fX54F5-tCqjiMLOfH2lut8sttkDTLfjlzsBSMVpkGeMuxyyIrbqNLkbr790WEpX5K13Y48Nv2bypeAb6ZE17PNoO50hgZvEgTATu66VW8qaEh6m_ZmY6I7bvdl0BL-Ozm3Q159D3ZL10VktBQ1LBkPlbCbz_eozKrW45i8hk_WJGfEbtF18D6G6sM9_w8B5UswZtMxo60DkQO8HjpTy50Nh5EskfnfA_38PV3XnI3n8gl5jUVRgnt-kuURnRo"/>
+</div>
+<div>
+<h4 class="text-xs font-bold">Caroline Abbott</h4>
+<p class="text-[10px] text-gray-500 uppercase">Product Owner</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Character Visual Column -->
+<div class="relative flex justify-center items-center" data-purpose="hero-visual-container">
+<!-- Orbiting Technical Icons Container -->
+<div class="absolute inset-0 flex items-center justify-center">
+<!-- JS Icon -->
+<div class="orbiting-icon w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center text-black font-bold shadow-xl">JS</div>
+<!-- React Icon (Simulated) -->
+<div class="orbiting-icon delay-1 w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold shadow-xl">⚛</div>
+<!-- CSS Icon -->
+<div class="orbiting-icon delay-2 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold shadow-xl">#</div>
+<!-- Node Icon -->
+<div class="orbiting-icon delay-3 w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white font-bold shadow-xl">⬢</div>
+</div>
+<!-- Main Character Image -->
+<div class="relative z-10 w-full max-w-md lg:max-w-lg transition-transform hover:scale-105 duration-700">
+<!-- Decorative glow behind character -->
+<div class="absolute inset-0 bg-brand-orange/20 blur-[100px] rounded-full scale-75"></div>
+<img alt="3D Developer Character" class="w-full h-auto drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)]" src="https://lh3.googleusercontent.com/aida/AP1WRLt3qf94Df2RhsNHRskMqdaawAz5W7h9pXj6BWqvgpjoM3G80Zwxcu5cx4WFfVLMSp_YpmJrK_Lm8JOK0iJ7ehmc0ETCDFACNLGVDVQAeo88AP38pjIgqNHZmwLnLDHofBFKYwbZDGb2GXJ25DhaG1QEdC9CMEpWeMB7q_otj_2p7CiQkSO0m1RRtzvK0L5Mra49Rk38E11yhhylO0AYUPtGdNat9kjKI8HcpS-ZUhXrgNdv2V4vkETXI4c"/>
+</div>
+<!-- Floating Accent (Orange Bolt/Shape as seen in reference) -->
+<div class="absolute -top-10 -right-4 w-24 h-24 text-brand-orange animate-pulse opacity-80">
+<svg fill="currentColor" viewbox="0 0 24 24">
+<path d="M13 10V3L4 14H11V21L20 10H13Z"></path>
+</svg>
+</div>
+</div>
+</div>
+</main>
+<!-- END: HeroSection -->
+<!-- BEGIN: FooterDecoration -->
+<footer class="fixed bottom-0 left-0 right-0 p-6 flex justify-between items-end pointer-events-none">
+<!-- Chat Icon -->
+<div class="pointer-events-auto">
+<div class="bg-brand-surface-low border border-white/10 p-4 rounded-full shadow-lg cursor-pointer hover:bg-brand-surface-bright transition-colors">
+<svg class="h-6 w-6 text-brand-orange" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</footer>
+<!-- END: FooterDecoration -->
+</body></html>

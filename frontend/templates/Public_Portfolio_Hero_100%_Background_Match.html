@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Noah - Web Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style data-purpose="typography">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .font-brand {
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+  </style>
+<style data-purpose="layout-and-background">
+    /* Main container mimicking the rounded portfolio frame in the screenshot */
+    #portfolio-frame {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16 / 10;
+      margin: 40px auto;
+      border-radius: 40px;
+      background: radial-gradient(circle at 50% 50%, #1a1512 0%, #0a0a0a 100%);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* The glowing orange arc/sunrise effect behind the character */
+    .sunrise-glow {
+      position: absolute;
+      bottom: -10%;
+      right: -5%;
+      width: 60%;
+      height: 70%;
+      background: radial-gradient(circle at 70% 70%, rgba(255, 87, 34, 0.4) 0%, rgba(255, 87, 34, 0) 70%);
+      filter: blur(60px);
+      z-index: 1;
+    }
+
+    /* Orbital paths for icons */
+    .orbit-ring {
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      top: 50%;
+      left: 70%;
+      transform: translate(-50%, -50%);
+    }
+
+    .orbit-1 { width: 400px; height: 400px; }
+    .orbit-2 { width: 600px; height: 600px; }
+
+    /* Lighting accents */
+    .top-light {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-black">
+<!-- BEGIN: PortfolioFrame -->
+<main data-purpose="main-portfolio-container" id="portfolio-frame">
+<div class="top-light"></div>
+<div class="sunrise-glow"></div>
+<!-- BEGIN: OrbitalPaths -->
+<div class="orbit-ring orbit-1" data-purpose="orbital-path-inner"></div>
+<div class="orbit-ring orbit-2" data-purpose="orbital-path-outer"></div>
+<!-- END: OrbitalPaths -->
+<!-- BEGIN: HeaderNavigation -->
+<header class="relative z-20 flex items-center justify-between px-10 py-8" data-purpose="top-navigation">
+<div class="text-2xl font-brand" data-purpose="logo">
+        noah<span class="text-orange-500">.</span>
+</div>
+<nav class="flex items-center space-x-8 text-sm font-medium text-gray-400">
+<a class="text-white" href="#">Home</a>
+<a class="hover:text-white transition-colors" href="#">Skills</a>
+<a class="hover:text-white transition-colors" href="#">Experience</a>
+<a class="hover:text-white transition-colors" href="#">Connect</a>
+<button class="bg-zinc-800/50 p-2 rounded-lg flex items-center border border-white/5">
+<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-xs">Download Resume</span>
+</button>
+</nav>
+</header>
+<!-- END: HeaderNavigation -->
+<!-- BEGIN: HeroContent -->
+<section class="relative z-20 px-16 pt-12" data-purpose="hero-section">
+<div class="max-w-md">
+<h2 class="text-xl font-medium mb-2">
+          Hey, I am <span class="text-orange-500">Noah</span>
+</h2>
+<h1 class="text-6xl font-bold mb-6 tracking-tight">
+          Web developer
+        </h1>
+<p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-xs">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+<div class="flex items-center space-x-4">
+<button class="bg-orange-600 hover:bg-orange-500 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all">
+            Hire me
+          </button>
+<button class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center bg-white/5 hover:bg-white/10 transition-all">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</button>
+</div>
+</div>
+</section>
+<!-- END: HeroContent -->
+<!-- BEGIN: TestimonialCard -->
+<div class="absolute bottom-16 left-16 z-30 bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-3xl max-w-[280px]" data-purpose="floating-testimonial">
+<div class="mb-4">
+<svg class="w-6 h-6 text-orange-500" fill="currentColor" viewbox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11M3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017C8.56928 16 9.017 15.5523 9.017 15V9C9.017 8.44772 8.56928 8 8.017 8H4.017C3.46472 8 3.017 8.44772 3.017 9V11"></path></svg>
+</div>
+<p class="text-xs text-gray-300 mb-4 leading-relaxed italic">
+        "Noah is an exceptional developer who brings creativity and technical expertise to every project."
+      </p>
+<div class="flex items-center space-x-3">
+<img alt="Caroline Abbott" class="w-8 h-8 rounded-full border border-white/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7d-rnesGPbBY5ktGQRhJ5ClwPGVk2dtP3Mr7cRuONFGWd_1JLzntV2Sc2i-FxD9Frqcs13ZwKzvcgMA5Po_wWNL6Lxe2u5x26f9ydH1qtjDMMSBlviHZ3IxBFlvcJcnkLTfFImeljIC8UoyfLzOQaFK_W_IxKgCFN_22L6SrPlgwhpYBLkOPE7mfOzZ7iLHRI_aO3jPWZWjVqjuzy890hUF9OwRCYHeANc8jLi7_psj8MYFY6QOsxoS7HCXRt_HRnkW0UbQn6ghA"/>
+<div>
+<h4 class="text-xs font-semibold">Caroline Abbott</h4>
+<p class="text-[10px] text-gray-500">Business Owner</p>
+</div>
+</div>
+</div>
+<!-- END: TestimonialCard -->
+<!-- BEGIN: CharacterAndIcons -->
+<div class="absolute right-0 bottom-0 z-10 w-1/2 h-full pointer-events-none" data-purpose="visual-assets-container">
+<!-- Main Character Placeholder -->
+<div class="absolute bottom-0 right-10 w-[80%] h-[90%] flex items-end justify-center">
+<img alt="3D Character" class="object-contain max-h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfJpK7HD7S3r90-c9SKePP2YmHRURtoujFJrZRH6r3k2HbIeNw3WBJ0teLhfaFNMKkSW6qkfb4i2-TGE5gk9gQxFLuuja1dN6-Do5FJZoigZh_jH6-D1fYbH2WCE3G5a48uO_cqWDnDdscgAbDfD8dbN9jaPvr-w3Kby4FCH2hvI2RVNPuKMkCToqqDETFJqi6PvRSpgbF7Z0Dvhf9Hfp7Fh_KX7hDOGkEZo_hdjhyBBiKbioR_vtGdxpBf08Sp8iHCy_jUQMs_I0"/>
+</div>
+<!-- Floating Tech Icons (Represented as circular placeholders on orbital paths) -->
+<div class="absolute top-[45%] right-[25%] bg-[#0A192F] p-3 rounded-lg border border-blue-500/30 transform -rotate-12">
+<div class="w-6 h-6 bg-blue-500 rounded flex items-center justify-center text-[10px] font-bold">JS</div>
+</div>
+<div class="absolute top-[30%] right-[45%] bg-[#1A1A1A] p-3 rounded-lg border border-orange-500/30 transform rotate-12">
+<div class="w-6 h-6 bg-orange-600 rounded flex items-center justify-center text-[10px] font-bold">5</div>
+</div>
+<div class="absolute bottom-[20%] right-[35%] bg-green-900/40 p-3 rounded-lg border border-green-500/30">
+<div class="w-6 h-6 bg-green-600 rounded flex items-center justify-center text-[10px] font-bold">N</div>
+</div>
+</div>
+<!-- END: CharacterAndIcons -->
+<!-- BEGIN: BackgroundVisuals -->
+<div class="absolute top-10 right-10 opacity-20" data-purpose="background-lightning">
+<!-- Lightning/Energy bolt visual from screenshot -->
+<svg class="text-orange-500" fill="none" height="200" viewbox="0 0 100 200" width="100">
+<path d="M80 0L20 90H50L0 200L100 80H60L80 0Z" fill="currentColor"></path>
+</svg>
+</div>
+<!-- END: BackgroundVisuals -->
+</main>
+<!-- END: PortfolioFrame -->
+</body></html>

@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: portfolio-backend
+    env: python
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://portfolio:QU7OqfuxXqkN4A991MIzQEQpZUFr6RHE@dpg-d957834vikkc73ddf090-a/portfolio_j8px
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FRONTEND_URL
+        fromService:
+          type: web
+          name: portfolio-frontend
+          property: host
+
+  - type: web
+    name: portfolio-frontend
+    env: node
+    buildCommand: "cd frontend-next && npm install && npm run build"
+    startCommand: "cd frontend-next && npm start"
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: portfolio-backend
+          property: host
+

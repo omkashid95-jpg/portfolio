@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DevEngine v2.0 | Technical Expertise</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Geist', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for technical feel */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .skill-progress-fill {
+            transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .bento-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-primary-fixed": "#0f0069",
+                        "on-background": "#0b1c30",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#213145",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "outline": "#777587",
+                        "tertiary-container": "#a44100",
+                        "secondary": "#565e74",
+                        "outline-variant": "#c7c4d8",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "surface": "#f8f9ff",
+                        "surface-tint": "#4d44e3",
+                        "on-primary-container": "#dad7ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-secondary-container": "#5c647a",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary-fixed": "#131b2e",
+                        "on-tertiary-fixed": "#351000",
+                        "secondary-fixed": "#dae2fd",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#464555",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "surface-variant": "#d3e4fe",
+                        "primary": "#3525cd",
+                        "on-tertiary-container": "#ffd2be",
+                        "background": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#dae2fd",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container": "#e5eeff",
+                        "primary-container": "#4f46e5",
+                        "inverse-primary": "#c3c0ff",
+                        "tertiary": "#7e3000",
+                        "primary-fixed": "#e2dfff",
+                        "primary-fixed-dim": "#c3c0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "2xl": "48px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "code-md": ["Geist Mono"],
+                        "label-md": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "body-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "code-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- NavigationDrawer Shell (Left) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container border-r border-outline-variant flex flex-col p-md z-50 hidden md:flex">
+<div class="flex items-center gap-3 mb-xl px-2">
+<span class="material-symbols-outlined text-primary text-2xl">terminal</span>
+<span class="text-primary font-bold">DevEngine v2.0</span>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">System Health</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container font-bold rounded-lg group" href="#">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-label-caps text-label-caps">ML Models</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined">dataset</span>
+<span class="font-label-caps text-label-caps">Project CRUD</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-label-caps text-label-caps">Content Engine</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant transition-all rounded-lg group" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label-caps text-label-caps">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto pt-md border-t border-outline-variant">
+<div class="flex items-center gap-3 px-2 mb-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A clean, professional portrait of a software architect in a minimalist workspace. Soft natural lighting from a nearby window illuminates a high-end technical environment. The aesthetic is modern and light-mode focused, with crisp outlines and a professional neutral color palette of soft whites and deep slates." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm3Gu7KjAbLIH-rfj09CKZOVyMYDfhnnpJGs2lulsEDIQXKmz49TAFEqmBxo9yFIgrRwOK43dQC4RhaopooyGW3PeetY9Y30I4p9pcUQAwp-JpnJg69c6b-Qt0zmTNXlSXtMCrEYEE87CfkkkhWsl0fliVEyjDg3VQ_AcRVNZbOxZn85TTtuTgUP3HXEvvRplV5v6bgVqCDXMDrQDbIUa5cSVfUtyAsgfvBiq5gBX0XwWfDYMuOy6miPiYtsfbYr6sDUOruA2IKmM"/>
+</div>
+<div>
+<p class="font-body-md text-body-md font-bold">Lead Architect</p>
+<p class="font-label-md text-label-md text-on-surface-variant">System Admin</p>
+</div>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<div class="px-3 py-2 text-[10px] font-code-md text-outline">v4.2.0-stable</div>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant sticky top-0 z-40">
+<div class="flex justify-between items-center w-full px-lg max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary md:hidden">menu</span>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary tracking-tighter">Technical Expertise</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 mr-4">
+<a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md uppercase tracking-wider" href="#">Overview</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md uppercase tracking-wider" href="#">Stacks</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md uppercase tracking-wider" href="#">Deployments</a>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-variant rounded-full transition-colors">search</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-primary-fixed border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="A macro detail shot of high-end circuitry and glass components, illuminated by a sharp Indigo light. The composition is systematic and grid-like, emphasizing technical precision and design logic. High-key light-mode aesthetic with pristine surfaces and subtle architectural shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzZZ6QIFIis7BdKyc786caAdG8XUeqy5Sn-GcT2mEN5kaAPQsrE9ZZLOLrd0usd1VX2JN7o0GyqNkdifmGI58tkPoKLux-OXiAiEdYhiQPArc_0vDAGg7S5wesi0IDCk7Rpk8jIlgmP8JRHdorWGU-oT_jApglx5kn1okVmTQQS7TUhVn11XfIDWhas2d9kiJ_8tBRGcZuAA00pyRV-f_DgMw4W59CCPG8JlbXE7eoRF1nbQkVyYxxrYyBEaJ3_1X5p1DJDzzW8Ks"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas Area -->
+<section class="p-lg max-w-[1280px] mx-auto w-full flex-1">
+<!-- Header Section -->
+<div class="mb-xl">
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    Mapping the intersection of design and data logic. A comprehensive breakdown of core engineering capabilities and technical proficiency levels across the modern stack.
+                </p>
+</div>
+<!-- Bento Grid of Skills -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Frontend Card -->
+<div class="md:col-span-8 bento-card bg-surface-container-lowest border border-outline-variant p-xl rounded-xl cursor-pointer hover:border-primary/40 group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]">web</span>
+</div>
+<div class="flex items-center gap-3 mb-xl">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Frontend Architecture</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="font-label-md text-label-md font-bold uppercase text-on-surface">React / Next.js</span>
+<span class="font-code-md text-code-md text-primary">94%</span>
+</div>
+<div class="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" style="width: 94%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="font-label-md text-label-md font-bold uppercase text-on-surface">TypeScript</span>
+<span class="font-code-md text-code-md text-primary">90%</span>
+</div>
+<div class="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" style="width: 90%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="font-label-md text-label-md font-bold uppercase text-on-surface">Tailwind CSS</span>
+<span class="font-code-md text-code-md text-primary">98%</span>
+</div>
+<div class="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" style="width: 98%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="font-label-md text-label-md font-bold uppercase text-on-surface">State Engines</span>
+<span class="font-code-md text-code-md text-primary">85%</span>
+</div>
+<div class="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<div class="mt-xl flex gap-2">
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded text-[11px] font-code-md border border-outline-variant">Zustand</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded text-[11px] font-code-md border border-outline-variant">Redux</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant rounded text-[11px] font-code-md border border-outline-variant">Framer Motion</span>
+</div>
+</div>
+<!-- Backend Card -->
+<div class="md:col-span-4 bento-card bg-surface-container-lowest border border-outline-variant p-xl rounded-xl cursor-pointer hover:border-primary/40 flex flex-col">
+<div class="flex items-center gap-3 mb-xl">
+<span class="material-symbols-outlined text-primary">database</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Backend</h3>
+</div>
+<div class="space-y-8 flex-1">
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="font-label-md text-label-md font-bold uppercase text-on-surface">Node.js</span>
+<span class="font-code-md text-code-md text-primary">88%</span>
+</div>
+<div class="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" style="width: 88%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="font-label-md text-label-md font-bold uppercase text-on-surface">Python</span>
+<span class="font-code-md text-code-md text-primary">82%</span>
+</div>
+<div class="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" style="width: 82%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end mb-1">
+<span class="font-label-md text-label-md font-bold uppercase text-on-surface">GraphQL</span>
+<span class="font-code-md text-code-md text-primary">75%</span>
+</div>
+<div class="h-1 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="skill-progress-fill h-full bg-primary" style="width: 75%"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 p-3 bg-surface-container-low rounded-lg border border-outline-variant/50">
+<p class="text-[11px] font-code-md text-on-surface-variant leading-relaxed">
+                            Focusing on high-concurrency microservices and distributed data systems.
+                        </p>
+</div>
+</div>
+<!-- Tools & Infrastructure -->
+<div class="md:col-span-5 bento-card bg-surface-container-lowest border border-outline-variant p-xl rounded-xl cursor-pointer hover:border-primary/40">
+<div class="flex items-center gap-3 mb-xl">
+<span class="material-symbols-outlined text-primary">cloud</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">DevOps & Tools</h3>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4 group/skill">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container rounded-lg border border-outline-variant group-hover/skill:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover/skill:text-primary transition-colors">terminal</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="font-label-md text-label-md font-bold text-on-surface">AWS Infrastructure</span>
+<span class="font-code-md text-code-md text-primary">78%</span>
+</div>
+<div class="h-1 w-full bg-surface-variant rounded-full">
+<div class="skill-progress-fill h-full bg-primary" style="width: 78%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 group/skill">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container rounded-lg border border-outline-variant group-hover/skill:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover/skill:text-primary transition-colors">rebase_edit</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="font-label-md text-label-md font-bold text-on-surface">Docker / K8s</span>
+<span class="font-code-md text-code-md text-primary">64%</span>
+</div>
+<div class="h-1 w-full bg-surface-variant rounded-full">
+<div class="skill-progress-fill h-full bg-primary" style="width: 64%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 group/skill">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container rounded-lg border border-outline-variant group-hover/skill:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover/skill:text-primary transition-colors">monitoring</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="font-label-md text-label-md font-bold text-on-surface">CI/CD Pipelines</span>
+<span class="font-code-md text-code-md text-primary">92%</span>
+</div>
+<div class="h-1 w-full bg-surface-variant rounded-full">
+<div class="skill-progress-fill h-full bg-primary" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract Decorative Card -->
+<div class="md:col-span-7 bento-card bg-primary-container p-xl rounded-xl relative overflow-hidden flex items-end">
+<!-- WebGL or Animation could go here -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="grid grid-cols-12 h-full gap-2 p-2">
+<div class="col-span-1 bg-on-primary-container h-full"></div>
+<div class="col-span-1 bg-on-primary-container h-1/2"></div>
+<div class="col-span-1 bg-on-primary-container h-3/4"></div>
+<div class="col-span-1 bg-on-primary-container h-full"></div>
+<div class="col-span-1 bg-on-primary-container h-2/3"></div>
+</div>
+</div>
+<div class="relative z-10 max-w-md">
+<h4 class="font-headline-md text-headline-md text-white mb-2">Technical Philosophy</h4>
+<p class="font-body-md text-body-md text-white/80 leading-relaxed">
+                            "Complexity is the enemy of execution. We build systems that are as robust as they are elegant, ensuring long-term maintainability through strict typing and modularity."
+                        </p>
+</div>
+<div class="ml-auto relative z-10 hidden sm:block">
+<div class="w-24 h-24 rounded-full border-4 border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Detailed Grid -->
+<div class="mt-2xl">
+<h3 class="font-headline-md text-headline-md mb-lg border-b border-outline-variant pb-2 inline-block">Methodology & Logic</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="p-md bg-surface-container-low border border-outline-variant rounded-lg">
+<div class="flex items-center gap-3 mb-3">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-label-md text-label-md font-bold uppercase tracking-tight text-on-surface">Unit Testing</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Strict TDD approach using Vitest and Playwright for 90%+ coverage.
+                        </p>
+</div>
+<div class="p-md bg-surface-container-low border border-outline-variant rounded-lg">
+<div class="flex items-center gap-3 mb-3">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md font-bold uppercase tracking-tight text-on-surface">Clean Code</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Adhering to SOLID principles and functional programming patterns.
+                        </p>
+</div>
+<div class="p-md bg-surface-container-low border border-outline-variant rounded-lg">
+<div class="flex items-center gap-3 mb-3">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="font-label-md text-label-md font-bold uppercase tracking-tight text-on-surface">Scalability</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Horizontal scaling through containerization and serverless clusters.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Shell -->
+<footer class="w-full py-xl px-lg mt-auto flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto border-t border-outline-variant bg-surface-container-lowest">
+<div class="font-code-sm text-code-sm text-outline mb-4 md:mb-0">
+                © 2024 Engineered by Terminal. Built with High-Performance Logic.
+            </div>
+<div class="flex gap-6">
+<a class="font-label-caps text-label-caps text-outline hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="font-label-caps text-label-caps text-outline hover:text-primary transition-colors" href="#">System Status</a>
+<a class="font-label-caps text-label-caps text-outline hover:text-primary transition-colors" href="#">Source Code</a>
+<a class="font-label-caps text-label-caps text-outline hover:text-primary transition-colors" href="#">API Docs</a>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interactions for skill card expansion
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'translateY(-4px) scale(1)';
+            });
+        });
+
+        // Initialize progress bar animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.skill-progress-fill');
+                    fills.forEach(fill => {
+                        const width = fill.getAttribute('style').match(/width:\s*(\d+)%/)[1];
+                        fill.style.width = '0%';
+                        setTimeout(() => {
+                            fill.style.width = width + '%';
+                        }, 100);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.bento-card').forEach(card => observer.observe(card));
+    </script>
+</body></html>
