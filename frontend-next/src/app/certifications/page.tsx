@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 import { API_BASE_URL } from '@/lib/api';
 
 export const dynamic = "force-dynamic";
@@ -72,23 +73,7 @@ export default async function CertificationsPage() {
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
       `}} />
-      <header className="absolute top-0 left-0 w-full p-8 flex justify-between items-center z-50 max-w-7xl mx-auto left-1/2 -translate-x-1/2">
-  <div className="text-2xl font-bold tracking-tight">Om<span className="text-orange-500"> !</span></div>
-  <nav className="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-    <a className="hover:text-white transition-colors" href="/">Home</a>
-    <a className="hover:text-white transition-colors" href="/#skills">Skills</a>
-    <a className="hover:text-white transition-colors" href="/#experience">Experience</a>
-    <a className="hover:text-white transition-colors" href="/education">Education</a>
-    <a className="hover:text-white transition-colors text-white border-b-2 border-orange-500 pb-1" href="/certifications">Certifications</a>
-    <a className="hover:text-white transition-colors" href="/#connect">Connect</a>
-  </nav>
-  <a href="/resume.pdf" target="_blank" rel="noreferrer" className="glass-effect px-5 py-2 rounded-full flex items-center gap-2 text-sm font-medium hover:bg-white/10 transition-all border border-white/20">
-    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-    </svg>
-    Download Resume
-  </a>
-</header>
+      <Navbar resumeUrl={siteContent['resume_url'] || "/resume.pdf"} activePath="/certifications" />
 <main className="bg-[#121212] text-white overflow-x-hidden selection:bg-orange-500/30 relative min-h-screen pt-32 pb-24">
 
 <div className="absolute inset-0 pointer-events-none sunrise-glow"></div>

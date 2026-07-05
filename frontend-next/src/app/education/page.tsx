@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { fetchAPI } from "@/lib/api";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 export default function EducationPage() {
   const [educationData, setEducationData] = useState<any[]>([]);
@@ -66,23 +67,7 @@ export default function EducationPage() {
       `}} />
 
       {/* HEADER */}
-      <header className="absolute top-0 left-0 w-full p-8 flex justify-between items-center z-50 max-w-7xl mx-auto left-1/2 -translate-x-1/2">
-        <div className="text-2xl font-bold tracking-tight text-white">Om<span className="text-orange-500"> !</span></div>
-        <nav className="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-          <Link className="hover:text-white transition-colors" href="/">Home</Link>
-          <Link className="hover:text-white transition-colors" href="/#skills">Skills</Link>
-          <Link className="hover:text-white transition-colors" href="/#experience">Experience</Link>
-          <Link className="hover:text-white transition-colors text-white border-b-2 border-orange-500 pb-1" href="/education">Education</Link>
-          <Link className="hover:text-white transition-colors" href="/certifications">Certifications</Link>
-          <Link className="hover:text-white transition-colors" href="/#connect">Connect</Link>
-        </nav>
-        <a href="/resume.pdf" target="_blank" rel="noreferrer" className="bg-[#4f46e5] text-white px-5 py-2 rounded-full flex items-center gap-2 text-sm font-medium hover:bg-[#4f46e5]/90 transition-all shadow-lg shadow-[#4f46e5]/20">
-          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-          </svg>
-          Download Resume
-        </a>
-      </header>
+      <Navbar resumeUrl="/resume.pdf" activePath="/education" />
 
       {/* MAIN CONTENT */}
       <main className="flex-grow relative overflow-x-hidden bg-[#121212] min-h-screen pt-32 pb-24 text-[#e4e1ee]">

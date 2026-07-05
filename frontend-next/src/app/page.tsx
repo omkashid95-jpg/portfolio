@@ -4,7 +4,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ConnectSection from "@/components/ConnectSection";
 import Footer from "@/components/Footer";
-
+import Navbar from "@/components/Navbar";
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
@@ -77,26 +77,7 @@ export default async function Home() {
         {/* END: AtmosphericBackground */}
 
         {/* BEGIN: HeaderNavigation */}
-        <header className="absolute top-0 left-0 w-full p-8 flex justify-between items-center z-50 max-w-7xl mx-auto left-1/2 -translate-x-1/2">
-          {/* Logo */}
-          <div className="text-2xl font-bold tracking-tight">Om<span className="text-orange-500"> !</span></div>
-          {/* Navigation Links */}
-          <nav className="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-            <a className="hover:text-white transition-colors text-white border-b-2 border-orange-500 pb-1" href="#home">Home</a>
-            <a className="hover:text-white transition-colors" href="#skills">Skills</a>
-            <a className="hover:text-white transition-colors" href="#experience">Experience</a>
-            <a className="hover:text-white transition-colors" href="/education">Education</a>
-            <a className="hover:text-white transition-colors" href="/certifications">Certifications</a>
-            <a className="hover:text-white transition-colors" href="#connect">Connect</a>
-          </nav>
-          {/* Download Resume Button */}
-          <a href={resumeUrl} target="_blank" rel="noreferrer" className="glass-effect px-5 py-2 rounded-full flex items-center gap-2 text-sm font-medium hover:bg-white/10 transition-all border border-white/20">
-            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-            </svg>
-            Download Resume
-          </a>
-        </header>
+        <Navbar resumeUrl={resumeUrl} activePath="/" />
         {/* END: HeaderNavigation */}
 
         <section className="relative z-10 w-full max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 items-center gap-12 pt-20">
