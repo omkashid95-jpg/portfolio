@@ -49,7 +49,7 @@ export default async function Home() {
   const experiences = await getExperiences();
   const heroGreeting = content['hero_greeting'] || "Hey, I am";
   const heroName = content['hero_name'] || "Om";
-  const heroRole = content['hero_role'] || "AI/ML & Python Developer";
+  const heroRole = content['hero_role'] || "AI/ML Engineer / Python Developer";
   const heroDescription = content['hero_description'] || "I build high-end interactive experiences that live on the web, combining technical expertise with aesthetic design.";
   const testimonialQuote = content['testimonial_quote'] || "Om is an exceptionally talented developer. His ability to translate complex designs into functional code is remarkable.";
   const testimonialName = content['testimonial_name'] || "Suraj";
@@ -87,8 +87,13 @@ export default async function Home() {
               <h2 className="text-xl md:text-2xl font-medium text-gray-300">
                 {heroGreeting} <span className="text-orange-500 font-bold">{heroName}</span>
               </h2>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter">
-                {heroRole}
+              <h1 className="text-6xl md:text-8xl font-extrabold leading-tight tracking-tighter">
+                {heroRole.split(' ').map((word, i) => (
+                  <span key={i}>
+                    {word}{' '}
+                    {i === 0 && <br />}
+                  </span>
+                ))}
               </h1>
               <p className="text-gray-400 max-w-md text-sm md:text-base leading-relaxed">
                 {heroDescription}

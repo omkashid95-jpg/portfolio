@@ -6,7 +6,7 @@ import { fetchAPI } from '@/lib/api';
 const LANDING_PAGE_KEYS = [
   { key: 'hero_greeting', label: 'Hero Greeting', default: 'Hey, I am', type: 'text' },
   { key: 'hero_name', label: 'Hero Name', default: 'Om', type: 'text' },
-  { key: 'hero_role', label: 'Hero Role', default: 'AI/ML & Python Developer', type: 'text' },
+  { key: 'hero_role', label: 'Hero Role', default: 'AI/ML Engineer / Python Developer', type: 'text' },
   { key: 'hero_description', label: 'Hero Description', default: 'I build high-end interactive experiences that live on the web, combining technical expertise with aesthetic design.', type: 'textarea' },
   { key: 'testimonial_quote', label: 'Testimonial Quote', default: 'Om is an exceptionally talented developer. His ability to translate complex designs into functional code is remarkable.', type: 'textarea' },
   { key: 'testimonial_name', label: 'Testimonial Name', default: 'Suraj', type: 'text' },
