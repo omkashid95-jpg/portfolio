@@ -66,7 +66,7 @@ export default function ProjectsSection({ projects = [] }: { projects?: Project[
             Featured <span className="text-orange-500">Projects</span>
           </h2>
           <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-2xl mx-auto md:mx-0">
-            A showcase of distributed architectures, machine learning pipelines, and high-performance frontend applications.
+            A showcase of robust backend architectures, scalable APIs, and intelligent Generative AI solutions.
           </p>
         </div>
 
