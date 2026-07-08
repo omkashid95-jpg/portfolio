@@ -159,6 +159,12 @@ export default async function Home() {
                   <span className="text-emerald-400 font-extrabold text-[8px] tracking-widest">DATA</span>
                 </div>
               </div>
+              {/* NLP Icon */}
+              <div className="absolute bottom-1/3 left-1/3 animate-orbit" style={{ animationDelay: '-8s' }}>
+                <div className="glass-effect p-1.5 rounded-lg -rotate-12 flex items-center justify-center w-8 h-8 group-hover:scale-110 transition-transform">
+                  <span className="text-purple-400 font-extrabold text-[10px] tracking-widest">NLP</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
